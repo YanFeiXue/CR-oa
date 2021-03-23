@@ -1,0 +1,475 @@
+body {
+  background: rgba(255, 255, 255, 1);
+  margin: 0;
+  height: 100%;
+
+  [class*=van-hairline]::after {
+    border: 1px solid #ededed;
+  }
+
+  .mbNone.van-nav-bar {
+    margin-bottom: 0;
+  }
+
+  // nav-bar
+  .van-nav-bar {
+    height: 98px;
+    background-color: rgba(255, 255, 255, 1);
+    margin-bottom: 20px;
+    .van-nav-bar__content{
+      height: auto;
+    }
+    .van-nav-bar__left {
+      left: 10px;
+
+      .van-nav-bar__text {
+
+        font-size: 30px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 600;
+        color: #333333;
+        display: inline-block;
+      }
+
+      .van-icon-arrow-left:before {
+        content: '';
+
+      }
+
+      .van-icon-arrow-left {
+        font-size: 30px;
+        background: url(../image/barBack.png) no-repeat;
+        background-size: 100% 100%;
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    .van-nav-bar__right {
+      .van-icon {
+        font-size: 40px;
+        color: #000;
+      }
+
+      .myIcon {
+        width: 36px;
+      }
+
+      .van-icon-wap-nav:before {
+        content: '';
+      }
+
+
+    }
+
+    .van-nav-bar__title {
+      height: 98px;
+      line-height:98px;
+      font-size: 36px;
+      color: rgba(54, 54, 54, 1);
+    }
+  }
+  .dealer-info-nav {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0 20px 0;
+    .nav-container {
+      span {
+        display: inline-block;
+        width: 206px;
+        height: 64px;
+        line-height: 64px;
+        text-align: center;
+        background: #f0f0f0;
+        border-radius: 38px;
+        color: #666666;
+        font-size: 28px;
+        position: relative;
+      }
+      span:first-child {
+        left: 15px;
+      }
+      span:last-child {
+        right: 15px;
+      }
+      .active {
+        color: #fff;
+        background: #24a494;
+        z-index: 2;
+      }
+    }
+    .arrow-left {
+      position: absolute;
+      left: 24px;
+      top: 48px;
+      font-size: 38px;
+    }
+  }
+  .van-dropdown-menu {
+    width: 200px;
+    height: 56px;
+
+    .van-dropdown-menu__title {
+      font-size: 26px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #333333;
+      line-height: normal;
+    }
+  }
+
+  .van-dropdown-menu::after {
+    border-radius: 38px;
+  }
+
+  .sidebar{
+    .vanSidebar {
+      .van-sidebar-item{
+        font-size: 24px;
+        padding:26px 20px;
+      }
+      .van-sidebar-item--select::before{
+        height: 30px;
+        width:6px;
+      }
+    }
+  }
+  .comment-field{
+    .van-cell__value{
+      display: flex;
+      align-items:center;
+      .van-field__body{
+        width: 100%;
+        .van-icon-clear {
+          font-size: 38px;
+          color: #ccc;
+          right: 10px;
+        }
+      }
+    }
+  }
+  // .van-calendar{
+  //   .van-calendar__footer{
+
+  //   }
+  // }
+  .wrapper-public {
+    width: 702px;
+    height: auto;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 40px 0px rgba(227, 227, 227, 0.8);
+    border-radius: 24px;
+    margin: 20px auto;
+    box-sizing: border-box;
+    .search-input.textarea {
+      align-items: flex-start;
+      padding:20px 30px;
+      height: auto;
+      .van-field__control {
+        width: 582px;
+        height: 236px;
+        background: #FFFFFF;
+        border-radius: 12px;
+        border: 2px solid #EEEEEE;
+        padding:10px 20px;
+      }
+    }
+    .van-tabs {
+      .van-tabs__wrap{
+        height: auto;
+        padding:25px 10px;
+      }
+      .van-tabs__wrap::after{
+        border:none;
+      }
+      .van-tabs__nav{
+        padding-bottom: 50px;
+        .van-tabs__line{
+          width:32px !important;
+          height: 8px;
+        }
+        .van-tab{
+          color:#999999;
+          font-size: 30px;
+          .van-tab__text{
+            padding-left:40px;
+          }
+          span::after {
+            position:absolute;
+            top:2px;
+            left:-10px;
+            content:'';
+            width:36px;
+            height: 36px;
+          }
+        }
+        .van-tab.van-tab--active{
+          color:#0D88FF;
+        }
+        .van-tab.van-tab--active:first-child{
+          span::after {
+            background: url(../image/pl.png) no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+        .van-tab.van-tab--active:nth-child(2){
+          span::after {
+            background: url(../image/czjlActive.png) no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+        .van-tab:first-child{
+          span::after {
+            background: url(../image/pl.png) no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+        .van-tab:nth-child(2){
+          span::after {
+            background: url(../image/czjl.png) no-repeat;
+            background-size: 100% 100%;
+          }
+        }
+      }
+    }
+  }
+  .dealer-aegis-wrapper {
+    padding: 20px 24px;
+    .item-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      font-size: 30px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #333333;
+      div:last-child {
+        color: #999999;
+      }
+    }
+  }
+  .team-plan {
+    .search-field {
+      width: 490px;
+      height: 64px;
+      background: #ffffff;
+      box-shadow: 0px 0px 40px 0px rgba(227, 227, 227, 0.8);
+      border-radius: 32px;
+
+      .van-cell__value {
+        display: flex;
+        align-items: center;
+
+        .van-field__body {
+          width: 80%;
+        }
+      }
+
+      .van-field__button {
+        padding: 10px;
+        position: absolute;
+        right: 0;
+        top: -2;
+
+        .search-button {
+          width: 36px;
+          height: 36px;
+          background: url(../image/searchIcon.png) no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+
+    }
+  }
+  .publicField{
+      width:100%;
+      height: 64px;
+      background: #ffffff;
+      box-shadow: 0px 0px 40px 0px rgba(227, 227, 227, 0.8);
+      border-radius: 32px;
+      margin: 15px 0;
+      .van-cell__value {
+        display: flex;
+        align-items: center;
+
+        .van-field__body {
+          width: 80%;
+        }
+      }
+
+      .van-field__button {
+        padding: 10px;
+        position: absolute;
+        right: 0;
+        top: -2;
+
+        .search-button {
+          width: 36px;
+          height: 36px;
+          background: url(../image/searchIcon.png) no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+  }
+  .publicBtn {
+    width: 458px;
+    height: 88px;
+    background: #24A494;
+    border-radius: 50px;
+    border: none;
+    font-size: 32px;
+    display: block;
+    margin: 40px auto;
+  }
+
+  // toast提示
+  .van-toast {
+    width: 325px;
+    height: 235px;
+    top: 48%;
+    font-size: 32px;
+    color: #FFFFFF;
+    max-width: 325px;
+    min-height: 235px;
+    border-radius: 40px;
+
+    .van-toast__icon {
+      font-size: 70px;
+    }
+
+    .van-toast__text {
+      line-height: 40px;
+    }
+  }
+
+  .van-popup--bottom.van-popup--round {
+    border-radius: 40px 40px 0 0;
+
+    .van-picker__toolbar {
+      padding: 20px 20px
+    }
+  }
+
+  // 上拉菜单
+  .van-popup--bottom.van-action-sheet {
+    max-height: 600px;
+    overflow-y: scroll;
+    border-radius: 40px 40px 0 0;
+
+    .van-action-sheet__item {
+      height: 80px;
+      line-height: 80px;
+      font-size: 28px;
+      background: none;
+      border-bottom: 1px solid #ededed;
+    }
+
+    .van-action-sheet__item:first-child {
+      border-radius: 40px 40px 0 0;
+    }
+
+    .van-action-sheet__cancel {
+      font-size: 30px;
+      line-height: 70px
+    }
+  }
+
+  // 时间选择器
+  .van-picker-column {
+    font-size: 32px;
+  }
+
+  .van-picker__cancel,
+  .van-picker__confirm {
+    font-size: 28px;
+  }
+
+  //dialog 弹窗
+  .van-dialog {
+    width: 86%;
+    border-radius: 12px;
+
+    .van-dialog__header {
+      font-size: 34px;
+      color: #1F1F1F;
+    }
+
+    .van-dialog__message {
+      min-height: 10vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 50px;
+      padding: 30px 40px 20px;
+      font-size: 34px;
+    }
+
+    .van-dialog__footer {
+      height: 70px;
+
+      .van-dialog__confirm,
+      .van-dialog__cancel {
+        font-size: 32px;
+      }
+
+      [class*=van-hairline]::after {
+        border: none
+      }
+    }
+  }
+
+  .van-image-preview__index {
+    font-size: 30px;
+  }
+
+  p {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+  }
+
+  .van-cell:not(:last-child)::after {
+    left: 0;
+  }
+
+  .rel {
+    position: relative;
+  }
+
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+
+  .flex-st {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .jc-st {
+    justify-content: flex-start;
+  }
+
+  .jc-c {
+    justify-content: center;
+  }
+
+  .jc-sr {
+    justify-content: space-around;
+  }
+
+  .jc-sb {
+    justify-content: space-between;
+  }
+
+  .fl-w {
+    flex-wrap: wrap;
+  }
+
+  .m0a {
+    margin: 0 auto;
+  }
+
+}

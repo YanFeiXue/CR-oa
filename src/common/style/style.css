@@ -1,0 +1,388 @@
+body {
+  background: #ffffff;
+  margin: 0;
+  height: 100%;
+}
+body [class*=van-hairline]::after {
+  border: 1px solid #ededed;
+}
+body .mbNone.van-nav-bar {
+  margin-bottom: 0;
+}
+body .van-nav-bar {
+  height: 98px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+body .van-nav-bar .van-nav-bar__content {
+  height: auto;
+}
+body .van-nav-bar .van-nav-bar__left {
+  left: 10px;
+}
+body .van-nav-bar .van-nav-bar__left .van-nav-bar__text {
+  font-size: 30px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 600;
+  color: #333333;
+  display: inline-block;
+}
+body .van-nav-bar .van-nav-bar__left .van-icon-arrow-left:before {
+  content: '';
+}
+body .van-nav-bar .van-nav-bar__left .van-icon-arrow-left {
+  font-size: 30px;
+  background: url(../image/barBack.png) no-repeat;
+  background-size: 100% 100%;
+  width: 28px;
+  height: 28px;
+}
+body .van-nav-bar .van-nav-bar__right .van-icon {
+  font-size: 40px;
+  color: #000;
+}
+body .van-nav-bar .van-nav-bar__right .myIcon {
+  width: 36px;
+}
+body .van-nav-bar .van-nav-bar__right .van-icon-wap-nav:before {
+  content: '';
+}
+body .van-nav-bar .van-nav-bar__title {
+  height: 98px;
+  line-height: 98px;
+  font-size: 36px;
+  color: #363636;
+}
+body .dealer-info-nav {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0 20px 0;
+}
+body .dealer-info-nav .nav-container span {
+  display: inline-block;
+  width: 206px;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  background: #f0f0f0;
+  border-radius: 38px;
+  color: #666666;
+  font-size: 28px;
+  position: relative;
+}
+body .dealer-info-nav .nav-container span:first-child {
+  left: 15px;
+}
+body .dealer-info-nav .nav-container span:last-child {
+  right: 15px;
+}
+body .dealer-info-nav .nav-container .active {
+  color: #fff;
+  background: #24a494;
+  z-index: 2;
+}
+body .dealer-info-nav .arrow-left {
+  position: absolute;
+  left: 24px;
+  top: 48px;
+  font-size: 38px;
+}
+body .van-dropdown-menu {
+  width: 200px;
+  height: 56px;
+}
+body .van-dropdown-menu .van-dropdown-menu__title {
+  font-size: 26px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+  line-height: normal;
+}
+body .van-dropdown-menu::after {
+  border-radius: 38px;
+}
+body .sidebar .vanSidebar .van-sidebar-item {
+  font-size: 24px;
+  padding: 26px 20px;
+}
+body .sidebar .vanSidebar .van-sidebar-item--select::before {
+  height: 30px;
+  width: 6px;
+}
+body .comment-field .van-cell__value {
+  display: flex;
+  align-items: center;
+}
+body .comment-field .van-cell__value .van-field__body {
+  width: 100%;
+}
+body .comment-field .van-cell__value .van-field__body .van-icon-clear {
+  font-size: 38px;
+  color: #ccc;
+  right: 10px;
+}
+body .wrapper-public {
+  width: 702px;
+  height: auto;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 40px 0px rgba(227, 227, 227, 0.8);
+  border-radius: 24px;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+body .wrapper-public .search-input.textarea {
+  align-items: flex-start;
+  padding: 20px 30px;
+  height: auto;
+}
+body .wrapper-public .search-input.textarea .van-field__control {
+  width: 582px;
+  height: 236px;
+  background: #FFFFFF;
+  border-radius: 12px;
+  border: 2px solid #EEEEEE;
+  padding: 10px 20px;
+}
+body .wrapper-public .van-tabs .van-tabs__wrap {
+  height: auto;
+  padding: 25px 10px;
+}
+body .wrapper-public .van-tabs .van-tabs__wrap::after {
+  border: none;
+}
+body .wrapper-public .van-tabs .van-tabs__nav {
+  padding-bottom: 50px;
+}
+body .wrapper-public .van-tabs .van-tabs__nav .van-tabs__line {
+  width: 32px !important;
+  height: 8px;
+}
+body .wrapper-public .van-tabs .van-tabs__nav .van-tab {
+  color: #999999;
+  font-size: 30px;
+}
+body .wrapper-public .van-tabs .van-tabs__nav .van-tab .van-tab__text {
+  padding-left: 40px;
+}
+body .wrapper-public .van-tabs .van-tabs__nav .van-tab span::after {
+  position: absolute;
+  top: 2px;
+  left: -10px;
+  content: '';
+  width: 36px;
+  height: 36px;
+}
+body .wrapper-public .van-tabs .van-tabs__nav .van-tab.van-tab--active {
+  color: #0D88FF;
+}
+body .wrapper-public .van-tabs .van-tabs__nav .van-tab.van-tab--active:first-child span::after {
+  background: url(../image/pl.png) no-repeat;
+  background-size: 100% 100%;
+}
+body .wrapper-public .van-tabs .van-tabs__nav .van-tab.van-tab--active:nth-child(2) span::after {
+  background: url(../image/czjlActive.png) no-repeat;
+  background-size: 100% 100%;
+}
+body .wrapper-public .van-tabs .van-tabs__nav .van-tab:first-child span::after {
+  background: url(../image/pl.png) no-repeat;
+  background-size: 100% 100%;
+}
+body .wrapper-public .van-tabs .van-tabs__nav .van-tab:nth-child(2) span::after {
+  background: url(../image/czjl.png) no-repeat;
+  background-size: 100% 100%;
+}
+body .dealer-aegis-wrapper {
+  padding: 20px 24px;
+}
+body .dealer-aegis-wrapper .item-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 30px;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #333333;
+}
+body .dealer-aegis-wrapper .item-wrapper div:last-child {
+  color: #999999;
+}
+body .team-plan .search-field {
+  width: 490px;
+  height: 64px;
+  background: #ffffff;
+  box-shadow: 0px 0px 40px 0px rgba(227, 227, 227, 0.8);
+  border-radius: 32px;
+}
+body .team-plan .search-field .van-cell__value {
+  display: flex;
+  align-items: center;
+}
+body .team-plan .search-field .van-cell__value .van-field__body {
+  width: 80%;
+}
+body .team-plan .search-field .van-field__button {
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  top: -2;
+}
+body .team-plan .search-field .van-field__button .search-button {
+  width: 36px;
+  height: 36px;
+  background: url(../image/searchIcon.png) no-repeat;
+  background-size: 100% 100%;
+}
+body .publicField {
+  width: 100%;
+  height: 64px;
+  background: #ffffff;
+  box-shadow: 0px 0px 40px 0px rgba(227, 227, 227, 0.8);
+  border-radius: 32px;
+  margin: 15px 0;
+}
+body .publicField .van-cell__value {
+  display: flex;
+  align-items: center;
+}
+body .publicField .van-cell__value .van-field__body {
+  width: 80%;
+}
+body .publicField .van-field__button {
+  padding: 10px;
+  position: absolute;
+  right: 0;
+  top: -2;
+}
+body .publicField .van-field__button .search-button {
+  width: 36px;
+  height: 36px;
+  background: url(../image/searchIcon.png) no-repeat;
+  background-size: 100% 100%;
+}
+body .publicBtn {
+  width: 458px;
+  height: 88px;
+  background: #24A494;
+  border-radius: 50px;
+  border: none;
+  font-size: 32px;
+  display: block;
+  margin: 40px auto;
+}
+body .van-toast {
+  width: 325px;
+  height: 235px;
+  top: 48%;
+  font-size: 32px;
+  color: #FFFFFF;
+  max-width: 325px;
+  min-height: 235px;
+  border-radius: 40px;
+}
+body .van-toast .van-toast__icon {
+  font-size: 70px;
+}
+body .van-toast .van-toast__text {
+  line-height: 40px;
+}
+body .van-popup--bottom.van-popup--round {
+  border-radius: 40px 40px 0 0;
+}
+body .van-popup--bottom.van-popup--round .van-picker__toolbar {
+  padding: 20px 20px;
+}
+body .van-popup--bottom.van-action-sheet {
+  max-height: 600px;
+  overflow-y: scroll;
+  border-radius: 40px 40px 0 0;
+}
+body .van-popup--bottom.van-action-sheet .van-action-sheet__item {
+  height: 80px;
+  line-height: 80px;
+  font-size: 28px;
+  background: none;
+  border-bottom: 1px solid #ededed;
+}
+body .van-popup--bottom.van-action-sheet .van-action-sheet__item:first-child {
+  border-radius: 40px 40px 0 0;
+}
+body .van-popup--bottom.van-action-sheet .van-action-sheet__cancel {
+  font-size: 30px;
+  line-height: 70px;
+}
+body .van-picker-column {
+  font-size: 32px;
+}
+body .van-picker__cancel,
+body .van-picker__confirm {
+  font-size: 28px;
+}
+body .van-dialog {
+  width: 86%;
+  border-radius: 12px;
+}
+body .van-dialog .van-dialog__header {
+  font-size: 34px;
+  color: #1F1F1F;
+}
+body .van-dialog .van-dialog__message {
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 50px;
+  padding: 30px 40px 20px;
+  font-size: 34px;
+}
+body .van-dialog .van-dialog__footer {
+  height: 70px;
+}
+body .van-dialog .van-dialog__footer .van-dialog__confirm,
+body .van-dialog .van-dialog__footer .van-dialog__cancel {
+  font-size: 32px;
+}
+body .van-dialog .van-dialog__footer [class*=van-hairline]::after {
+  border: none;
+}
+body .van-image-preview__index {
+  font-size: 30px;
+}
+body p {
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+}
+body .van-cell:not(:last-child)::after {
+  left: 0;
+}
+body .rel {
+  position: relative;
+}
+body .flex {
+  display: flex;
+  align-items: center;
+}
+body .flex-st {
+  display: flex;
+  align-items: flex-start;
+}
+body .jc-st {
+  justify-content: flex-start;
+}
+body .jc-c {
+  justify-content: center;
+}
+body .jc-sr {
+  justify-content: space-around;
+}
+body .jc-sb {
+  justify-content: space-between;
+}
+body .fl-w {
+  flex-wrap: wrap;
+}
+body .m0a {
+  margin: 0 auto;
+}
