@@ -7,120 +7,59 @@
     <nav class="login-title">欢迎登陆</nav>
     <div class="inputcss flex jc-sb fl-w" v-show="step">
       <div class="wrapField">
-        <van-field
-          placeholder="请输入账户"
-          v-model="username"
-          clearable
-          ref="username"
-          @click="focusThis('username')"
-          v-validate="'required|userZh'"
-          name="userZh"
-          :error="errors.has('userZh')"
-          :error-message="errors.first('userZh') | strFilter('userZh', '账号')"
-        ></van-field>
+        <van-field placeholder="请输入账户" v-model="username" clearable ref="username" @click="focusThis('username')"
+          v-validate="'required|userZh'" name="userZh" :error="errors.has('userZh')"
+          :error-message="errors.first('userZh') | strFilter('userZh', '账号')"></van-field>
         <div class="animateLine"></div>
         <span class="iconStyle">账户</span>
       </div>
 
       <div class="wrapField">
-        <van-field
-          placeholder="请输入密码"
-          v-model="password"
-          clearable
-          ref="password"
-          @click="focusThis('password')"
-          :type="lockAc ? 'password' : 'text'"
-          v-validate="'required|newPwd'"
-          name="newPwd"
-          :error="errors.has('newPwd')"
-          :class="errors.has('newPwd') ? 'error' : 'sucess'"
-          :error-message="errors.first('newPwd') | strFilter('newPwd', '密码')"
-        ></van-field>
+        <van-field placeholder="请输入密码" v-model="password" clearable ref="password" @click="focusThis('password')"
+          :type="lockAc ? 'password' : 'text'" v-validate="'required|newPwd'" name="newPwd"
+          :error="errors.has('newPwd')" :class="errors.has('newPwd') ? 'error' : 'sucess'"
+          :error-message="errors.first('newPwd') | strFilter('newPwd', '密码')"></van-field>
         <span class="iconStyle">密码</span>
       </div>
       <section class="wrapField">
         <div class="service">
           <div class="icon_style" @click="isActive = !isActive">
-            <i
-              class="icon-choose"
-              :class="isActive ? 'icon-choose-active' : 'icon-choose'"
-            ></i>
+            <i class="icon-choose" :class="isActive ? 'icon-choose-active' : 'icon-choose'"></i>
           </div>
 
           <div class="text">
             <span>我已阅读并同意</span>
             <span>
-              <em
-@click="jump('自然人用户保密协议', 1)"
-                >《自然人用户保密协议》</em
-              >
+              <em @click="jump('自然人用户保密协议', 1)">《自然人用户保密协议》</em>
               <em @click="jump('服务使用协议', 0)">《服务使用协议》</em>
               <em @click="jump('个人信息保护政策', 2)">《个人信息保护政策》</em>
             </span>
           </div>
         </div>
       </section>
-      <van-button
-        class="m0a sign"
-        ref="sign"
-        :disabled="queryIfAgentFlag"
-        @click="_queryIfAgent()"
-      >立即登录</van-button>
+      <van-button class="m0a sign" ref="sign" :disabled="queryIfAgentFlag" @click="_queryIfAgent()">立即登录</van-button>
     </div>
     <div class="sendCode-wrap inputcss" v-show="!step">
       <div class="wrapField">
-        <van-field
-          placeholder="请输入手机号"
-          v-model="mobile"
-          clearable
-          ref="mobile"
-          :readonly="!isAgent"
-          @click="focusThis('mobile')"
-          v-validate="'required|isMobile'"
-          name="isMobile"
-          :error="errors.has('isMobile')"
+        <van-field placeholder="请输入手机号" v-model="mobile" clearable ref="mobile" :readonly="!isAgent"
+          @click="focusThis('mobile')" v-validate="'required|isMobile'" name="isMobile" :error="errors.has('isMobile')"
           :error-message="
             errors.first('isMobile') | strFilter('isMobile', '手机号')
-          "
-        ></van-field>
+          "></van-field>
         <div class="animateLine"></div>
         <span class="iconStyle">手机号</span>
       </div>
       <div class="wrapField code">
-        <van-field
-          placeholder="请输入验证码"
-          v-model="msgContent"
-          clearable
-          ref="msgContent"
-          @click="focusThis('msgContent')"
-          v-validate="'required|isCode'"
-          name="isCode"
-          :error="errors.has('isCode')"
-          :error-message="
+        <van-field placeholder="请输入验证码" v-model="msgContent" clearable ref="msgContent" @click="focusThis('msgContent')"
+          v-validate="'required|isCode'" name="isCode" :error="errors.has('isCode')" :error-message="
             errors.first('isCode') | strFilter('isCode', '验证码')
-          "
-        ></van-field>
-        <span
-class="sendMsgBtn"
-ref="code"
-@click="sendMsgContent()"
-          >获取验证码</span
-        >
+          "></van-field>
+        <span class="sendMsgBtn" ref="code" @click="sendMsgContent()">获取验证码</span>
         <span class="iconStyle">验证码</span>
       </div>
-      <van-button
-type="primary"
-class="checkAuthCode"
-@click="_checkAuthCode()"
-        >立即登录</van-button
-      >
+      <van-button type="primary" class="checkAuthCode" @click="_checkAuthCode()">立即登录</van-button>
       <!-- :disabled="checkAuthCodeFlag" -->
-      <van-button
-type="primary"
-class="backPrev"
-@click="step = true"
-        >返回上一步</van-button
-      >
+      <van-button type="primary" class="backPrev" @click="step = true">返回上一步</van-button>
     </div>
   </section>
 </template>
@@ -133,7 +72,7 @@ import {
   xrtxCheckLogin,
   xrtxSendSms,
   xrtxCheckAppAuthCode,
-  addLoginLog
+  addLoginLog,
 } from '@/api/api'
 import Vue from 'vue'
 import { Field, Icon } from 'vant'
@@ -156,14 +95,14 @@ export default {
       checkAuthCodeFlag: false,
       isActive: false,
       fixTop: true,
-      isXrtx: localStorage.getItem('isXrtx')
+      isXrtx: localStorage.getItem('isXrtx'),
     }
   },
   props: {
     isNext: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   created() {
     this.initParams()
@@ -174,7 +113,7 @@ export default {
   watch: {
     isActive(newVal) {
       localStorage.setItem('isActive', newVal)
-    }
+    },
   },
   methods: {
     focusThis(id) {
@@ -185,8 +124,8 @@ export default {
         path: 'service',
         query: {
           title: title,
-          flag: flag
-        }
+          flag: flag,
+        },
       })
     },
     sendMsgContent() {
@@ -202,7 +141,7 @@ export default {
         username: this.username,
         password: this.password,
         userPhone: this.mobile,
-        loginType: 1
+        loginType: 1,
       }
       if (this.isXrtxUser()) {
         xrtxSendSms(_params).then((data) => {
@@ -259,7 +198,7 @@ export default {
       const _params = {
         username: this.username,
         password: this.password,
-        loginType: 1
+        loginType: 1,
       }
       if (this.isXrtxUser()) {
         localStorage.setItem('isXrtx', true)
@@ -316,7 +255,7 @@ export default {
             username: this.username,
             password: this.password,
             authCode: this.msgContent,
-            userPhone: this.mobile
+            userPhone: this.mobile,
           }
           this.checkAuthCodeFlag = true
           if (this.isXrtxUser()) {
@@ -361,7 +300,7 @@ export default {
     initCreatedLogin() {
       const obj = {
         time: Date.now(),
-        expire: 11 * 60 * 60 * 1000
+        expire: 11 * 60 * 60 * 1000,
       }
       localStorage.setItem('username', this.username)
       localStorage.setItem('password', this.password)
@@ -440,7 +379,7 @@ export default {
         mobile: this.mobile || this.username, // /发送验证码的手机号
         loginType: isAndroid ? 'Android' : 'ISO', // 登陆类型 ISO Android
         latitude: lat || '36.674810799999996', // 纬度
-        longitude: lng || '116.98087319999999' // 精度
+        longitude: lng || '116.98087319999999', // 精度
       }
       addLoginLog(params).then((data) => {
         if (data.code != 0) {
@@ -451,8 +390,8 @@ export default {
         this.checkAuthCodeFlag = false
         // this.$toast.success('获取定位成功')
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -464,7 +403,7 @@ export default {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: url(/static/img/bg@2x.png) no-repeat;
+  background: url('../../../static/img/bg@2x.png') no-repeat;
   background-size: 100% 100%;
   .fixTop {
     width: 100%;
@@ -693,7 +632,7 @@ export default {
     bottom: -160px;
     position: absolute;
     border: none;
-    color:#fff;
+    color: #fff;
     font-size: 30px;
   }
 }
