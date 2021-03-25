@@ -93,7 +93,7 @@ export default {
       isAgent: true,
       queryIfAgentFlag: false,
       checkAuthCodeFlag: false,
-      isActive: false,
+      isActive: true,
       fixTop: true,
       isXrtx: localStorage.getItem('isXrtx'),
     }
@@ -112,6 +112,7 @@ export default {
   },
   watch: {
     isActive(newVal) {
+      console.log('状态', newVal)
       localStorage.setItem('isActive', newVal)
     },
   },
@@ -191,10 +192,10 @@ export default {
       })
     },
     _queryIfAgent() {
-      if (!this.isActive) {
-        this.$toast.fail('请勾选使用服务协议')
-        return
-      }
+      // if (!this.isActive) {
+      //   this.$toast.fail('请勾选使用服务协议')
+      //   return
+      // }
       const _params = {
         username: this.username,
         password: this.password,
@@ -461,6 +462,13 @@ export default {
         display: block;
         width: 30px;
         height: 30px;
+        background: url(../../assets/sign_in_selection@2x.png) no-repeat;
+        // background: url(../../assets/sign_in_unchecked@2x.png) no-repeat;
+        background-size: cover;
+      }
+      .icon-choose-active {
+        background: url(../../assets/sign_in_selection@2x.png) no-repeat;
+        background-size: cover;
       }
       .text {
         width: 600px;
