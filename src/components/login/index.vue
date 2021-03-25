@@ -466,7 +466,7 @@ export default {
         width: 600px;
         margin-left: 80px;
         font-size: 22px;
-        color: rgba(255, 255, 255, 0.45);
+        // color: rgba(255, 255, 255, 0.45);
         span:first-child {
           line-height: 30px;
         }
@@ -521,7 +521,7 @@ export default {
         line-height: 130%;
         padding-left: 50px;
         font-size: 34px;
-        color: #fff;
+        // color: #fff;
         margin-left: 38px;
       }
       .van-cell__value {
@@ -574,7 +574,7 @@ export default {
         border-bottom: 1px solid #e9e9e9;
         .van-icon-clear {
           font-size: 38px;
-          color: #fff;
+          // color: #fff;
         }
       }
       .van-field__control {
@@ -582,10 +582,10 @@ export default {
         line-height: 130%;
         padding-left: 50px;
         font-size: 34px;
-        color: #fff;
+        // color: #fff;
       }
       .van-field__control::-webkit-input-placeholder {
-        color: #fff;
+        // color: #fff;
         font-size: 34px;
       }
       .van-field__error-message {
