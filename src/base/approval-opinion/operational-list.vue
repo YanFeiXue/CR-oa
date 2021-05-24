@@ -4,11 +4,11 @@
 
     <div class="look_other">
       <div class="first" @click="routerPath('/pageMain/incoming')">
-        <img src="../../assets/img/CKJJXX.png" />
+        <img src="../../../static/img/CKJJXX.png" />
         <span>查看进件信息</span>
       </div>
       <div class="second" @click="routerPath('/pageMain/uploadFile')">
-        <img src="../../assets/img/CKYXJ.png" />
+        <img src="../../../static/img/CKYXJ.png" />
         <span>查看影像件</span>
       </div>
     </div>

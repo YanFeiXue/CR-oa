@@ -7,7 +7,7 @@
       </div>
       <div class="screen">
         <span>筛选</span>
-        <img src="../../assets/img/shanxuan.png" />
+        <img src="../../../static/img/shanxuan.png" />
       </div>
     </div>
     <div class="wrapper" ref="wrapper">
@@ -319,7 +319,7 @@
         height: 80px;
         z-index: 9;
         border-radius: 44px;
-        background: url(../../assets/img/pre_search.png) 480px center / 38px 36px no-repeat;
+        background: url(../../../static/img/pre_search.png) 480px center / 38px 36px no-repeat;
         background-color: rgba(255, 255, 255, 1);
         padding: 0 0 0 20px;
         line-height: 80px;

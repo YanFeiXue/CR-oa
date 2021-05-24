@@ -14,7 +14,7 @@
       </van-tab>
 
       <div class="backWrapper">
-        <img src="../../assets/img/barBack.png" class="barBack" @click="$router.back()">
+        <img src="../../../static/img/barBack.png" class="barBack" @click="$router.back()">
       </div>
     </van-tabs>
   </section>
@@ -79,48 +79,36 @@
   }
 </script>
 <style lang="scss" scoped="scoped">
-  .appView{
-    width: 100%;
-    height: 100%;
-  }
-
-  .threeItems{
-    width: 100%;
-    min-height: 100vh;
-    background: #FFFFFF;
-  }
 
   /deep/ {
-    .van-tabs__wrap {
-      height: 100px;
-      width: 350px;
-      margin: auto;
-    }
-    .van-tabs__nav{
-      margin: 15px 0;
-      height: 70px;
-    }
-
-    .van-tab--active {
-      color: #333333;
-      font-weight: bold;
-    }
-
-    .van-tab {
-      font-size: 34px;
-      height: 70px;
-    }
-
-    .van-tab__text {
-      height: 70px;
-      line-height: 70px;
-    }
-
-    .van-tabs__line {
-      width: 40px;
-      height: 6px;
-      background: #22A78E;
-      border-radius: 3px;
+    .van-tabs--line{
+      .van-tabs__wrap {
+        height: 98px;
+        width: 350px;
+        margin: auto;
+        .van-tabs__nav{
+          margin: 15px 0;
+          height: 70px;
+          .van-tab--active {
+            color: #333333;
+            font-weight: bold;
+          }
+          .van-tab {
+            font-size: 34px;
+            height: 70px;
+            .van-tab__text {
+              height: 70px;
+              line-height: 70px;
+            }
+          }
+          .van-tabs__line {
+            width: 40px;
+            height: 6px;
+            background: #22A78E;
+            border-radius: 3px;
+          }
+        }
+      }
     }
   }
 

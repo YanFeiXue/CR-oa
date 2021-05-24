@@ -31,7 +31,7 @@ body .van-nav-bar .van-nav-bar__left .van-icon-arrow-left:before {
 }
 body .van-nav-bar .van-nav-bar__left .van-icon-arrow-left {
   font-size: 30px;
-  background: url(../../assets/img/barBack.png) no-repeat;
+  background: url(../../../static/img/barBack.png) no-repeat;
   background-size: 100% 100%;
 }
 body .van-nav-bar .van-nav-bar__right {
@@ -238,7 +238,7 @@ body .filter-input .van-cell.van-field {
   height: 88px;
   z-index: 9;
   border-radius: 44px;
-  background: url(../../assets/img/pre_search@2x.png) 640px center / 38px 36px no-repeat;
+  background: url(./static/img/pre_search@2x.png) 640px center / 38px 36px no-repeat;
   background-color: #ffffff;
   padding: 0;
 }
@@ -283,7 +283,7 @@ body .filter-input.filter-input80 {
 }
 body .filter-input.filter-input80 .van-cell.van-field {
   width: 582px;
-  background: url(../../assets/img/pre_search@2x.png) 520px center / 30px 32px no-repeat;
+  background: url(./static/img/pre_search@2x.png) 520px center / 30px 32px no-repeat;
   background-color: #fff;
   border: 2px solid #e9e9e9;
 }
@@ -382,7 +382,7 @@ body .cellCommon_field .commonSelect {
   color: #1F1F1F;
 }
 body .cellCommon_field .slotRight {
-  background: url(../../assets/img/selected.png) 620px center / 30px 18px no-repeat;
+  background: url(./static/img/selected.png) 620px center / 30px 18px no-repeat;
 }
 body .cellCommon_field .pd2 {
   padding-bottom: 2px;
@@ -523,7 +523,7 @@ body .van-tabs .incomeField .van-cell .van-cell__value .van-field__error-message
   font-size: 10px;
 }
 body .van-tabs .incomeField .slotRight {
-  background: url(../../assets/img/selected.png) 640px center / 26px 16px no-repeat;
+  background: url(./static/img/selected.png) 640px center / 26px 16px no-repeat;
 }
 body .van-tabs .incomeField .commonSelect {
   height: 100%;

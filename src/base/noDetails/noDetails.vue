@@ -1,6 +1,6 @@
 <template>
   <div class="noDetails">
-    <img src="../../assets/img/noDetails.png" />
+    <img src="../../../static/img/noDetails.png" />
     <span class>暂无数据</span>
   </div>
 </template>

@@ -6,7 +6,7 @@
         <van-field v-model="filterVal" ref="filterVal" @click="focusThis('filterVal')" placeholder="请输入客户姓名" />
         <van-button type="default" @click="filterData()">查询</van-button>
       </div>
-      <img src="../../assets/img/shanxuan.png" />
+      <img src="../../../static/img/shanxuan.png" />
     </div>
     <div class="wrapper" ref="wrapper">
       <ul v-if="allTask.length">
@@ -21,13 +21,13 @@
               <div class="time">{{item.auditTime}}</div>
             </div>
             <div class="signStatus" v-if="item.signStatus == 1">
-              <img src="../../assets/img/signning.png" />
+              <img src="../../../static/img/signning.png" />
             </div>
             <div class="signStatus" v-if="item.signStatus == 2">
-              <img src="../../assets/img/signSuccess.png" />
+              <img src="../../../static/img/signSuccess.png" />
             </div>
             <div class="auditResult" v-if="item.auditResult == 1">
-              <img src="../../assets/img/signPass.png" />
+              <img src="../../../static/img/signPass.png" />
             </div>
             <div class="copyLink" v-if="item.auditResult == 0 || item.signStatus == 1">复制链接</div>
           </div>
@@ -249,7 +249,7 @@
         height: 80px;
         z-index: 9;
         border-radius: 44px;
-        background: url(../../assets/img/pre_search.png) 530px center / 38px 36px no-repeat;
+        background: url(../../../static/img/pre_search.png) 530px center / 38px 36px no-repeat;
         background-color: rgba(255, 255, 255, 1);
         padding: 0 0 0 20px;
         line-height: 80px;

@@ -10,7 +10,7 @@
       <van-button type="default" @click="filterData()">查询</van-button>
       <div class="filter-input-right" @click="applySheet_flag=true">
         <span>筛选</span>
-        <img src="../../assets/img/signing_screen@2x.png" />
+        <img src="./static/img/signing_screen@2x.png" />
       </div>
     </div>
     <van-action-sheet

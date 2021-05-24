@@ -10,13 +10,13 @@
         placeholder="添加日程主题"
       >
         <template #left-icon>
-          <img src="../../assets/img/schedule.png" />
+          <img src="../../../static/img/schedule.png" />
         </template>
       </van-field>
     </div>
     <div class="wrapper-public schedule-time">
       <div class="schedule-header">
-        <span class="name"><img src="../../assets/img/time.png" />全天</span>
+        <span class="name"><img src="../../../static/img/time.png" />全天</span>
         <div>
           <van-switch v-model="checked" size="24px" />
         </div>
@@ -29,7 +29,7 @@
           </div>
           <div class="week">周六</div>
         </div>
-        <img src="../../assets/img/for.png" class="for"/>
+        <img src="../../../static/img/for.png" class="for"/>
         <div class="time time-last">
           <div class="day">
             <span>7月11日</span>
@@ -48,7 +48,7 @@
         placeholder="请输入拜访对象"
       >
         <template #left-icon>
-          <img src="../../assets/img/person.png" />
+          <img src="../../../static/img/person.png" />
         </template>
       </van-field>
     </div>
@@ -61,7 +61,7 @@
         placeholder="请输入日程地点"
       >
         <template #left-icon>
-          <img src="../../assets/img/gps.png" />
+          <img src="../../../static/img/gps.png" />
         </template>
       </van-field>
     </div>
@@ -74,7 +74,7 @@
         placeholder="出差"
       >
         <template #left-icon>
-          <img src="../../assets/img/cc.png" />
+          <img src="../../../static/img/cc.png" />
         </template>
       </van-field>
     </div>
