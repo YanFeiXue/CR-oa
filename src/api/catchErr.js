@@ -18,15 +18,12 @@ const service = axios.create({
 // 拦截请求
 service.interceptors.request.use(
   config => {
-    if (sessionStorage.getItem('tokenid')) {
+    if (sessionStorage.getItem('tokenid') || sessionStorage.getItem('accessToken')) {
       config.headers['username'] = sessionStorage.getItem('username')
-      // config.headers['Authorization'] = 'Bearer ' + sessionStorage.getItem('tokenid')
+      config.headers['Authorization'] = 'Bearer ' + sessionStorage.getItem('tokenid') || sessionStorage.getItem('accessToken')
     }
-
-    // console.log('request', config)
     return config
   },
-
   err => {
     return Promise.reject(err)
   }

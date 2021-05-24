@@ -126,7 +126,7 @@
 
 <script>
 import textareaText from '@/base/textarea/textarea'
-import { insertDaily, selectOneDaily } from '@/api/api'
+import { insertDaily, selectOneDaily } from '../../api/api'
 export default {
   name: 'Remind',
   components: {

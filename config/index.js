@@ -12,14 +12,14 @@ module.exports = {
     proxyTable: {
       //模糊查询接口信息
       '/datacenter': {
-        target: 'https://test.carcredit.com.cn',
+        target: 'https://ccbs.carcredit.com.cn',
         changeOrigin: true,
         pathRewrite: {
           '^/datacenter': '/datacenter'
         }
       },
       '/dealer': {
-        target: 'https://zuul.carcredit.com.cn',
+        target: 'https://ccbs.carcredit.com.cn',
         changeOrigin: true,
         pathRewrite: {
           '^/dealer': '/dealer'
@@ -32,11 +32,26 @@ module.exports = {
           '^/news': '/news'
         }
       },
-      '/news': {
-        target: 'http://www.carcredit.com.cn',
+      '/salesapp': {
+        target: 'http://192.168.10.47:8123',
+        // target: 'http://192.168.10.32:8123',
         changeOrigin: true,
         pathRewrite: {
-          '^/news': '/news'
+          '^/salesapp': '/salesapp'
+        }
+      },
+      '/xrtxauthcenter': {
+        target: 'https://ccbs.xrlease.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/xrtxauthcenter': '/xrtxauthcenter'
+        }
+      },
+      '/xrtxdealer': {
+        target: 'https://ccbs.xrlease.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/xrtxdealer': '/xrtxdealer'
         }
       }
     },
