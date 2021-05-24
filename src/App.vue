@@ -145,8 +145,7 @@
       padding: 0;
       width: 100%;
       height: 100%;
-      font-family: NotoSansSC-Regular;
-      background: rgba(246, 246, 246, 1);
+      background: rgba(255, 255, 255, 1);
       transition: transform 0.24s ease-out;
     }
 
@@ -162,6 +161,7 @@
       .appView {
         width: 750px;
         min-height: 100vh;
+        background: rgba(255, 255, 255, 1);
       }
     }
 

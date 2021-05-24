@@ -14,7 +14,7 @@
       </van-tab>
 
       <div class="backWrapper">
-        <img src="../../assets/barBack.png" class="barBack" @click="$router.back()">
+        <img src="../../assets/img/barBack.png" class="barBack" @click="$router.back()">
       </div>
     </van-tabs>
   </section>
@@ -82,6 +82,12 @@
   .appView{
     width: 100%;
     height: 100%;
+  }
+
+  .threeItems{
+    width: 100%;
+    min-height: 100vh;
+    background: #FFFFFF;
   }
 
   /deep/ {

@@ -15,13 +15,6 @@ exports.assetsPath = function (_path) {
 exports.cssLoaders = function (options) {
   options = options || {}
 
-  // const cssLoader = {
-  //   loader: 'css-loader',
-  //   options: {
-  //     sourceMap: options.sourceMap
-  //   }
-  // }
-
   const postcssLoader = {
     loader: 'postcss-loader',
     options: {
@@ -60,8 +53,8 @@ exports.cssLoaders = function (options) {
     if (options.extract) {
       return ExtractTextPlugin.extract({
         use: loaders,
-        publicPath: '../../',
-        fallback: 'vue-style-loader'
+        fallback: 'vue-style-loader',
+        publicPath: '../../'
       })
     } else {
       return ['vue-style-loader'].concat(loaders)

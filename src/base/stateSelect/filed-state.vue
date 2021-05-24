@@ -7,7 +7,7 @@
       </div>
       <div class="screen">
         <span>筛选</span>
-        <img src="../../../static/img/shanxuan.png" />
+        <img src="../../assets/img/shanxuan.png" />
       </div>
     </div>
     <div class="wrapper" ref="wrapper">
@@ -15,13 +15,9 @@
         <mt-loadmore :auto-fill="false" :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded"
           ref="loadmore">
           <div class="state_select-wrap" v-for="(item, index) in dataInfo" :key="index" @click="jump(item.leaseId)">
-            <div class="itemDetail">
-              <van-cell :value="item.customerName||'张三'"></van-cell>
-              <van-cell class="c9c" title="产品名称: " :value="`${item.productName}`|| '车信融'"></van-cell>
-            </div>
-            <div class="status2" :class="item.processStatus=='已超时'?'err':''">
-              <span v-text="formatStatusText(item.processStatus)||'超时'">超时</span>
-            </div>
+            <p class="item_name">{{item.customerName}}</p>
+            <p class="item_dealer">{{item.dealerName}}</p>
+            <p class="item_status">{{item.processStatus}}</p>
           </div>
         </mt-loadmore>
       </ul>
@@ -188,7 +184,7 @@
         height: 80px;
         z-index: 9;
         border-radius: 44px;
-        background: url(../../../static/img/pre_search.png) 480px center / 38px 36px no-repeat;
+        background: url(../../assets/img/pre_search.png) 480px center / 38px 36px no-repeat;
         background-color: rgba(255, 255, 255, 1);
         padding: 0 0 0 20px;
         line-height: 80px;
@@ -252,123 +248,35 @@
     }
 
     .state_select-wrap {
-      .van-cell__title {
-        color: #9c9c9c;
+      width: 686px;
+      height: 104px;
+      background: #FFFFFF;
+      box-shadow: 0px 0px 40px 0px rgba(231,231,231,1);
+      border-radius: 16px;
+      margin: 24px auto 0;
+      box-sizing: border-box;
+      padding: 30px 26px 30px 32px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      color: #333333;
+      .item_name{
+        font-size: 32px;
+        font-weight: bold;
+        width: 100px;
       }
-    }
-  }
-
-  .wrapper {
-    height: 100%;
-    width: 100%;
-  }
-
-  .state_select-wrap {
-    padding: 15px 20px 6px;
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-
-    &:first-child {
-      margin-top: 20px;
-    }
-
-    .itemDetail {
-      width: 60%;
-
-      .van-cell {
-
-        .van-cell__title,
-        .van-cell__value {
-          flex: none;
-          font-size: 28px;
-          color: #303030;
-          width: 200px;
-          height: 30px;
-          line-height: 30px;
-          text-align: left;
-        }
-
-        .van-cell__title {
-          width: 120px;
-          font-size: 28px;
-          color: #303030;
-        }
-      }
-
-      .c9c.van-cell {
-        .van-cell__title {
-          color: #9c9c9c;
-        }
-      }
-    }
-
-    .signStatus,
-    .auditResult {
-      height: 96px;
-      width: 96px;
-      border-radius: 50%;
-      transform: rotate(-40deg);
-      border: 6px solid #24b870;
-
-      span {
-        display: block;
+      .item_dealer{
         font-size: 28px;
-        color: #24b870;
-        text-align: center;
-        padding: 10px 20px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        width: 336px;
       }
-    }
-
-    .status2,
-    .status {
-      height: 96px;
-      width: 96px;
-      border-radius: 50%;
-      transform: rotate(-40deg);
-      border: 6px solid #24b870;
-
-      span {
-        display: block;
+      .item_status{
         font-size: 28px;
-        color: #24b870;
-        text-align: center;
-        height: 96px;
-        line-height: 96px;
-      }
-    }
-
-    .err.status2 {
-      border: 6px solid #ff1a1a;
-
-      span {
-        color: #ff1a1a;
-      }
-    }
-
-    .signStatus.signStatus0 {
-      border: 6px solid #ff1a1a;
-
-      span {
-        color: #ff1a1a;
-      }
-    }
-
-    .auditResult.auditResult2 {
-      border: 6px solid #ff1a1a;
-
-      span {
-        color: #ff1a1a;
-      }
-    }
-
-    .status2.err {
-      border: 6px solid #ff1a1a;
-
-      span {
-        color: #ff1a1a;
+        color: #0D88FF;
       }
     }
   }

@@ -382,7 +382,7 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    background: url('../../../static/img/bg@2x.png') no-repeat;
+    background: url('../../assets/img/bg@2x.png') no-repeat;
     background-size: 100% 100%;
 
     .fixTop {
@@ -448,13 +448,13 @@
           display: block;
           width: 30px;
           height: 30px;
-          background: url(../../assets/sign_in_selection@2x.png) no-repeat;
-          // background: url(../../assets/sign_in_unchecked@2x.png) no-repeat;
+          background: url(../../assets/img/sign_in_selection@2x.png) no-repeat;
+          // background: url(../../assets/img/sign_in_unchecked@2x.png) no-repeat;
           background-size: cover;
         }
 
         .icon-choose-active {
-          background: url(../../assets/sign_in_selection@2x.png) no-repeat;
+          background: url(../../assets/img/sign_in_selection@2x.png) no-repeat;
           background-size: cover;
         }
 

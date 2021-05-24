@@ -7,20 +7,25 @@
       </div>
       <div class="screen">
         <span>筛选</span>
-        <img src="../../../static/img/shanxuan.png" />
+        <img src="../../assets/img/shanxuan.png" />
       </div>
     </div>
     <div class="wrapper" ref="wrapper">
       <ul v-if="dataInfo.length">
         <mt-loadmore :auto-fill="false" :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded"
           ref="loadmore">
-          <div class="state_select-wrap" v-for="(item, index) in dataInfo" :key="index" @click="jump(item.customerId)">
-            <div class="itemDetail">
-              <van-cell :value="item.customerName || '-'"></van-cell>
-              <van-cell title="产品名称:" :value="item.productName || '-'"></van-cell>
+          <div class="list_item" v-for="(item, index) in dataInfo" :key="index" @click="routerPath(item)">
+            <div class="item_line">
+              <p class="name">{{item.name}}</p>
+              <p :class="item.static == 1 ? 'cancal' : 'cancal_static'">{{item.static == 1 ? '逾期' : '正常'}}</p>
             </div>
-            <div class="status2" :class="item.repaymentStatus == '逾期' ? 'err' : ''">
-              <span v-text="item.repaymentStatus">逾期</span>
+            <div class="item_line_two">
+              <p class="approved_amount">产品编号：</p>
+              <p class="amount">{{item.number}}</p>
+            </div>
+            <div class="item_line_three">
+              <p class="product_name">公司名称：</p>
+              <p class="product">{{item.cname}}</p>
             </div>
           </div>
         </mt-loadmore>
@@ -58,7 +63,22 @@
           customerName: '',
           mobile: ''
         },
-        dataInfo: [],
+        dataInfo: [
+          {
+            name:'腾宇',
+            number:'123456789',
+            cname:'许昌市天泓科技有限公司',
+            static: 1,
+            test:'逾期'
+          },
+          {
+            name:'宓政翰',
+            number:'123456789',
+            cname:'许昌市天泓科技有限公司',
+            static: 2,
+            test:'正常'
+          },
+        ],
         filterVal: '',
         repaySheet_flag: false,
         detailsFlags: false,
@@ -91,27 +111,27 @@
     },
     methods: {
       _getDataInfo(flag, search) {
-        getDealerLoanDataDetail(this.params).then(data => {
-          if (data.code != 0) {
-            this.$toast.fail(data.msg || '请求失败')
-            return
-          }
-          this.data = data
-          let arr = []
-          if (flag) {
-            arr = [...this.dataInfo, ...data.data]
-          } else {
-            if (search) {
-              arr = data.data
-            } else {
-              arr = this.dataInfo
-            }
-          }
-          this.dataInfo = arr
-          this.$toast.clear()
-          this.isLoading = false
-          this.loadFlag = false
-        })
+        // getDealerLoanDataDetail(this.params).then(data => {
+        //   if (data.code != 0) {
+        //     this.$toast.fail(data.msg || '请求失败')
+        //     return
+        //   }
+        //   this.data = data
+        //   let arr = []
+        //   if (flag) {
+        //     arr = [...this.dataInfo, ...data.data]
+        //   } else {
+        //     if (search) {
+        //       arr = data.data
+        //     } else {
+        //       arr = this.dataInfo
+        //     }
+        //   }
+        //   this.dataInfo = arr
+        //   this.$toast.clear()
+        //   this.isLoading = false
+        //   this.loadFlag = false
+        // })
       },
       jump(customerId) {
         if (this.loadFlag) {
@@ -142,112 +162,69 @@
 </script>
 
 <style lang="scss" scoped="scoped">
-  .state_select-wrap {
-    padding: 15px 20px 6px;
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
+  .list_item{
+    width: 702px;
+    height: 234px;
+    box-sizing: border-box;
+    padding: 32px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 40px 0px #E7E7E7;
+    border-radius: 24px;
+    margin: 20px auto 0;
 
-    &:first-child {
-      margin-top: 20px;
-    }
-
-    .itemDetail {
-      width: 60%;
-
-      .van-cell {
-
-        .van-cell__title,
-        .van-cell__value {
-          flex: none;
-          font-size: 28px;
-          color: #303030;
-          width: 200px;
-          height: 30px;
-          line-height: 30px;
-          text-align: left;
-        }
-
-        .van-cell__title {
-          width: 120px;
-          font-size: 28px;
-          color: #303030;
-        }
+    .item_line{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      height: 50px;
+      .name{
+        color: #333333;
+        font-weight: bold;
+        font-size: 32px;
       }
-
-      .c9c.van-cell {
-        .van-cell__title {
-          color: #9c9c9c;
-        }
-      }
-    }
-
-    .signStatus,
-    .auditResult {
-      height: 96px;
-      width: 96px;
-      border-radius: 50%;
-      transform: rotate(-40deg);
-      border: 6px solid #24b870;
-
-      span {
-        display: block;
+      .cancal{
         font-size: 28px;
-        color: #24b870;
-        text-align: center;
-        padding: 10px 20px;
+        color: #E2231A;
       }
-    }
-
-    .status2,
-    .status {
-      height: 96px;
-      width: 96px;
-      border-radius: 50%;
-      transform: rotate(-40deg);
-      border: 6px solid #24b870;
-
-      span {
-        display: block;
+      .cancal_static{
         font-size: 28px;
-        color: #24b870;
-        text-align: center;
-        height: 96px;
-        line-height: 96px;
+        color: #0D88FF;
       }
     }
 
-    .err.status2 {
-      border: 6px solid #ff1a1a;
-
-      span {
-        color: #ff1a1a;
+    .item_line_two{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: 20px 0;
+      height: 40px;
+      .approved_amount{
+        font-size: 28px;
+        color: #666666;
+      }
+      .amount{
+        font-weight: bold;
+        font-size: 28px;
+        color: #333333;
       }
     }
-
-    .signStatus.signStatus0 {
-      border: 6px solid #ff1a1a;
-
-      span {
-        color: #ff1a1a;
+    .item_line_three{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: 20px 0;
+      height: 40px;
+      .product_name{
+        font-size: 28px;
+        color: #666666;
       }
-    }
-
-    .auditResult.auditResult2 {
-      border: 6px solid #ff1a1a;
-
-      span {
-        color: #ff1a1a;
-      }
-    }
-
-    .status2.err {
-      border: 6px solid #ff1a1a;
-
-      span {
-        color: #ff1a1a;
+      .product{
+        font-size: 28px;
+        color: #333333;
+        font-weight: bold;
       }
     }
   }
@@ -281,7 +258,7 @@
         height: 80px;
         z-index: 9;
         border-radius: 44px;
-        background: url(../../../static/img/pre_search.png) 480px center / 38px 36px no-repeat;
+        background: url(../../assets/img/pre_search.png) 480px center / 38px 36px no-repeat;
         background-color: rgba(255, 255, 255, 1);
         padding: 0 0 0 20px;
         line-height: 80px;

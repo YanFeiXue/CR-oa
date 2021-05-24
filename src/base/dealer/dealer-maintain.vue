@@ -24,27 +24,27 @@
     </div>
     <div class="wrapper-public dealer-btn-wrapper">
       <div class="item tp6">
-        <img src="static/img/JNBZJ.png" />
+        <img src="static/img//JNBZJ.png" />
         <span>缴纳保证金</span>
       </div>
       <div class="item tp6">
-        <img src="static/img/LSJY.png" />
+        <img src="static/img//LSJY.png" />
         <span>临时经营</span>
       </div>
       <div class="item tp6">
-        <img src="static/img/YJJY.png" />
+        <img src="static/img//YJJY.png" />
         <span>永久经营</span>
       </div>
       <div class="item tp6">
-        <img src="static/img/ZHKT.png" />
+        <img src="static/img//ZHKT.png" />
         <span>账号开通</span>
       </div>
       <div class="item tp6">
-        <img src="static/img/ZXZF.png" />
+        <img src="static/img//ZXZF.png" />
         <span>中息中费</span>
       </div>
       <div class="item tp6">
-        <img src="static/img/CPKT.png" />
+        <img src="static/img//CPKT.png" />
         <span>产品开通</span>
       </div>
     </div>

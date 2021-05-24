@@ -7,7 +7,7 @@
       </van-tabs>
       <div class="img_body">
         <span class="tip_content">4</span>
-        <img src="../../common/image/homeMessage.png" class="tip_img" />
+        <img src="../../assets/img/homeMessage.png" class="tip_img" />
       </div>
     </div>
     <div class="workbench_body">

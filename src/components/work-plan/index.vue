@@ -2,7 +2,7 @@
   <section class="sales-task appView" id="leftToDom">
     <van-header :title="title" :routeName="'back'" :path="'-1'"></van-header>
     <van-calendar ref="vanCalendar" title="日历" :poppable="false" color="#24A494" @confirm="onConfirm" :max-date="maxDate" :title="''"/>
-    <img src="../../common/image/addPlan.png" class="addPlanIcon" @click="$router.push('new-schedule')"/>
+    <img src="../../assets/img/addPlan.png" class="addPlanIcon" @click="$router.push('new-schedule')"/>
   </section>
 </template>
 

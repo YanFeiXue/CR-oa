@@ -89,7 +89,7 @@
 
         .van-icon-arrow-left {
           font-size: 30px;
-          background: url(../../assets/barBack.png) no-repeat;
+          background: url(../../assets/img/barBack.png) no-repeat;
           background-size: 100% 100%;
           width: 28px;
           height: 28px;

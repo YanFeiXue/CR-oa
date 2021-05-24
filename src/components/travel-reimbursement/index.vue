@@ -4,19 +4,19 @@
     <section class="travel-reimbursement-wrapper">
       <div class="item-wrapper">
         <div class="item tp6">
-          <img src="static/img/CCSQ.png" />
+          <img src="static/img//CCSQ.png" />
           <span>出差申请</span>
         </div>
         <div class="item tp6">
-          <img src="static/img/BXSQ.png" />
+          <img src="static/img//BXSQ.png" />
           <span>报销申请</span>
         </div>
         <div class="item tp6" @click="$router.push('/pageMain/suspend-work')">
-          <img src="static/img/CCSP.png" />
+          <img src="static/img//CCSP.png" />
           <span>出差审批</span>
         </div>
         <div class="item tp6" @click="$router.push('/pageMain/suspend-loan')">
-          <img src="static/img/BXSP.png" />
+          <img src="static/img//BXSP.png" />
           <span>报销审批</span>
         </div>
       </div>
