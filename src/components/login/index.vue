@@ -144,7 +144,7 @@
         const _params = {
           username: this.username,
           password: this.$md5(this.password),
-          userPhone: this.mobile,
+          phone: this.mobile,
           loginType: 1,
         }
         if (!_params.userPhone) {

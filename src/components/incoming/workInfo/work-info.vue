@@ -1,116 +1,118 @@
 <template>
   <section class="work-info">
-    <header class="title">承租人信息</header>
-
-    <section class="incomeField borderRadiusToplr pd2">
-      <van-field label="职业类型" class="slotRight" required clearable :readonly="true" placeholder="请选择"
-        v-model="customerName.customerWorkTypeIdName" name="customerWorkTypeId"></van-field>
-    </section>
-    <section class="incomeField pd2">
-      <van-field label="企业名称" required clearable placeholder="请输入" v-model="workInfo.customerWorkCompany"
-        name="customerWorkCompany"></van-field>
-    </section>
-    <section class="incomeField pd2">
-      <van-field label="企业性质" class="slotRight" required clearable :readonly="true" placeholder="请选择"
-        v-model="customerName.customerCompanyTypeIdName" name="customerCompanyTypeId"></van-field>
-    </section>
-    <section class="incomeField pd2">
-      <van-field label="所属行业(一级)" class="slotRight" required clearable :readonly="true" placeholder="请选择"
-        v-model="customerName.customerCompanyIndustry1IdName" name="customerCompanyIndustry1Id"></van-field>
-    </section>
-    <section class="incomeField pd2">
-      <van-field label="所属行业(二级)" class="slotRight" required clearable :readonly="true" placeholder="请选择"
-        v-model="customerName.customerCompanyIndustry2IdName" name="customerCompanyIndustry2Id"></van-field>
-    </section>
-    <section class="incomeField pd2" v-if="productDiff.insureInput">
-      <van-field label="所属行业(三级)" class="slotRight" required clearable :readonly="true" placeholder="请选择"
-        v-model="customerProfessionCodeName" name="customerProfessionCodeName"></van-field>
-    </section>
-    <!-- 贷款投向 -->
-    <div v-if="productDiff.operatingLoanInput">
-      <section class="incomeField pd2">
-        <van-field label="贷款投向(一级)" class="slotRight" required clearable :readonly="true" placeholder="请选择"
-          v-model="workInfo.loanOrientation1Name" name="loanOrientation1Name"></van-field>
+    <section class="incomeField_body">
+      <header class="title">承租人信息</header>
+      <section class="incomeField borderRadiusToplr pd2">
+        <van-field label="职业类型" class="slotRight" clearable :readonly="true" placeholder="请选择"
+          v-model="customerName.customerWorkTypeIdName" name="customerWorkTypeId"></van-field>
       </section>
       <section class="incomeField pd2">
-        <van-field label="贷款投向(二级)" class="slotRight" required clearable :readonly="true" placeholder="请选择"
-          v-model="workInfo.loanOrientation2Name" name="loanOrientation2Name"></van-field>
+        <van-field label="企业名称" clearable placeholder="请输入" v-model="workInfo.customerWorkCompany"
+          name="customerWorkCompany"></van-field>
       </section>
       <section class="incomeField pd2">
-        <van-field label="贷款投向(三级)" class="slotRight" required clearable :readonly="true" placeholder="请选择"
-          v-model="workInfo.loanOrientation3Name" name="loanOrientation3Name"></van-field>
+        <van-field label="企业性质" class="slotRight" clearable :readonly="true" placeholder="请选择"
+          v-model="customerName.customerCompanyTypeIdName" name="customerCompanyTypeId"></van-field>
       </section>
       <section class="incomeField pd2">
-        <van-field label="贷款投向(四级)" class="slotRight" required clearable :readonly="true" placeholder="请选择"
-          v-model="workInfo.loanOrientation4Name" name="loanOrientation4Name"></van-field>
+        <van-field label="所属行业(一级)" class="slotRight" clearable :readonly="true" placeholder="请选择"
+          v-model="customerName.customerCompanyIndustry1IdName" name="customerCompanyIndustry1Id"></van-field>
       </section>
       <section class="incomeField pd2">
-        <van-field label="经营执照编号" required clearable placeholder="请输入" v-model="workInfo.businessLicenseCode"
-          name="businessCode"></van-field>
+        <van-field label="所属行业(二级)" class="slotRight" clearable :readonly="true" placeholder="请选择"
+          v-model="customerName.customerCompanyIndustry2IdName" name="customerCompanyIndustry2Id"></van-field>
+      </section>
+      <section class="incomeField pd2" v-if="productDiff.insureInput">
+        <van-field label="所属行业(三级)" class="slotRight" clearable :readonly="true" placeholder="请选择"
+          v-model="customerProfessionCodeName" name="customerProfessionCodeName"></van-field>
+      </section>
+      <!-- 贷款投向 -->
+      <div v-if="productDiff.operatingLoanInput">
+        <section class="incomeField pd2">
+          <van-field label="贷款投向(一级)" class="slotRight" clearable :readonly="true" placeholder="请选择"
+            v-model="workInfo.loanOrientation1Name" name="loanOrientation1Name"></van-field>
+        </section>
+        <section class="incomeField pd2">
+          <van-field label="贷款投向(二级)" class="slotRight" clearable :readonly="true" placeholder="请选择"
+            v-model="workInfo.loanOrientation2Name" name="loanOrientation2Name"></van-field>
+        </section>
+        <section class="incomeField pd2">
+          <van-field label="贷款投向(三级)" class="slotRight" clearable :readonly="true" placeholder="请选择"
+            v-model="workInfo.loanOrientation3Name" name="loanOrientation3Name"></van-field>
+        </section>
+        <section class="incomeField pd2">
+          <van-field label="贷款投向(四级)" class="slotRight" clearable :readonly="true" placeholder="请选择"
+            v-model="workInfo.loanOrientation4Name" name="loanOrientation4Name"></van-field>
+        </section>
+        <section class="incomeField pd2">
+          <van-field label="经营执照编号" clearable placeholder="请输入" v-model="workInfo.businessLicenseCode"
+            name="businessCode"></van-field>
+        </section>
+        <section class="incomeField">
+          <van-field class="slotRight" label="是否为法人" clearable :readonly="true" placeholder="请选择"
+            v-model="customerName.isLegalPersonName" name="isLegalPerson"></van-field>
+        </section>
+      </div>
+      <section class="incomeField pd2">
+        <van-field label="部门" clearable placeholder="请输入" v-model="workInfo.customerDepartment"
+          name="customerDepartment"></van-field>
+      </section>
+      <section class="incomeField pd2">
+        <van-field label="岗位名称" clearable placeholder="请输入" v-model="workInfo.customerPosition"
+          name="customerPosition"></van-field>
       </section>
       <section class="incomeField">
-        <van-field class="slotRight" label="是否为法人" required clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.isLegalPersonName" name="isLegalPerson"></van-field>
+        <van-field class="slotRight" label="职务类型" clearable :readonly="true" placeholder="请选择"
+          v-model="customerName.customerDutyTypeIdName" name="customerDutyTypeId"></van-field>
       </section>
-    </div>
-    <section class="incomeField pd2">
-      <van-field label="部门" required clearable placeholder="请输入" v-model="workInfo.customerDepartment"
-        name="customerDepartment"></van-field>
-    </section>
-    <section class="incomeField pd2">
-      <van-field label="岗位名称" required clearable placeholder="请输入" v-model="workInfo.customerPosition"
-        name="customerPosition"></van-field>
-    </section>
-    <section class="incomeField">
-      <van-field class="slotRight" label="职务类型" required clearable :readonly="true" placeholder="请选择"
-        v-model="customerName.customerDutyTypeIdName" name="customerDutyTypeId"></van-field>
-    </section>
-    <section class="incomeField">
-      <van-field class="slotRight" label="工作年限" required clearable :readonly="true" placeholder="请选择"
-        v-model="customerName.customerWorkLifeIdName" name="customerWorkLifeId"></van-field>
-    </section>
-    <section class="incomeField pd2">
-      <van-field label="公司电话" required clearable placeholder="请输入" v-model="workInfo.customerCompanyPhone"
-        name="customerCompanyPhone">
-      </van-field>
-    </section>
-    <section class="incomeField">
-      <van-field class="slotRight" label="税后月收入(元)" required clearable :readonly="true" placeholder="请选择"
-        v-model="customerName.customerMonthIncomeIdName" name="customerMonthIncomeId">
-      </van-field>
-    </section>
-    <section class="incomeField">
-      <van-field class="slotRight" label="工作地址(省)" required clearable :readonly="true" placeholder="请选择"
-        v-model="customerName.customerWorkProcinveIdName" name="customerWorkProcinveId">
-      </van-field>
-    </section>
-    <section class="incomeField">
-      <van-field class="slotRight" label="工作地址(市)" required clearable :readonly="true" placeholder="请选择"
-        v-model="customerName.customerWorkCityIdName" name="customerWorkCityId"></van-field>
-    </section>
-    <section class="incomeField">
-      <van-field class="slotRight" label="工作地址(区)" required clearable :readonly="true" placeholder="请选择"
-        v-model="customerName.customerWorkCountyIdName" name="customerWorkCountyId"></van-field>
-    </section>
-    <section class="incomeField pd2">
-      <van-field label="工作详细地址" required clearable placeholder="请输入" v-model="workInfo.customerWorkAddress"
-        name="customerWorkAddress"></van-field>
+      <section class="incomeField">
+        <van-field class="slotRight" label="工作年限" clearable :readonly="true" placeholder="请选择"
+          v-model="customerName.customerWorkLifeIdName" name="customerWorkLifeId"></van-field>
+      </section>
+      <section class="incomeField pd2">
+        <van-field label="公司电话" clearable placeholder="请输入" v-model="workInfo.customerCompanyPhone"
+          name="customerCompanyPhone">
+        </van-field>
+      </section>
+      <section class="incomeField">
+        <van-field class="slotRight" label="税后月收入(元)" clearable :readonly="true" placeholder="请选择"
+          v-model="customerName.customerMonthIncomeIdName" name="customerMonthIncomeId">
+        </van-field>
+      </section>
+      <section class="incomeField">
+        <van-field class="slotRight" label="工作地址(省)" clearable :readonly="true" placeholder="请选择"
+          v-model="customerName.customerWorkProcinveIdName" name="customerWorkProcinveId">
+        </van-field>
+      </section>
+      <section class="incomeField">
+        <van-field class="slotRight" label="工作地址(市)" clearable :readonly="true" placeholder="请选择"
+          v-model="customerName.customerWorkCityIdName" name="customerWorkCityId"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field class="slotRight" label="工作地址(区)" clearable :readonly="true" placeholder="请选择"
+          v-model="customerName.customerWorkCountyIdName" name="customerWorkCountyId"></van-field>
+      </section>
+      <section class="incomeField pd2">
+        <van-field label="工作详细地址" clearable placeholder="请输入" v-model="workInfo.customerWorkAddress"
+          name="customerWorkAddress"></van-field>
+      </section>
+
+      <section class="incomeField">
+        <van-field class="slotRight" label="有无社会保障" clearable :readonly="true" placeholder="请选择"
+          v-model="customerName.weatherSocialSecurityName" name="weatherSocialSecurity">
+        </van-field>
+      </section>
+      <section class="incomeField" :class="!productDiff.bqapInput?'btNone borderRadiusBtlr':''">
+        <van-field class="slotRight" label="有无公积金" clearable :readonly="true" placeholder="请选择"
+          v-model="customerName.weatherAccumulationName" name="weatherAccumulation">
+        </van-field>
+      </section>
+      <section class="incomeField btNone borderRadiusBtlr" v-if="productDiff.bqapInput">
+        <van-field class="slotRight" label="入职时间" clearable :readonly="true" placeholder="请选择"
+          v-model="workInfo.customerHiredate"></van-field>
+      </section>
     </section>
 
-    <section class="incomeField">
-      <van-field class="slotRight" label="有无社会保障" required clearable :readonly="true" placeholder="请选择"
-        v-model="customerName.weatherSocialSecurityName" name="weatherSocialSecurity">
-      </van-field>
-    </section>
-    <section class="incomeField" :class="!productDiff.bqapInput?'btNone borderRadiusBtlr':''">
-      <van-field class="slotRight" label="有无公积金" required clearable :readonly="true" placeholder="请选择"
-        v-model="customerName.weatherAccumulationName" name="weatherAccumulation">
-      </van-field>
-    </section>
-    <section class="incomeField btNone borderRadiusBtlr" v-if="productDiff.bqapInput">
-      <van-field class="slotRight" label="入职时间" required clearable :readonly="true" placeholder="请选择"
-        v-model="workInfo.customerHiredate"></van-field>
-    </section>
     <!-- 地址公用sheet -->
     <!-- <van-action-sheet v-model="province_show" cancel-text="取消" :actions="filterAreas" @select="onSelect_province" />
     <van-action-sheet v-model="city_show" cancel-text="取消" :actions="cityList" @select="onSelect_province" />
@@ -543,124 +545,48 @@
   }
 </script>
 
-<style lang="less">
-  .work-info {
-    .snWrap {
-      position: relative;
-
-      .snInput {
-        right: 0;
-        top: 0;
-        height: 98px;
-        width: 120px;
-        text-align: center;
-        line-height: 108px;
-        position: absolute;
-        color: #23a394;
-        display: inline-block;
+<style lang="scss" scoped="scoped">
+  .work-info{
+    margin-top: 16px;
+    .incomeField_body{
+      width: 702px;
+      margin: 24px auto;
+      background: #FFFFFF;
+      box-shadow: 0px 0px 40px 0px rgba(231,231,231,1);
+      border-radius: 24px;
+      .title{
+        height: 82px;
+        line-height: 82px;
+        padding: 0 0 0 32px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #333333;
+        border-bottom: 1px solid #F3F3F3;
       }
-    }
-
-    .title {
-      padding: 20px 25px;
-    }
-
-    .btNone.incomeField {
-      .van-cell {
-        border: none
-      }
-    }
-
-    .borderRadiusToplr {
-      border-radius: 18px 18px 0 0;
-    }
-
-    .borderRadiusBtlr {
-      border-radius: 0 0 18px 18px;
-    }
-
-    .incomeField {
-      width: 710px;
-      margin: 0px auto;
-      background-color: #fff;
-
-      .van-cell--required::before {
-        top: 45px;
-        left: -14px;
-      }
-
-      .van-cell {
-        margin: 0px auto;
-        padding: 10px 25px;
-        font-size: 28px;
-        display: flex;
-        align-items: flex-start;
-        position: relative;
-        overflow: initial;
-        width: 666px;
-        padding: 0;
-        border-bottom: 2px solid rgba(220, 220, 220, 1);
-
-        .van-field__label {
-          width: 210px;
-
-          span {
-            display: block;
-            width: 210px;
-            height: 50px;
-            line-height: 55px;
-            border-right: 2px solid rgba(220, 220, 220, 1);
-            text-align: left;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-          }
-        }
-
-        .van-cell__title,
-        .van-cell__value {
-          height: 78px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-          padding-top: 20px;
-          overflow: initial;
-        }
-
-        .van-cell__value {
-          position: initial;
-
-          .van-field__body {
+      .incomeField{
+        height: 100px;
+        border-bottom: 1px solid #F3F3F3;
+        /deep/{
+          .van-cell{
+            line-height: 100px;
             width: 100%;
-            height: 78px;
-            padding: 0 20px;
-            margin: -15px 0 0 0;
-
-            .van-icon-clear {
-              font-size: 30px;
+            font-size: 28px;
+            color: #666666;
+            padding: 0 32px;
+            .van-cell__title{
+              width: 250px;
+            }
+            .van-cell__value{
+              .van-field__body{
+                input{
+                  text-align: right;
+                }
+              }
             }
           }
 
-          .van-field__control {
-            height: 100%;
-            line-height: 130%;
-            font-size: 28px;
-          }
-
-          .van-field__error-message {
-            background: #fff;
-            position: absolute;
-            left: 228px;
-            bottom: -30px;
-            font-size: 10px;
-          }
         }
       }
-    }
-
-    .pd2 {
-      padding-bottom: 2px;
     }
   }
 </style>

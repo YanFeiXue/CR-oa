@@ -1,6 +1,10 @@
 <template>
   <div class="header">
-    <van-nav-bar :title="title" :left-arrow="leftArrow" @click-left="routePush()"></van-nav-bar>
+    <van-nav-bar :title="title" :left-arrow="leftArrow" @click-left="routePush()">
+      <template #right v-if="showSearch">
+        <van-icon name="search" size="18" />
+      </template>
+    </van-nav-bar>
   </div>
 </template>
 
@@ -23,7 +27,11 @@
       leftArrow: {
         type: Boolean,
         default: true
-      }
+      },
+      showSearch: {
+        type: Boolean,
+        default: false
+      },
     },
 
     data() {
@@ -55,9 +63,10 @@
 </script>
 
 <style lang="scss" scoped="scoped">
-  .header{
+  .header {
     box-shadow: 0px 4px 40px 0px rgba(227, 227, 227, 0.5);
   }
+
   /deep/ {
     .van-nav-bar__title {
       font-weight: bold;
@@ -119,6 +128,4 @@
       }
     }
   }
-
-
 </style>

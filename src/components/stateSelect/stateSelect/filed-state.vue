@@ -7,7 +7,7 @@
       </div>
       <div class="screen">
         <span>筛选</span>
-        <img src="../../../static/img/shanxuan.png" />
+        <img src="../../../../static/img/shanxuan.png" />
       </div>
     </div>
     <div class="wrapper" ref="wrapper">
@@ -35,10 +35,10 @@
   Vue.use(Cell).use(Field).use(ActionSheet)
   import {
     getFileReturnCustomers
-  } from '../../api/api'
+  } from '../../../api/api'
   import {
     loadMore
-  } from '../../common/js/mixin'
+  } from '../../../common/js/mixin'
   export default {
     name: 'filedState',
     mixins: [loadMore],
@@ -184,7 +184,7 @@
         height: 80px;
         z-index: 9;
         border-radius: 44px;
-        background: url(../../../static/img/pre_search.png) 480px center / 38px 36px no-repeat;
+        background: url(../../../../static/img/pre_search.png) 480px center / 38px 36px no-repeat;
         background-color: rgba(255, 255, 255, 1);
         padding: 0 0 0 20px;
         line-height: 80px;

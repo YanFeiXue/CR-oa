@@ -182,16 +182,24 @@ export default new Router({
           name: 'attachment-video',
           component: () => import("@/base/attachment/attachment-carImage"),
         },
+        // 看日志
         {
           path: 'look-log',
           name: 'look-log',
           component: () => import("@/components/log/look-log")
         },
+        // 写日志
         {
           path: 'write-log',
           name: 'write-log',
           component: () => import("@/components/log/write-log")
-        }
+        },
+        // 日志详情
+        {
+          path: 'log-details',
+          name: 'log-details',
+          component: () => import("@/components/log/log-details/log-details")
+        },
       ]
     }
 

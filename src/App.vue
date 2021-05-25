@@ -134,11 +134,17 @@
 </script>
 
 <style lang="less">
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
   html {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
+    touch-action: none;
 
     body {
       margin: 0;
