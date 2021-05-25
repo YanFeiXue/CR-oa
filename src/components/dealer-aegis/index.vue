@@ -1,6 +1,6 @@
 <template>
   <section class="dealer-aegis appView" id="leftToDom">
-    <van-nav-bar left-text="经销商维护" class="mbNone"> </van-nav-bar>
+    <!-- <van-nav-bar left-text="经销商维护" class="mbNone"> </van-nav-bar>
     <div class="wrapper-public">
       <van-field v-model="value" class="publicField" placeholder="请输入用户名">
         <template #button>
@@ -28,7 +28,7 @@
         <div>任鹏</div>
         <div>18590941111</div>
       </section>
-    </div>
+    </div> -->
     <van-footer :activeNum="1" />
   </section>
 </template>

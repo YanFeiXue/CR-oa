@@ -63,22 +63,7 @@
           customerName: '',
           mobile: ''
         },
-        dataInfo: [
-          {
-            name:'腾宇',
-            number:'123456789',
-            cname:'许昌市天泓科技有限公司',
-            static: 1,
-            test:'逾期'
-          },
-          {
-            name:'宓政翰',
-            number:'123456789',
-            cname:'许昌市天泓科技有限公司',
-            static: 2,
-            test:'正常'
-          },
-        ],
+        dataInfo: [],
         filterVal: '',
         repaySheet_flag: false,
         detailsFlags: false,
@@ -111,27 +96,27 @@
     },
     methods: {
       _getDataInfo(flag, search) {
-        // getDealerLoanDataDetail(this.params).then(data => {
-        //   if (data.code != 0) {
-        //     this.$toast.fail(data.msg || '请求失败')
-        //     return
-        //   }
-        //   this.data = data
-        //   let arr = []
-        //   if (flag) {
-        //     arr = [...this.dataInfo, ...data.data]
-        //   } else {
-        //     if (search) {
-        //       arr = data.data
-        //     } else {
-        //       arr = this.dataInfo
-        //     }
-        //   }
-        //   this.dataInfo = arr
-        //   this.$toast.clear()
-        //   this.isLoading = false
-        //   this.loadFlag = false
-        // })
+        getDealerLoanDataDetail(this.params).then(data => {
+          if (data.code != 0) {
+            this.$toast.fail(data.msg || '请求失败')
+            return
+          }
+          this.data = data
+          let arr = []
+          if (flag) {
+            arr = [...this.dataInfo, ...data.data]
+          } else {
+            if (search) {
+              arr = data.data
+            } else {
+              arr = this.dataInfo
+            }
+          }
+          this.dataInfo = arr
+          this.$toast.clear()
+          this.isLoading = false
+          this.loadFlag = false
+        })
       },
       jump(customerId) {
         if (this.loadFlag) {

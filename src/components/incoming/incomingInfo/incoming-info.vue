@@ -207,7 +207,7 @@
             this.formatEchoMsgById(i)
           }
           if (this.customerInfo.leaseProvinceId) {}
-          this.customerInfo.customerCertno = this.$route.query.certNo
+          // this.customerInfo.customerCertno = this.$route.query.certNo
           this.idCardBlur(this.customerInfo.customerCertno)
         }
       },

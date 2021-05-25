@@ -1,6 +1,6 @@
 <template>
   <section class="travel-reimbursement appView" id="leftToDom">
-    <van-nav-bar left-text="差旅报销" class="mbNone"> </van-nav-bar>
+    <!-- <van-nav-bar left-text="差旅报销" class="mbNone"> </van-nav-bar>
     <section class="travel-reimbursement-wrapper">
       <div class="item-wrapper">
         <div class="item tp6">
@@ -20,7 +20,7 @@
           <span>报销审批</span>
         </div>
       </div>
-    </section>
+    </section> -->
     <van-footer :activeNum="2" />
   </section>
 </template>

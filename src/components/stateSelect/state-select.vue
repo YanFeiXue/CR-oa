@@ -112,18 +112,14 @@
     }
   }
 
-  .backWrapper {
+  .barBack {
     position: absolute;
-    left: 0px;
-    top: 13px;
-    width: 80px;
-    height: 80px;
+    left: 28px;
+    top: 38px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .backWrapper img {
-    width: 40px;
   }
 </style>

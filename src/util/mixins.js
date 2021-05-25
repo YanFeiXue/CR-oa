@@ -381,7 +381,7 @@ export const leaseFormMixin = {
               this.leaseId = this.$store.getters.leaseId
             }
           }
-          let parm = Object.assign(this.targeData, { customerCertno: this.$route.query.certNo, leaseId: this.leaseId, productCode: this.product.productCode, tokenId: this.tokenId, productVersion: this.product.productVersion, productId: this.product.productId })
+          let parm = Object.assign(this.targeData, { customerCertno: this.customerInfo.customerCertno, leaseId: this.leaseId, productCode: this.product.productCode, tokenId: this.tokenId, productVersion: this.product.productVersion, productId: this.product.productId })
           const map = {
             dataMap: parm, // 大的Map
             checkMap: sourceData, // 小的Map

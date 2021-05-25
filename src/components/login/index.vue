@@ -145,6 +145,7 @@
           username: this.username,
           password: this.$md5(this.password),
           phone: this.mobile,
+          userPhone: this.mobile,
           loginType: 1,
         }
         if (!_params.userPhone) {
@@ -253,6 +254,7 @@
               password: this.$md5(this.password),
               authCode: this.msgContent,
               userPhone: this.mobile,
+              phone: this.mobile,
             }
             this.checkAuthCodeFlag = true
             if (this.isXrtxUser()) {

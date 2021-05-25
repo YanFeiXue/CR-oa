@@ -33,7 +33,8 @@ module.exports = {
         }
       },
       '/salesapp': {
-        target: 'http://192.168.10.47:8123',
+        target: 'https://ccbs.carcredit.com.cn',
+        // target: 'http://192.168.10.32:8123',
         // target: 'http://192.168.10.32:8123',
         changeOrigin: true,
         pathRewrite: {
