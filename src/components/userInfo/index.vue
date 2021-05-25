@@ -1,6 +1,6 @@
 <template>
   <section class="userInfo appView" id="leftToDom">
-    <van-nav-bar left-text="我" class="mbNone"> </van-nav-bar>
+    <!-- <van-nav-bar left-text="我" class="mbNone"> </van-nav-bar>
     <section class="userInfo-wrapper">
       <div class="userInfo-wrapper-header">
         <img src="static/img//head.png" />
@@ -69,7 +69,7 @@
           @click="$router.push('/pageMain/aboutUs')"
         ></van-cell>
       </section>
-    </section>
+    </section> -->
     <van-footer :activeNum="3" />
   </section>
 </template>
