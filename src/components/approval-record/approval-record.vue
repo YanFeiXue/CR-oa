@@ -29,7 +29,7 @@
             <div class="auditResult" v-if="item.auditResult == 1">
               <img src="../../../static/img/signPass.png" />
             </div>
-            <div class="copyLink" v-if="item.auditResult == 0 || item.signStatus == 1">复制链接</div>
+            <div class="copyLink" v-if="item.auditResult == 0 || item.signStatus == 1" @click="copyUrl(item)">复制链接</div>
           </div>
         </mt-loadmore>
       </ul>
@@ -47,7 +47,8 @@
   } from 'vant'
   Vue.use(Cell).use(Button).use(Field)
   import {
-    getPreAudits
+    getPreAudits,
+    getSignUrl
   } from '../../api/api'
   import Header from '../../base/Header'
   import {
@@ -126,6 +127,11 @@
           this.loadFlag = false
         })
       },
+      copyUrl(item){
+        getSignUrl({tranNo: item.tranNo}).then(res => {
+          console.log(res);
+        })
+      },
       focusThis(id) {
         this.$refs[id].focus()
       },
@@ -140,43 +146,6 @@
         this.params.realName = this.filterVal
         this.params.page = 1
         this._getDataInfo(false, true)
-      },
-      formatVal: function(item) {
-        switch (item) {
-          case '0':
-          case 0:
-            return '签署失败'
-            break
-          case '1':
-          case 1:
-            return '签署中'
-            break
-          case '2':
-          case 2:
-            return '签署成功'
-            break
-          default:
-            break
-        }
-      },
-      formatAuditResult: function(item) {
-        switch (item) {
-          case '0':
-          case 0:
-            return '待审批'
-            break
-          case '1':
-          case 1:
-            return '审批通过'
-            break
-          case '2':
-          case 2:
-            return '审批拒绝'
-            break
-          default:
-            return '暂无结果'
-            break
-        }
       },
       onRefresh() {
         this.params.page++

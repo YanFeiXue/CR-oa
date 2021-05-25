@@ -150,7 +150,8 @@
           processStatus: '', //流程状态
           processId: '2', // 3
           productId: '', // []
-          page: 1,
+          pageNum: 1,
+          pageSize: 10,
           productVersion: '',
           dealerName: '', //经销商new Date()
           startTime: '2019-07-12',

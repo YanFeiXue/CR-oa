@@ -35,8 +35,8 @@ export const getAllAreas = params => service.post(salesappBase + `/appdealer/get
 export const getProductInput = params => service.post(salesappBase + `/lease/getProductInput`, params).then(res => res.data)
 // 首页工作台
 export const Workbench = params => service.post(salesappBase + `/Workbench/Workbench`, params).then(res => res.data)
-
-
+// 复制
+export const getSignUrl = params => service.post(salesappBase + `/reject/getSignUrl`, params).then(res => res.data)
 
 
 
