@@ -3,7 +3,7 @@
     <van-nav-bar left-text="我" class="mbNone"> </van-nav-bar>
     <section class="userInfo-wrapper">
       <div class="userInfo-wrapper-header">
-        <img src="static/img/head.png" />
+        <img src="static/img//head.png" />
         <div class="userInfo-wrapper-item">
           <div>何龙</div>
           <div>大区销售总监</div>
@@ -11,22 +11,22 @@
       </div>
       <div class="item-wrapper">
         <div class="item tp6">
-          <img src="static/img/WDSP@2x.png" />
+          <img src="static/img//WDSP@2x.png" />
           <span>我的审批</span>
         </div>
         <div class="item tp6">
-          <img src="static/img/WDBX.png" />
+          <img src="static/img//WDBX.png" />
           <span>我的报销</span>
         </div>
         <div class="item tp6" @click="$router.push('/pageMain/suspend-work')">
-          <img src="static/img/WDQD@2x.png" />
+          <img src="static/img//WDQD@2x.png" />
           <span>我的签到</span>
         </div>
       </div>
     </section>
     <section class="userInfo-wrapper">
       <section class="cellWrapper">
-        <img src="static/img/XXZX.png" class="icon-cell" />
+        <img src="static/img//XXZX.png" class="icon-cell" />
         <van-cell
           title="消息中心"
           is-link
@@ -34,7 +34,7 @@
         ></van-cell>
       </section>
       <section class="cellWrapper">
-        <img src="static/img/WDKF.png" class="icon-cell" />
+        <img src="static/img//WDKF.png" class="icon-cell" />
         <van-cell
           title="我的客服"
           is-link
@@ -42,7 +42,7 @@
         ></van-cell>
       </section>
       <section class="cellWrapper">
-        <img src="static/img/XTSZ.png" class="icon-cell" />
+        <img src="static/img//XTSZ.png" class="icon-cell" />
         <van-cell
           title="系统设置"
           is-link
@@ -50,7 +50,7 @@
         ></van-cell>
       </section>
       <section class="cellWrapper">
-        <img src="static/img/i_click@2x.png" class="icon-cell" />
+        <img src="static/img//i_click@2x.png" class="icon-cell" />
         <van-cell
           title="修改密码"
           is-link
@@ -58,11 +58,11 @@
         ></van-cell>
       </section>
       <section class="cellWrapper">
-        <img src="static/img/i_click@2x.png" class="icon-cell" />
+        <img src="static/img//i_click@2x.png" class="icon-cell" />
         <van-cell title="版本号" :value="`v${version}`"></van-cell>
       </section>
       <section class="cellWrapper">
-        <img src="static/img/i_click@2x.png" class="icon-cell" />
+        <img src="static/img//i_click@2x.png" class="icon-cell" />
         <van-cell
           title="关于我们"
           is-link

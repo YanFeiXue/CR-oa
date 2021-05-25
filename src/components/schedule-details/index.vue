@@ -38,7 +38,7 @@
         placeholder="请输入拜访对象"
       >
         <template #left-icon>
-          <img src="../../common/image/person.png" />
+          <img src="../../../static/img/person.png" />
         </template>
       </van-field>
     </div>
@@ -51,13 +51,13 @@
         placeholder="请输入日程地点"
       >
         <template #left-icon>
-          <img src="../../common/image/gps.png" />
+          <img src="../../../static/img/gps.png" />
         </template>
       </van-field>
     </div>
     <div class="wrapper-public">
       <div class="qd">
-        <img src="../../common/image/qd.png" />
+        <img src="../../../static/img/qd.png" />
         <van-button class="qd-btn">签到</van-button>
       </div>
     </div>
@@ -71,7 +71,7 @@
         placeholder="请输入经销商跟进记录"
       >
         <template #left-icon>
-          <img src="../../common/image/jl.png" />
+          <img src="../../../static/img/jl.png" />
         </template>
       </van-field>
     </div>
@@ -84,7 +84,7 @@
         label="附件"
       >
         <template #left-icon>
-          <img src="../../common/image/fj.png" />
+          <img src="../../../static/img/fj.png" />
         </template>
       </van-field>
     </div>
@@ -95,7 +95,7 @@
             <div class="comment-person">
               <span class="comment-name">赵旭阳</span>
               <span>07月11日 09:48</span>
-              <img src="../../common/image/addPlan.png" />
+              <img src="../../../static/img/addPlan.png" />
             </div>
             <div class="comment-content">
               这个经销商最近安鹏进件量低，看看什么原因， 幸苦。
@@ -106,7 +106,7 @@
           <div class="record-wrapper">
             <div class="record-item">
               <div>
-                <img src="../../common/image/addPlan.png" />
+                <img src="../../../static/img/addPlan.png" />
                 <span class="record-name">赵旭阳</span>
               </div>
               <span class="record-date">07月11日 09:48</span>
@@ -116,7 +116,7 @@
       </van-tabs>
     </div>
     <img
-      src="../../common/image/addComment.png"
+      src="../../../static/img/addComment.png"
       class="add-comment-icon"
       @click="show = true"
     />
@@ -126,7 +126,7 @@
           <div class="comment-person">
             <span class="comment-name">赵旭阳</span>
             <span>07月11日 09:48</span>
-            <img src="../../common/image/addPlan.png" />
+            <img src="../../../static/img/addPlan.png" />
           </div>
           <div class="comment-content">
             这个经销商最近安鹏进件量低，看看什么原因， 幸苦。

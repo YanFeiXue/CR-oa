@@ -5,7 +5,7 @@ import { Loadmore } from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import '@/util/validate' // 验证规则
 import 'vant/lib/index.css'
-import '@/common/style/style.less'
+// import '@/assets/style/style.less'
 import 'lib-flexible/flexible.js'
 import FastClick from 'fastclick'
 import bus from 'vue-bus'
@@ -14,6 +14,8 @@ import Header from '@/base/Header'
 import Footer from '@/base/Footer'
 import touch from 'vue-directive-touch'
 import Mui from 'vue-awesome-mui'
+import dictionary from '@/common/js/dictionary'
+Vue.prototype.$dictionary = dictionary
 Vue.use(Mui)
 Vue.use(touch)
 Vue.use(bus)

@@ -3,8 +3,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       redirect: '/login'
     },
@@ -17,26 +16,28 @@ export default new Router({
       path: '/viewMain',
       name: 'viewMain',
       component: () => import('@/components/viewMain'),
+      redirect: '/viewMain/home',
       children: [{
-        path: 'home',
-        name: 'home',
-        component: () => import('@/components/home')
-      }, // 代理商维护
-      {
-        path: 'dealer-aegis',
-        name: 'dealer-aegis',
-        component: () => import('@/components/dealer-aegis')
-      }, // 差旅费报销
-      {
-        path: 'travel-reimbursement',
-        name: 'travel-reimbursement',
-        component: () => import('@/components/travel-reimbursement')
-      },
-      {
-        path: 'userInfo',
-        name: 'userInfo',
-        component: () => import('@/components/userInfo')
-      }]
+          path: 'home',
+          name: 'home',
+          component: () => import('@/components/home')
+        }, // 代理商维护
+        {
+          path: 'dealer-aegis',
+          name: 'dealer-aegis',
+          component: () => import('@/components/dealer-aegis')
+        }, // 差旅费报销
+        {
+          path: 'travel-reimbursement',
+          name: 'travel-reimbursement',
+          component: () => import('@/components/travel-reimbursement')
+        },
+        {
+          path: 'userInfo',
+          name: 'userInfo',
+          component: () => import('@/components/userInfo')
+        }
+      ]
     },
     {
       path: '/pageMain',
@@ -138,8 +139,59 @@ export default new Router({
           path: 'suspend-work',
           name: 'suspend-work',
           component: () => import('@/components/suspend-work')
+        },
+        // 预审批记录
+        {
+          path: 'approval-record',
+          name: 'approval-record',
+          component: () => import('@/components/approval-record/approval-record')
+        },
+        // 状态查询
+        {
+          path: 'state-select',
+          name: 'state-select',
+          component: () => import('@/components/stateSelect/state-select')
+        },
+        {
+          path: 'operational-list',
+          name: 'operational-list',
+          component: () => import("@/base/approval-opinion/operational-list")
+        },
+        {
+          path: 'incoming',
+          name: 'incoming',
+          component: () => import("@/components/incoming/incoming")
+        },
+        {
+          path: 'uploadFile',
+          name: 'uploadFile',
+          component: () => import("@/components/uploadFile/uploadFile")
+        },
+        {
+          path: 'attachment',
+          name: 'attachment',
+          component: () => import("@/base/attachment/attachment"),
+        },
+        {
+          path: 'attachment-video',
+          name: 'attachment-video',
+          component: () => import("@/base/attachment/attachment-video"),
+        },
+        {
+          path: 'attachment-carImage',
+          name: 'attachment-video',
+          component: () => import("@/base/attachment/attachment-carImage"),
+        },
+        {
+          path: 'look-log',
+          name: 'look-log',
+          component: () => import("@/components/log/look-log")
+        },
+        {
+          path: 'write-log',
+          name: 'write-log',
+          component: () => import("@/components/log/write-log")
         }
-
       ]
     }
 

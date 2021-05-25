@@ -12,63 +12,7 @@ body {
   }
 
   // nav-bar
-  .van-nav-bar {
-    height: 98px;
-    background-color: rgba(255, 255, 255, 1);
-    margin-bottom: 20px;
-    .van-nav-bar__content{
-      height: auto;
-    }
-    .van-nav-bar__left {
-      left: 10px;
-
-      .van-nav-bar__text {
-
-        font-size: 30px;
-        font-family: PingFangSC-Medium, PingFang SC;
-        font-weight: 600;
-        color: #333333;
-        display: inline-block;
-      }
-
-      .van-icon-arrow-left:before {
-        content: '';
-
-      }
-
-      .van-icon-arrow-left {
-        font-size: 30px;
-        background: url(../image/barBack.png) no-repeat;
-        background-size: 100% 100%;
-        width: 28px;
-        height: 28px;
-      }
-    }
-
-    .van-nav-bar__right {
-      .van-icon {
-        font-size: 40px;
-        color: #000;
-      }
-
-      .myIcon {
-        width: 36px;
-      }
-
-      .van-icon-wap-nav:before {
-        content: '';
-      }
-
-
-    }
-
-    .van-nav-bar__title {
-      height: 98px;
-      line-height:98px;
-      font-size: 36px;
-      color: rgba(54, 54, 54, 1);
-    }
-  }
+  
   .dealer-info-nav {
     position: relative;
     display: flex;
@@ -146,91 +90,6 @@ body {
           font-size: 38px;
           color: #ccc;
           right: 10px;
-        }
-      }
-    }
-  }
-  // .van-calendar{
-  //   .van-calendar__footer{
-
-  //   }
-  // }
-  .wrapper-public {
-    width: 702px;
-    height: auto;
-    background: #FFFFFF;
-    box-shadow: 0px 0px 40px 0px rgba(227, 227, 227, 0.8);
-    border-radius: 24px;
-    margin: 20px auto;
-    box-sizing: border-box;
-    .search-input.textarea {
-      align-items: flex-start;
-      padding:20px 30px;
-      height: auto;
-      .van-field__control {
-        width: 582px;
-        height: 236px;
-        background: #FFFFFF;
-        border-radius: 12px;
-        border: 2px solid #EEEEEE;
-        padding:10px 20px;
-      }
-    }
-    .van-tabs {
-      .van-tabs__wrap{
-        height: auto;
-        padding:25px 10px;
-      }
-      .van-tabs__wrap::after{
-        border:none;
-      }
-      .van-tabs__nav{
-        padding-bottom: 50px;
-        .van-tabs__line{
-          width:32px !important;
-          height: 8px;
-        }
-        .van-tab{
-          color:#999999;
-          font-size: 30px;
-          .van-tab__text{
-            padding-left:40px;
-          }
-          span::after {
-            position:absolute;
-            top:2px;
-            left:-10px;
-            content:'';
-            width:36px;
-            height: 36px;
-          }
-        }
-        .van-tab.van-tab--active{
-          color:#0D88FF;
-        }
-        .van-tab.van-tab--active:first-child{
-          span::after {
-            background: url(../image/pl.png) no-repeat;
-            background-size: 100% 100%;
-          }
-        }
-        .van-tab.van-tab--active:nth-child(2){
-          span::after {
-            background: url(../image/czjlActive.png) no-repeat;
-            background-size: 100% 100%;
-          }
-        }
-        .van-tab:first-child{
-          span::after {
-            background: url(../image/pl.png) no-repeat;
-            background-size: 100% 100%;
-          }
-        }
-        .van-tab:nth-child(2){
-          span::after {
-            background: url(../image/czjl.png) no-repeat;
-            background-size: 100% 100%;
-          }
         }
       }
     }
@@ -472,4 +331,579 @@ body {
     margin: 0 auto;
   }
 
+  .van-steps {
+    padding: 60px;
+    border: none;
+
+    .van-steps__items {
+      border: none;
+
+      .van-hairline {
+        padding-top: 0;
+        border: none;
+
+        h3 {
+          margin: 0;
+          font-size: 32px;
+          padding: 10px 20px;
+        }
+
+        .item.item-first {
+          padding-top: 20px;
+        }
+
+        .item {
+          padding: 20px;
+          font-size: 20px;
+        }
+
+        .item.item-last {
+          padding: 20px 20px 40px;
+        }
+      }
+    }
+
+    .van-step--vertical .van-step__line {
+      width: 2px;
+    }
+
+    [class*='van-hairline']::after {
+      border: none;
+    }
+
+    .van-icon-checked {
+      font-size: 36px;
+    }
+
+    .van-step__circle {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .van-pull-refresh {
+    height: calc(100vh - 211px);
+    margin-bottom: 20px;
+
+    .van-pull-refresh__head {
+      font-size: 28px;
+    }
+
+    .wrapper {
+      height: 100%;
+    }
+
+    .van-pull-refresh__track {
+      height: 100%;
+    }
+  }
+
+  .is-left {
+    width: 31px;
+  }
+
+  .newsTitle {
+    display: -webkit-box;
+    /*必须结合的属性,将对象作为弹性伸缩盒子模型显示*/
+    -webkit-box-orient: vertical;
+    /* 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式*/
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+  }
+
+  .news {
+    color: #a2a2a2;
+    font-size: 26px;
+    background: #fff;
+    line-height: 35px;
+    padding-right: 20px;
+    display: -webkit-box;
+    /*必须结合的属性,将对象作为弹性伸缩盒子模型显示*/
+    -webkit-box-orient: vertical;
+    /* 必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式*/
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    /* 超出部分显示省略号 */
+  }
+
+  .staticWrap {
+    width: 710px;
+    margin: 0px auto;
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: #fff;
+  }
+
+  .cellCommon_field {
+    width: 710px;
+    margin: 0px auto;
+    background-color: #fff;
+
+    .van-cell--required::before {
+      left: -14px;
+      top: 34px;
+      font-size: 24px;
+    }
+
+    .van-cell {
+      margin: 0px auto;
+      font-size: 32px;
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+      overflow: initial;
+      width: 666px;
+      padding: 0;
+      border-bottom: 2px solid rgba(220, 220, 220, 1);
+
+      .van-field__label {
+        width: 220px;
+
+        span {
+          display: block;
+          width: 220px;
+          height: 50px;
+          font-size: 28px;
+          line-height: 48px;
+          border-right: 2px solid rgba(220, 220, 220, 1);
+          text-align: left;
+        }
+      }
+
+      .van-cell__title,
+      .van-cell__value {
+        height: 98px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        overflow: initial;
+      }
+
+      .van-cell__value {
+        position: initial;
+
+        .van-field__body {
+          width: 100%;
+          height: 98px;
+          padding: 0 20px;
+
+          .van-icon-clear {
+            font-size: 30px;
+          }
+        }
+
+        .van-field__control {
+          height: 100%;
+          font-size: 28px;
+          line-height: 130%;
+        }
+
+        .van-field__error-message {
+          position: absolute;
+          left: 242px;
+          bottom: 8px;
+          font-size: 18px;
+        }
+      }
+    }
+
+    .commonSelect {
+      height: 100%;
+      line-height: 98px;
+      padding-left: 20px;
+      font-size: 32px;
+      color: #1F1F1F;
+    }
+
+    .pd2 {
+      padding-bottom: 2px;
+    }
+  }
+
+  .ocr-wrap {
+    width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 30px;
+
+    .item {
+      width: 320px;
+      height: 200px;
+      padding-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+
+      img {
+        left: 0;
+        top: 0;
+        position: absolute;
+        width: 320px;
+        height: 200px;
+      }
+
+      .tip {
+        width: 320px;
+        font-size: 18px;
+        color: #fff;
+        position: absolute;
+        bottom: 46px;
+        text-align: center;
+      }
+    }
+
+    .van-uploader {
+      width: 320px;
+      height: 200px;
+
+      .van-uploader__wrapper {
+        .van-uploader__upload {
+          margin: 50px auto;
+          background-color: transparent;
+          border: none;
+
+          .van-uploader__input {
+            top: -50px;
+            left: -120px;
+            width: 320px;
+            height: 200px;
+            // display: none;
+          }
+
+          .van-icon {
+            font-size: 100px;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  #udesk_panel {
+    top: 100px !important;
+  }
+
+  .state_select-wrap {
+    padding: 15px 20px 6px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+
+    &:first-child {
+      margin-top: 20px;
+    }
+
+    .itemDetail {
+      width: 60%;
+
+      .van-cell {
+
+        .van-cell__title,
+        .van-cell__value {
+          flex: none;
+          font-size: 28px;
+          color: #303030;
+          width: 200px;
+          height: 30px;
+          line-height: 30px;
+          text-align: left;
+        }
+
+        .van-cell__title {
+          width: 120px;
+          font-size: 28px;
+          color: #303030;
+        }
+      }
+
+      .c9c.van-cell {
+        .van-cell__title {
+          color: #9c9c9c;
+        }
+      }
+    }
+
+    .signStatus,
+    .auditResult {
+      height: 96px;
+      width: 96px;
+      border-radius: 50%;
+    }
+
+    .status2,
+    .status {
+      height: 96px;
+      width: 96px;
+      border-radius: 50%;
+    }
+
+    .err.status2 {
+      border: 6px solid #ff1a1a;
+
+      span {
+        color: #ff1a1a;
+      }
+    }
+
+    .signStatus.signStatus0 {
+      border: 6px solid #ff1a1a;
+
+      span {
+        color: #ff1a1a;
+      }
+    }
+
+    .auditResult.auditResult2 {
+      border: 6px solid #ff1a1a;
+
+      span {
+        color: #ff1a1a;
+      }
+    }
+
+    .status2.err {
+      border: 6px solid #ff1a1a;
+
+      span {
+        color: #ff1a1a;
+      }
+    }
+  }
+
+  .pd2 {
+    padding-bottom: 2px;
+  }
+
+  .box {
+    position: absolute;
+    left: 50%;
+    top: 350px;
+    width: 100%;
+    height: 50px;
+    transform: translate(-50%, -30%);
+  }
+
+  .process-wrap {
+    width: 80%;
+    height: 20px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px #eee inset;
+    border-radius: 10px;
+    border: 2px solid #eee;
+    background: #fff;
+    margin-top: 20px;
+    position: relative;
+    display: none;
+  }
+
+  .children {
+    width: 0;
+    height: 20px;
+    box-shadow: 0 0 5px #eee outset;
+    border-radius: 10px;
+    background: #6c9fff;
+  }
+
+  #percent {
+    position: absolute;
+    top: -4px;
+    left: 0;
+    margin: 0;
+  }
+
+  .appView {
+    .van-button {
+      width: 500px;
+      height: 88px;
+      color: #fff;
+      font-size: 26px;
+      background: rgba(34, 167, 142, 1);
+      border-radius: 44px;
+      border: 2px solid rgba(34, 167, 142, 1);
+    }
+
+    .van-field__control::-webkit-input-placeholder {
+      color: rgba(156, 156, 156, 1);
+      font-size: 28px;
+    }
+  }
+
 }
+
+
+
+
+
+
+    .title {
+      padding: 20px 25px;
+    }
+
+    .btNone.incomeField {
+      .van-cell {
+        border: none
+      }
+    }
+
+    .borderRadiusToplr {
+      border-radius: 18px 18px 0 0;
+    }
+
+    .borderRadiusBtlr {
+      border-radius: 0 0 18px 18px;
+    }
+
+    .borderRadius18 {
+      border-radius: 18px;
+    }
+
+    .textareaStyle.incomeField {
+      .van-cell--required::before {
+        top: 90px;
+        left: 8px;
+      }
+
+      .van-cell {
+        margin: 0;
+        width: 710px;
+
+        .van-cell__title,
+        .van-cell__value {
+          height: 200px;
+          padding-top: 0;
+        }
+
+        .van-field__label {
+          span {
+            padding-left: 20px;
+            border: none
+          }
+        }
+
+        .van-cell__value {
+          .van-field__body {
+            width: 100%;
+            padding: 0;
+
+            .van-icon-clear {
+              font-size: 30px;
+            }
+          }
+
+          .van-field__control {
+            height: 200px;
+            padding: 20px;
+          }
+        }
+      }
+    }
+
+    .car-assess-new {
+      .incomeField {
+        width: 100%;
+      }
+    }
+
+    .incomeField {
+      width: 710px;
+      margin: 0px auto;
+      background-color: #fff;
+
+      .van-cell--required::before {
+        top: 45px;
+        left: -14px;
+      }
+
+      .van-cell {
+        margin: 0px auto;
+        padding: 10px 25px;
+        font-size: 28px;
+        display: flex;
+        align-items: flex-start;
+        position: relative;
+        overflow: initial;
+        width: 666px;
+        padding: 0;
+        border-bottom: 2px solid rgba(220, 220, 220, 1);
+
+        .van-field__label {
+          width: 210px;
+
+          span {
+            display: block;
+            width: 210px;
+            height: 50px;
+            line-height: 48px;
+            border-right: 2px solid rgba(220, 220, 220, 1);
+            text-align: left;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+
+        .van-cell__title,
+        .van-cell__value {
+          height: 78px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+          padding-top: 20px;
+          overflow: initial;
+        }
+
+        .van-cell__value {
+          position: initial;
+
+          .van-field__body {
+            width: 100%;
+            height: 78px;
+            padding: 0 20px;
+
+            .van-icon-clear {
+              font-size: 30px;
+            }
+          }
+
+          .van-field__control {
+            height: 100%;
+            line-height: 130%;
+            font-size: 28px;
+          }
+
+          .van-field__error-message {
+            background: #fff;
+            position: absolute;
+            left: 228px;
+            bottom: -30px;
+            font-size: 10px;
+          }
+        }
+      }
+
+      .slotRight {
+        background: url(../../static/img/selected.png) 640px center / 26px 16px no-repeat;
+      }
+
+      .commonSelect {
+        height: 100%;
+        line-height: 98px;
+        padding-left: 20px;
+        font-size: 32px;
+        color: #1F1F1F;
+      }
+    }
+    .pd2 {
+      padding-bottom: 2px;
+    }
