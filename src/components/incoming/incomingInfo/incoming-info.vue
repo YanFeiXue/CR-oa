@@ -1,125 +1,129 @@
 <template>
   <section class="incoming-info">
-    <header class="title">进件信息</header>
-    <section class="incomeField borderRadiusToplr">
-      <van-field label="进件地区(省)" required clearable readonly placeholder="请选择省份"
-        v-model="customerName.leaseProvinceIdName" name="leaseProvinceId"></van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="进件地区(市)" required clearable readonly placeholder="请选择省份" v-model="customerName.leaseCityIdName"
-        name="leaseCityId"></van-field>
-    </section>
-    <section class="incomeField" v-if="productDiff.directlyProductInput">
-      <van-field label="商户信息" required clearable readonly placeholder="请选择商户" v-model="customerName.merchantIdName"
-        name="merchantId"></van-field>
-    </section>
-    <section class="incomeField btNone pd2 borderRadiusBtlr">
-      <van-field label="客户经理手机号" required clearable placeholder="请输入" name="isMobile1"
-        v-model="customerInfo.dealerMobile"></van-field>
+    <section class="incomeField_body">
+      <header class="title">进件信息</header>
+      <div class="incomeField">
+        <van-field label="进件地区(省)" clearable readonly placeholder="请选择省份"
+          v-model="customerName.leaseProvinceIdName" name="leaseProvinceId"></van-field>
+      </div>
+      <div class="incomeField">
+        <van-field label="进件地区(市)" clearable readonly placeholder="请选择省份" v-model="customerName.leaseCityIdName"
+          name="leaseCityId"></van-field>
+      </div>
+      <div class="incomeField" v-if="productDiff.directlyProductInput">
+        <van-field label="商户信息" clearable readonly placeholder="请选择商户" v-model="customerName.merchantIdName"
+          name="merchantId"></van-field>
+      </div>
+      <div class="incomeField btNone pd2 borderRadiusBtlr">
+        <van-field label="客户经理手机号" clearable placeholder="请输入" name="isMobile1"
+          v-model="customerInfo.dealerMobile"></van-field>
+      </div>
     </section>
 
-    <header class="title">承租人信息</header>
-    <section class="incomeField borderRadiusToplr">
-      <van-field label="客户姓名" clearable required readonly placeholder="输入身份证号回显" v-model="customerInfo.customerName">
-      </van-field>
-    </section>
-    <section class="incomeField pd2 snWrap">
-      <van-field label="身份证号" required readonly placeholder="请输入" v-model="customerInfo.customerCertno" name="idCard">
-      </van-field>
-      <!-- <span v-if="productDiff.snInput" @click="_getCustomerApplyList()" class="snInput">获取</span> -->
-    </section>
-    <section class="incomeField" v-if="productDiff.snInput">
-      <van-field label="苏宁核批金额" clearable required readonly placeholder="不需要填写" name="creditLimit"
-        v-model="customerInfo.creditLimit"></van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="手机号" clearable required readonly placeholder="输入身份证号回显" v-model="customerInfo.customerMobile"
-        name="isMobile"></van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="民族" required clearable readonly placeholder="请选择" v-model="customerName.nationIdName"
-        name="nationId" :error="errors.has('nationId')"></van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="婚姻状态" required clearable readonly placeholder="请选择"
-        v-model="customerName.customerMarryStatusIdName" name="customerMarryStatusId">
-      </van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="是否本地户籍" required clearable readonly placeholder="请选择" v-model="customerName.localDomicileIdName"
-        name="localDomicileId">
-      </van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="流水银行卡号" required clearable placeholder="请输入" v-model="customerInfo.flowBankCard"
-        name="bankCard"></van-field>
-    </section>
-    <section class="incomeField" v-if="productDiff.directlyProductInput">
-      <van-field label="常驻资料" required clearable readonly placeholder="请输入"
-        v-model="customerName.residentInformationIdName" name="residentInformationId">
-      </van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="子女状况" required clearable readonly placeholder="请选择" v-model="customerName.spouseSunNumIdName"
-        name="spouseSunNumId">
-      </van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="居住地址(省)" required clearable readonly placeholder="请选择" v-model="customerName.liveProvinceIdName"
-        name="liveProvinceId"></van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="居住地址(市)" required clearable readonly placeholder="请选择" v-model="customerName.liveCityIdName"
-        name="liveCityId">
-      </van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="居住地址(区)" required clearable readonly placeholder="请选择" v-model="customerName.liveCountyIdName"
-        name="liveCountyId">
-      </van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="居住详细地址" required clearable placeholder="请输入" v-model="customerInfo.liveAddress"
-        name="liveAddress"></van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="居住类型" required clearable readonly placeholder="请选择" v-model="customerName.liveTypeIdName"
-        name="liveTypeId"></van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="学历" required clearable readonly placeholder="请选择" v-model="customerName.customerEduIdName"
-        name="customerEduId"></van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="户籍地址(省)" required clearable readonly placeholder="请选择" v-model="customerName.homeProvinceIdName"
-        name="homeProvinceId"></van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="户籍地址(市)" required clearable readonly placeholder="请选择" v-model="customerName.homeCityIdName"
-        name="homeCityId">
-      </van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="户籍地址(区)" required clearable readonly placeholder="请选择" v-model="customerName.homeCountyIdName"
-        name="homeCountyId">
-      </van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="户籍详细地址" required clearable placeholder="请输入" v-model="customerInfo.homeAddress"
-        name="homeAddress"></van-field>
-    </section>
-    <section class="incomeField" v-if="productDiff.bqapInput">
-      <van-field label="申请人家庭人数" required clearable placeholder="请输入" v-model="customerInfo.familyTotal"
-        name="familyTotal"></van-field>
-    </section>
-    <section class="incomeField">
-      <van-field label="有无担保人" required clearable readonly placeholder="请选择" v-model="customerName.weatherGuaranteeName"
-        name="weatherGuarantee">
-      </van-field>
-    </section>
-    <section class="incomeField btNone borderRadiusBtlr">
-      <van-field label="有无共同承租人" required clearable readonly placeholder="请选择"
-        v-model="customerName.weatherCotenantName" name="weatherCotenant"></van-field>
+    <section class="incomeField_body">
+      <header class="title">承租人信息</header>
+      <section class="incomeField">
+        <van-field label="客户姓名" clearable readonly placeholder="输入身份证号回显" v-model="customerInfo.customerName">
+        </van-field>
+      </section>
+      <section class="incomeField pd2 snWrap">
+        <van-field label="身份证号" readonly placeholder="请输入" v-model="customerInfo.customerCertno" name="idCard">
+        </van-field>
+        <!-- <span v-if="productDiff.snInput" @click="_getCustomerApplyList()" class="snInput">获取</span> -->
+      </section>
+      <section class="incomeField" v-if="productDiff.snInput">
+        <van-field label="苏宁核批金额" clearable readonly placeholder="不需要填写" name="creditLimit"
+          v-model="customerInfo.creditLimit"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="手机号" clearable readonly placeholder="输入身份证号回显" v-model="customerInfo.customerMobile"
+          name="isMobile"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="民族" clearable readonly placeholder="请选择" v-model="customerName.nationIdName"
+          name="nationId" :error="errors.has('nationId')"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="婚姻状态" clearable readonly placeholder="请选择"
+          v-model="customerName.customerMarryStatusIdName" name="customerMarryStatusId">
+        </van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="是否本地户籍" clearable readonly placeholder="请选择" v-model="customerName.localDomicileIdName"
+          name="localDomicileId">
+        </van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="流水银行卡号" clearable placeholder="请输入" v-model="customerInfo.flowBankCard"
+          name="bankCard"></van-field>
+      </section>
+      <section class="incomeField" v-if="productDiff.directlyProductInput">
+        <van-field label="常驻资料" clearable readonly placeholder="请输入"
+          v-model="customerName.residentInformationIdName" name="residentInformationId">
+        </van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="子女状况" clearable readonly placeholder="请选择" v-model="customerName.spouseSunNumIdName"
+          name="spouseSunNumId">
+        </van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="居住地址(省)" clearable readonly placeholder="请选择" v-model="customerName.liveProvinceIdName"
+          name="liveProvinceId"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="居住地址(市)" clearable readonly placeholder="请选择" v-model="customerName.liveCityIdName"
+          name="liveCityId">
+        </van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="居住地址(区)" clearable readonly placeholder="请选择" v-model="customerName.liveCountyIdName"
+          name="liveCountyId">
+        </van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="居住详细地址" clearable placeholder="请输入" v-model="customerInfo.liveAddress"
+          name="liveAddress"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="居住类型" clearable readonly placeholder="请选择" v-model="customerName.liveTypeIdName"
+          name="liveTypeId"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="学历" clearable readonly placeholder="请选择" v-model="customerName.customerEduIdName"
+          name="customerEduId"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="户籍地址(省)" clearable readonly placeholder="请选择" v-model="customerName.homeProvinceIdName"
+          name="homeProvinceId"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="户籍地址(市)" clearable readonly placeholder="请选择" v-model="customerName.homeCityIdName"
+          name="homeCityId">
+        </van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="户籍地址(区)" clearable readonly placeholder="请选择" v-model="customerName.homeCountyIdName"
+          name="homeCountyId">
+        </van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="户籍详细地址" clearable placeholder="请输入" v-model="customerInfo.homeAddress"
+          name="homeAddress"></van-field>
+      </section>
+      <section class="incomeField" v-if="productDiff.bqapInput">
+        <van-field label="申请人家庭人数" clearable placeholder="请输入" v-model="customerInfo.familyTotal"
+          name="familyTotal"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field label="有无担保人" clearable readonly placeholder="请选择" v-model="customerName.weatherGuaranteeName"
+          name="weatherGuarantee">
+        </van-field>
+      </section>
+      <section class="incomeField btNone borderRadiusBtlr">
+        <van-field label="有无共同承租人" clearable readonly placeholder="请选择"
+          v-model="customerName.weatherCotenantName" name="weatherCotenant"></van-field>
+      </section>
     </section>
     <!-- 地址公用sheet -->
     <!-- <van-action-sheet v-model="province_show" cancel-text="取消" :actions="filterAreas" @select="onSelect_province" />
@@ -562,124 +566,49 @@
   }
 </script>
 
-<style lang="less">
-  .incoming-info {
-    .snWrap {
-      position: relative;
-
-      .snInput {
-        right: 0;
-        top: 0;
-        height: 98px;
-        width: 120px;
-        text-align: center;
-        line-height: 108px;
-        position: absolute;
-        color: #23a394;
-        display: inline-block;
+<style lang="scss" scoped="scoped">
+  .incoming-info{
+    margin-top: 16px;
+    .incomeField_body{
+      width: 702px;
+      margin: 24px auto;
+      background: #FFFFFF;
+      box-shadow: 0px 0px 40px 0px rgba(231,231,231,1);
+      border-radius: 24px;
+      .title{
+        height: 82px;
+        line-height: 82px;
+        padding: 0 0 0 32px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #333333;
+        border-bottom: 1px solid #F3F3F3;
       }
-    }
-
-    .title {
-      padding: 20px 25px;
-    }
-
-    .btNone.incomeField {
-      .van-cell {
-        border: none
-      }
-    }
-
-    .borderRadiusToplr {
-      border-radius: 18px 18px 0 0;
-    }
-
-    .borderRadiusBtlr {
-      border-radius: 0 0 18px 18px;
-    }
-
-    .incomeField {
-      width: 710px;
-      margin: 0px auto;
-      background-color: #fff;
-
-      .van-cell--required::before {
-        top: 45px;
-        left: -14px;
-      }
-
-      .van-cell {
-        margin: 0px auto;
-        padding: 10px 25px;
-        font-size: 28px;
-        display: flex;
-        align-items: flex-start;
-        position: relative;
-        overflow: initial;
-        width: 666px;
-        padding: 0;
-        border-bottom: 2px solid rgba(220, 220, 220, 1);
-
-        .van-field__label {
-          width: 210px;
-
-          span {
-            display: block;
-            width: 210px;
-            height: 50px;
-            line-height: 55px;
-            border-right: 2px solid rgba(220, 220, 220, 1);
-            text-align: left;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-          }
-        }
-
-        .van-cell__title,
-        .van-cell__value {
-          height: 78px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
-          padding-top: 20px;
-          overflow: initial;
-        }
-
-        .van-cell__value {
-          position: initial;
-
-          .van-field__body {
+      .incomeField{
+        height: 100px;
+        border-bottom: 1px solid #F3F3F3;
+        /deep/{
+          .van-cell{
+            line-height: 100px;
             width: 100%;
-            height: 78px;
-            padding: 0 20px;
-            margin: -15px 0 0 0;
-
-            .van-icon-clear {
-              font-size: 30px;
+            font-size: 28px;
+            color: #666666;
+            padding: 0 32px;
+            .van-cell__title{
+              width: 250px;
+            }
+            .van-cell__value{
+              .van-field__body{
+                input{
+                  text-align: right;
+                }
+              }
             }
           }
 
-          .van-field__control {
-            height: 100%;
-            line-height: 130%;
-            font-size: 28px;
-          }
-
-          .van-field__error-message {
-            background: #fff;
-            position: absolute;
-            left: 228px;
-            bottom: -30px;
-            font-size: 10px;
-          }
         }
       }
     }
-
-    .pd2 {
-      padding-bottom: 2px;
-    }
   }
+
 </style>

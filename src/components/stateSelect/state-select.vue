@@ -30,9 +30,9 @@
     mapGetters,
     mapMutations
   } from 'vuex'
-  import ApplyState from '../../base/stateSelect/apply-state'
-  import FiledState from '../../base/stateSelect/filed-state'
-  import RepaymentState from '../../base/stateSelect/repayment-state'
+  import ApplyState from './stateSelect/apply-state'
+  import FiledState from './stateSelect/filed-state'
+  import RepaymentState from './stateSelect/repayment-state'
   export default {
     name: 'process',
     data() {

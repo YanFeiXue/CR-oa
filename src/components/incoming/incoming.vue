@@ -23,11 +23,11 @@
 
 <script>
   import Header from '../../base/Header'
-  import incomingInfo from '../../base/incomingInfo/incoming-info'
-  import workInfo from '../../base/workInfo/work-info'
-  import contactsInfo from '../../base/contactsInfo/contacts-info'
-  import carInfo from '../../base/carInfo/car-info'
-  import remarkInfo from '../../base/remarkInfo/remark-info'
+  import incomingInfo from './incomingInfo/incoming-info'
+  import workInfo from './workInfo/work-info'
+  import contactsInfo from './contactsInfo/contacts-info'
+  import carInfo from './carInfo/car-info'
+  import remarkInfo from './remarkInfo/remark-info'
   import Vue from 'vue'
   import {
     Tab,
@@ -177,7 +177,6 @@
 
   /deep/.van-tabs {
     .van-tabs__wrap {
-      padding: 0 0 40px 0;
       height: 80px;
       color: #666666;
 

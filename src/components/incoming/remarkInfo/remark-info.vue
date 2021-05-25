@@ -35,7 +35,7 @@
     commitCheckFiles,
     createChe300CarAccessPDF,
     downLoadOcrFileFromOss,
-  } from '../../api/api'
+  } from '@/api/api'
   import {
     leaseFormMixin
   } from '@/util/mixins'
