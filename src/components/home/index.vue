@@ -42,22 +42,22 @@
         dailyWorkList: [{
             title: '日常工作',
             list: [{
-                icon: '../../../static/img/GZJH.png',
+                icon: './static/img/GZJH.png',
                 content: '工作计划',
                 router: '/pageMain/work-plan'
               },
               {
-                icon: '../../../static/img/PRRB.png',
+                icon: './static/img/PRRB.png',
                 content: 'PR日报',
                 router: '/pageMain/look-log'
               },
               {
-                icon: '../../../static/img/MRQD.png',
+                icon: './static/img/MRQD.png',
                 content: '每日签到',
                 router: ''
               },
               {
-                icon: '../../../static/img/TDJH.png',
+                icon: './static/img/TDJH.png',
                 content: '团队计划',
                 router: ''
               }
@@ -66,22 +66,22 @@
           {
             title: '经销商信息',
             list: [{
-                icon: '../../../static/img/YSPJL.png',
+                icon: './static/img/YSPJL.png',
                 content: '预审批记录',
                 router: '/pageMain/approval-record'
               },
               {
-                icon: '../../../static/img/ZTCX.png',
+                icon: './static/img/ZTCX.png',
                 content: '状态查询',
                 router: '/pageMain/state-select'
               },
               {
-                icon: '../../../static/img/ZTJJ.png',
+                icon: './static/img/ZTJJ.png',
                 content: '暂停进件',
                 router: ''
               },
               {
-                icon: '../../../static/img/ZTFK.png',
+                icon: './static/img/ZTFK.png',
                 content: '暂停放款',
                 router: ''
               }
@@ -90,22 +90,22 @@
           {
             title: '数据中心',
             list: [{
-                icon: '../../../static/img/XSBB.png',
+                icon: './static/img/XSBB.png',
                 content: '销售报表',
                 router: ''
               },
               {
-                icon: '../../../static/img/ZHL.png',
+                icon: './static/img/ZHL.png',
                 content: '转化率',
                 router: ''
               },
               {
-                icon: '../../../static/img/XSRW.png',
+                icon: './static/img/XSRW.png',
                 content: '销售任务',
                 router: ''
               },
               {
-                icon: '../../../static/img/BB.png',
+                icon: './static/img/BB.png',
                 content: '报表',
                 router: ''
               }
