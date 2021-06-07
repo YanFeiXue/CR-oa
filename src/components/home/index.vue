@@ -54,12 +54,12 @@
               {
                 icon: './static/img/MRQD.png',
                 content: '每日签到',
-                router: ''
+                router: '/pageMain/schedule-detail'
               },
               {
                 icon: './static/img/TDJH.png',
                 content: '团队计划',
-                router: ''
+                router: '/pageMain/team-plan'
               }
             ]
           },
@@ -90,24 +90,24 @@
           {
             title: '数据中心',
             list: [{
-                icon: './static/img/XSBB.png',
-                content: '销售报表',
-                router: ''
+                icon: './static/img/JSQ.png',
+                content: '计算器',
+                router: '/pageMain/calculator'
               },
               {
                 icon: './static/img/ZHL.png',
                 content: '转化率',
-                router: ''
+                router: '/pageMain/conversion-rate'
               },
               {
-                icon: './static/img/XSRW.png',
-                content: '销售任务',
-                router: ''
+                icon: './static/img/TDJJ.png',
+                content: '推动进件',
+                router: '/pageMain/push-forward'
               },
               {
-                icon: './static/img/BB.png',
-                content: '报表',
-                router: ''
+                icon: './static/img/TDFK.png',
+                content: '推动放款',
+                router: '/pageMain/promote-lending'
               }
             ]
           }
@@ -212,10 +212,10 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        font-size: 22px;
+        font-size: 24px;
         color: #333333;
         position: relative;
-        width: 120px;
+        width: 130px;
 
         img {
           width: 64px;
@@ -225,6 +225,7 @@
 
         span {
           padding: 10px 0 0;
+          font-family: PingFangSC-Regular;
         }
 
         .h104 {

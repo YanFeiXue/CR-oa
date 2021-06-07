@@ -40,14 +40,14 @@
       return {
         active: 0,
         icon: {
-          activeHome: './static/img/home_click@2x.png',
-          inactiveHome: './static/img/home_normal@2x.png',
-          activeOrder: './static/img/home_vehicle_review_click@2x.png',
-          inactiveOrder: './static/img/home_vehicle_review@2x.png',
-          activeNews: './static/img/news_click@2x.png',
-          inactiveNews: './static/img/news_normal@2x.png',
-          activeMy: './static/img/i_click@2x.png',
-          inactiveMy: './static/img/i_normal@2x.png'
+          activeHome: './static/img/home_active.png', 
+          inactiveHome: './static/img/home.png',
+          activeOrder: './static/img/maintain_active.png',
+          inactiveOrder: './static/img/maintain.png',
+          activeNews: './static/img/Reimbursement_active.png',
+          inactiveNews: './static/img/Reimbursement.png',
+          activeMy: './static/img/mine_active.png',
+          inactiveMy: './static/img/mine.png'
         }
       }
     },

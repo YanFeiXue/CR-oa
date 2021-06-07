@@ -5,11 +5,14 @@
         <van-field v-model="filterVal" ref="filterVal" @click="focusThis('filterVal')" placeholder="请输入客户姓名" />
         <van-button type="default" @click="filterData()">查询</van-button>
       </div>
-      <div class="screen">
+      <div class="screen" @click="repaySheet_flag = true">
         <span>筛选</span>
         <img src="../../../../static/img/shanxuan.png" />
       </div>
     </div>
+    <van-action-sheet v-model="repaySheet_flag" :actions="option" cancel-text="取消" @cancel="onCancel_sheet"
+      @select="onSelect_sheet" />
+
     <div class="wrapper" ref="wrapper">
       <ul v-if="dataInfo.length">
         <mt-loadmore :auto-fill="false" :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded"
@@ -69,12 +72,16 @@
         detailsFlags: false,
         customerId: '',
         option: [{
-            value: 2,
-            name: '逾期'
+            value: 0,
+            name: '全部'
           },
           {
             value: 1,
             name: '正常'
+          },
+          {
+            value: 2,
+            name: '逾期'
           }
         ]
       }
@@ -167,14 +174,17 @@
         color: #333333;
         font-weight: bold;
         font-size: 32px;
+        font-family: PingFangSC-Medium;
       }
       .cancal{
         font-size: 28px;
         color: #E2231A;
+        font-family: PingFangSC-Regular;
       }
       .cancal_static{
         font-size: 28px;
         color: #0D88FF;
+        font-family: PingFangSC-Regular;
       }
     }
 
@@ -188,11 +198,13 @@
       .approved_amount{
         font-size: 28px;
         color: #666666;
+        font-family: PingFangSC-Regular;
       }
       .amount{
         font-weight: bold;
         font-size: 28px;
         color: #333333;
+        font-family: PingFangSC-Medium;
       }
     }
     .item_line_three{
@@ -205,11 +217,13 @@
       .product_name{
         font-size: 28px;
         color: #666666;
+        font-family: PingFangSC-Regular;
       }
       .product{
         font-size: 28px;
         color: #333333;
         font-weight: bold;
+        font-family: PingFangSC-Medium;
       }
     }
   }
@@ -237,53 +251,44 @@
       border-radius: 40px;
       height: 80px;
       margin: 0;
-
-      .van-cell.van-field {
-        width: 100%;
-        height: 80px;
-        z-index: 9;
-        border-radius: 44px;
-        background: url(../../../../static/img/pre_search.png) 480px center / 38px 36px no-repeat;
-        background-color: rgba(255, 255, 255, 1);
-        padding: 0 0 0 20px;
-        line-height: 80px;
-
-        .van-field__body {
+      /deep/{
+        .van-cell.van-field {
           width: 100%;
-          padding: 0 20px;
+          height: 80px;
+          z-index: 9;
+          border-radius: 44px;
+          background: url(../../../../static/img/pre_search.png) 480px center / 38px 36px no-repeat;
+          background-color: rgba(255, 255, 255, 1);
+          padding: 0 0 0 20px;
+          line-height: 80px;
 
-          .van-field__control::-webkit-input-placeholder {
-            color: rgba(156, 156, 156, 1);
-            font-size: 28px;
+          .van-field__body {
+            width: 100%;
+            padding: 0 20px;
+
+            .van-field__control::-webkit-input-placeholder {
+              color: rgba(156, 156, 156, 1);
+              font-size: 30px;
+              font-family: PingFangSC-Regular;
+            }
           }
 
-          .van-icon-clear {
+          .van-field__control {
+            height: 80px;
+            line-height: 80px;
+            padding-left: 20px;
             font-size: 30px;
           }
         }
-
-        .van-field__control {
+        .van-button {
+          position: absolute;
+          top: 2px;
+          right: 0px;
+          width: 100px;
           height: 80px;
-          line-height: 80px;
-          padding-left: 20px;
-          font-size: 24px;
+          z-index: 9;
+          opacity: 0;
         }
-
-        .van-icon-clear {
-          font-size: 38px;
-          color: #ccc;
-          right: 120px;
-        }
-      }
-
-      .van-button {
-        position: absolute;
-        top: 2px;
-        right: 0px;
-        width: 100px;
-        height: 80px;
-        z-index: 9;
-        opacity: 0;
       }
     }
   }
@@ -298,6 +303,31 @@
 
     span {
       margin-right: 14px;
+      font-size: PingFangSC-Regular;
+    }
+  }
+
+  /deep/ {
+    .van-popup--bottom.van-action-sheet {
+      max-height: 600px;
+      overflow-y: scroll;
+      border-radius: 40px 40px 0 0;
+
+      .van-action-sheet__item {
+        height: 80px;
+        font-size: 28px;
+        background: none;
+        border-bottom: 1px solid #ededed;
+      }
+
+      .van-action-sheet__item:first-child {
+        border-radius: 40px 40px 0 0;
+      }
+
+      .van-action-sheet__cancel {
+        font-size: 30px;
+        line-height: 70px;
+      }
     }
   }
 </style>

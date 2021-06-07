@@ -304,6 +304,34 @@ const state = {
     remarkInfo: {
       remark: ''
     }
+  },
+  logForm:{
+    reportDate: '选择时间',
+    distract: '',
+    onBusinessCity: '',
+    visitDealerName: '',
+    accomplishWork: '',
+    unaccomplishWork: '',
+    coordinateWork: '',
+    train: '',
+    problem: '',
+    solution: '',
+    customerName: '',
+    contractPerson: '',
+    contractPhone: '',
+    remark: '',
+    commentVOList:[]
+  },
+  weeklyForm:{
+    reportDateStart: '选择开始日期',
+    reportDateEnd: '选择结束日期',
+    taskProgressCondition: '',
+    provinceSpCondition: '',
+    policeAndFeedback: '',
+    questionOrCompetingProduct: '',
+    needSolveProblem: '',
+    remark: '',
+    commentVOList: []
   }
 }
 export default state

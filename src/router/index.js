@@ -66,30 +66,19 @@ export default new Router({
         {
           path: 'new-schedule',
           name: 'newSchedule',
-          component: () => import('@/components/new-schedule')
+          component: () => import('@/components/new-schedule/new-schedule')
         },
-        // 修改日程
+        // 日程详情
         {
-          path: 'edit-schedule',
-          name: 'editSchedule',
-          component: () => import('@/components/edit-schedule')
-        },
-        // 添加日程
-        {
-          path: 'add-schedule',
-          name: 'addSchedule',
-          component: () => import('@/components/add-schedule')
+          path: 'schedule-detail',
+          name: 'scheduleDetail',
+          component: () => import('@/components/new-schedule/schedule-detail')
         },
         // 代理商维护
         {
           path: 'dealer-info',
           name: 'dealerInfo',
           component: () => import('@/components/dealer-info')
-        },
-        {
-          path: 'schedule-details',
-          name: 'scheduleDetails',
-          component: () => import('@/components/schedule-details')
         },
         // 我的申请
         {
@@ -102,18 +91,6 @@ export default new Router({
           path: 'my-approval',
           name: 'myApproval',
           component: () => import('@/components/my-approval')
-        },
-        // 日报
-        {
-          path: 'daily',
-          name: 'daily',
-          component: () => import('@/components/daily')
-        },
-        //
-        {
-          path: 'daily-details',
-          name: 'dailyDetails',
-          component: () => import('@/components/daily-details')
         },
         // 签到
         {
@@ -170,17 +147,17 @@ export default new Router({
         {
           path: 'attachment',
           name: 'attachment',
-          component: () => import("@/base/attachment/attachment"),
+          component: () => import("@/components/uploadFile/attachment/attachment"),
         },
         {
           path: 'attachment-video',
           name: 'attachment-video',
-          component: () => import("@/base/attachment/attachment-video"),
+          component: () => import("@/components/uploadFile/attachment/attachment-video"),
         },
         {
           path: 'attachment-carImage',
           name: 'attachment-video',
-          component: () => import("@/base/attachment/attachment-carImage"),
+          component: () => import("@/components/uploadFile/attachment/attachment-carImage"),
         },
         // 看日志
         {
@@ -194,11 +171,47 @@ export default new Router({
           name: 'write-log',
           component: () => import("@/components/log/write-log")
         },
-        // 日志详情
+        // 日报
         {
           path: 'log-details',
           name: 'log-details',
           component: () => import("@/components/log/log-details/log-details")
+        },
+        // 周报
+        {
+          path: 'weekly',
+          name: 'weekly',
+          component: () => import("@/components/log/log-details/weekly")
+        },
+        // 跟进记录
+        {
+          path: 'follow-up-record',
+          name: 'followUpRecord',
+          component: () => import("@/components/follow-up-record/follow-up-record")
+        },
+        // 计算器
+        {
+          path: 'calculator',
+          name: 'calculator',
+          component: () => import("@/components/calculator/calculator")
+        },
+        // 转化率
+        {
+          path: 'conversion-rate',
+          name: 'conversionRate',
+          component: () => import("@/components/conversion-rate/conversion-rate")
+        },
+        // 推动进件
+        {
+          path: 'push-forward',
+          name: 'pushForward',
+          component: () => import("@/components/push-forward/push-forward")
+        },
+        // 推动放款
+        {
+          path: 'promote-lending',
+          name: 'promoteLending',
+          component: () => import("@/components/promote-lending/promote-lending")
         },
       ]
     }

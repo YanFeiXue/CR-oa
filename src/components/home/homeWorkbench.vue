@@ -12,8 +12,10 @@
     </div>
     <div class="workbench_body">
       <div class="workbench_item" v-for="(item, index) in workbenchList" :key="index">
-        <span class="item_number">{{item.number}}</span><span class="item_number"
-          v-if="[6, 7, 8].indexOf(index) != -1">%</span>
+        <div style="display: flex;flex-direction: row;align-items: center;">
+          <span class="item_number">{{item.number}}</span><span class="item_number"
+            v-if="[6, 7, 8].indexOf(index) != -1">%</span><span class="item_wan" v-if="item.showwan">万</span>
+        </div>
         <p class="item_content">{{item.content}}</p>
       </div>
     </div>
@@ -58,7 +60,8 @@
           },
           {
             number: 0,
-            content: '进件金额'
+            content: '进件金额',
+            showwan: false
           },
           {
             number: 0,
@@ -70,7 +73,8 @@
           },
           {
             number: 0,
-            content: '放款金额'
+            content: '放款金额',
+            showwan: false
           },
           {
             number: 0,
@@ -101,10 +105,28 @@
           dataType: homeActiveName
         }).then(res => {
           this.workbenchList[0].number = res.data.calculIncomingDto.totalNum || 0
-          this.workbenchList[1].number = res.data.calculIncomingDto.totalAmount || 0
+          if (res.data.calculIncomingDto.totalAmount > 999999) {
+            let jinNumber = res.data.calculIncomingDto.totalAmount.toFixed().split('')
+            jinNumber.splice(-4, 0, '.')
+            jinNumber = Number(jinNumber.join(''))
+            this.workbenchList[1].number = jinNumber
+            this.workbenchList[1].showwan = true
+          }else{
+            this.workbenchList[1].number = res.data.calculIncomingDto.totalAmount || 0
+            this.workbenchList[1].showwan = false
+          }
           this.workbenchList[2].number = res.data.calculIncomingDto.avgAmount || 0
           this.workbenchList[3].number = res.data.calculFinancingDto.totalNum || 0
-          this.workbenchList[4].number = res.data.calculFinancingDto.totalAmount || 0
+          if (res.data.calculIncomingDto.totalAmount > 999999) {
+            let fangNumber = res.data.calculFinancingDto.totalAmount.toFixed().split('')
+            fangNumber.splice(-4, 0, '.')
+            fangNumber = Number(fangNumber.join(''))
+            this.workbenchList[4].number = fangNumber
+            this.workbenchList[4].showwan = true
+          }else{
+            this.workbenchList[4].number = res.data.calculFinancingDto.totalAmount || 0
+            this.workbenchList[4].showwan = false
+          }
           this.workbenchList[5].number = res.data.calculFinancingDto.avgAmount || 0
           this.workbenchList[7].number = res.data.calculPassDto.rate || 0
           this.workbenchList[8].number = res.data.calPassWithConditionDto.rate || 0
@@ -139,12 +161,24 @@
     font-weight: bold;
     font-size: 40px;
     color: #000000;
+    height: 48px;
+    line-height: 48px;
+    font-family: DINPro-Black;
+  }
+
+  .item_wan{
+    font-weight: bold;
+    font-size: 34px;
+    color: #000000;
+    height: 48px;
+    line-height: 48px;
   }
 
   .item_content {
     color: #7B7B7B;
+    margin-top: 10px;
     font-size: 24px;
-    margin: 10px 0 0 0;
+    font-family: PingFangSC-Regular;
   }
 
   .home_workbench_body {

@@ -2,179 +2,169 @@
   <section class="car-info">
     <section class="incomeField_body">
       <header class="title">车辆信息</header>
-      <section class="incomeField borderRadiusToplr pd2">
-        <van-field label="车架号" clearable placeholder="请输入" v-model="carInfo.carVin"
-          name="carVin"></van-field>
+      <section class="incomeField borderRadiusToplr">
+        <van-field readonly label="车架号" placeholder="请输入" v-model="carInfo.carVin" name="carVin"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="车辆评估价(元)" clearable placeholder="不需填写" :readonly="true" v-model="carInfo.carAccess"
-          name="carAccess"></van-field>
-        <!-- <span class="getCarMsg" @click="_getCreatedEvalPrice()">获取</span> -->
-      </section>
-      <section class="incomeField pd2">
-        <van-field label="公里数" :readonly="true" placeholder="不需填写" v-model="carInfo.kilometreNo"
-          v-validate="'required|isNum'" name="kilometreNo"></van-field>
-      </section>
-      <section class="incomeField pd2">
-        <van-field label="首次登记时间" clearable :readonly="true" placeholder="不需填写"
-          v-model="carInfo.firstRegisterTime" name="firstRegisterTime"></van-field>
-      </section>
-      <section class="incomeField pd2">
-        <van-field label="车牌号" clearable :readonly="true" placeholder="不需填写" v-model="carInfo.carLicense"
-          name="carLicense"></van-field>
-      </section>
-      <section class="incomeField pd2">
-        <van-field label="发动机号" clearable :readonly="false" placeholder="请输入" v-model="carInfo.carEngineNumber"
-          name="carEngineNumber"></van-field>
-      </section>
-      <section class="incomeField pd2">
-        <van-field label="车辆颜色" clearable :readonly="false" placeholder="请输入" v-model="carInfo.carColor"
-          name="carColor"></van-field>
-      </section>
-      <section class="incomeField pd2">
-        <van-field label="燃料种类" class="slotRight" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.fuelTypeName"
-          name="fuelType"></van-field>
-      </section>
-      <section class="incomeField pd2" v-if="productDiff.lhInput">
-        <van-field label="车型" class="slotRight" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.vehTypeIdName"
-          name="vehTypeId"></van-field>
-      </section>
-      <section class="incomeField pd2" v-if="productDiff.lhInput">
-        <van-field label="车辆准载" clearable placeholder="请选择"
-          v-model="carInfo.carAllowedPassenger" name="carAllowedPassenger">
+      <section class="incomeField">
+        <van-field readonly label="车辆评估价(元)" placeholder="不需填写" v-model="carInfo.carAccess" name="carAccess">
         </van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="车辆使用性质" class="slotRight" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.carUseNatureIdName" name="carUseNatureId">
+      <section class="incomeField">
+        <van-field readonly label="公里数" placeholder="不需填写" v-model="carInfo.kilometreNo" v-validate="'required|isNum'"
+          name="kilometreNo"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field readonly label="首次登记时间" placeholder="不需填写" v-model="carInfo.firstRegisterTime"
+          name="firstRegisterTime"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field readonly label="车牌号" placeholder="不需填写" v-model="carInfo.carLicense" name="carLicense"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field readonly label="发动机号" :readonly="false" placeholder="请输入" v-model="carInfo.carEngineNumber"
+          name="carEngineNumber"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field readonly label="车辆颜色" :readonly="false" placeholder="请输入" v-model="carInfo.carColor" name="carColor">
+        </van-field>
+      </section>
+      <section class="incomeField">
+        <van-field readonly label="燃料种类" class="slotRight" placeholder="请选择" v-model="customerName.fuelTypeName"
+          name="fuelType"></van-field>
+      </section>
+      <section class="incomeField" v-if="productDiff.lhInput">
+        <van-field readonly label="车型" class="slotRight" placeholder="请选择" v-model="customerName.vehTypeIdName"
+          name="vehTypeId"></van-field>
+      </section>
+      <section class="incomeField" v-if="productDiff.lhInput">
+        <van-field readonly label="车辆准载" placeholder="请选择" v-model="carInfo.carAllowedPassenger"
+          name="carAllowedPassenger">
+        </van-field>
+      </section>
+      <section class="incomeField">
+        <van-field readonly label="车辆使用性质" class="slotRight" placeholder="请选择" v-model="customerName.carUseNatureIdName"
+          name="carUseNatureId">
         </van-field>
       </section>
       <div v-if="!productDiff.aplhInput&&!productDiff.tsytInput">
-        <section class="incomeField pd2">
-          <van-field label="是否有驾驶证" class="slotRight" clearable :readonly="true" placeholder="请选择"
+        <section class="incomeField">
+          <van-field readonly label="是否有驾驶证" class="slotRight" placeholder="请选择"
             v-model="customerName.haveLicenseIdName" name="haveLicenseId"></van-field>
         </section>
-        <section class="incomeField pd2">
-          <van-field label="驾驶证是否有效" class="slotRight" clearable :readonly="true" placeholder="请选择"
+        <section class="incomeField">
+          <van-field readonly label="驾驶证是否有效" class="slotRight" placeholder="请选择"
             v-model="customerName.licenseWetherEffecIdName" name="licenseWetherEffecId"></van-field>
         </section>
-        <section class="incomeField pd2">
-          <van-field label="车辆主驾人" class="slotRight" clearable :readonly="true" placeholder="请选择"
+        <section class="incomeField">
+          <van-field readonly label="车辆主驾人" class="slotRight" placeholder="请选择"
             v-model="customerName.carMainDriverIdName" name="carMainDriverId">
           </van-field>
         </section>
-        <section class="incomeField pd2">
-          <van-field label="驾照号码" clearable placeholder="请输入" v-model="carInfo.drivingLicense"
-            name="drivingLicense"></van-field>
+        <section class="incomeField">
+          <van-field readonly label="驾照号码" placeholder="请输入" v-model="carInfo.drivingLicense" name="drivingLicense">
+          </van-field>
         </section>
       </div>
-      <section class="incomeField pd2" v-if="!productDiff.aplhInput&&!productDiff.tsytInput">
-        <van-field label="流量费(%)" class="slotRight" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.flowRateName"
+      <section class="incomeField" v-if="!productDiff.aplhInput&&!productDiff.tsytInput">
+        <van-field readonly label="流量费(%)" class="slotRight" placeholder="请选择" v-model="customerName.flowRateName"
           name="flowRate"></van-field>
       </section>
-      <section class="incomeField pd2" v-if="productDiff.bqapInput">
-        <van-field label="车损险保额" clearable placeholder="请输入" v-model="carInfo.carDamageInsurance"
+      <section class="incomeField" v-if="productDiff.bqapInput">
+        <van-field readonly label="车损险保额" placeholder="请输入" v-model="carInfo.carDamageInsurance"
           name="carDamageInsurance"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="过户次数" clearable placeholder="请输入" v-model="carInfo.transferTimes" name="transferTimes" :error="errors.has('transferTimes')"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="过户次数" placeholder="请输入" v-model="carInfo.transferTimes" name="transferTimes"
+          :error="errors.has('transferTimes')"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="车辆抵押次数(承租人)" clearable placeholder="请输入"
-          v-model="carInfo.carMortgageTimes" name="carMortgageTimes"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="车辆抵押次数(承租人)" placeholder="请输入" v-model="carInfo.carMortgageTimes"
+          name="carMortgageTimes"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="最近次抵押公司(承租人)" clearable :readonly="!diyaFlag" placeholder="请输入"
+      <section class="incomeField">
+        <van-field readonly label="最近次抵押公司(承租人)" :readonly="!diyaFlag" placeholder="请输入"
           v-model="carInfo.recentSolutionMortgageCompany"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="最近次解押日期" clearable :readonly="true" placeholder="请输入"
-          v-model="carInfo.recentSolutionMortgageDate"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="最近次解押日期" placeholder="请输入" v-model="carInfo.recentSolutionMortgageDate"></van-field>
       </section>
-      <section class="incomeField pd2 btNone borderRadiusBtlr">
-        <van-field label="解押天数" clearable :readonly="true" placeholder="不需填写"
-          v-model="carInfo.recentSolutionMortgageDays"></van-field>
+      <section class="incomeField btNone borderRadiusBtlr">
+        <van-field readonly label="解押天数" placeholder="不需填写" v-model="carInfo.recentSolutionMortgageDays"></van-field>
       </section>
     </section>
 
 
     <section class="incomeField_body">
       <header class="title">产品信息</header>
-      <section class="incomeField pd2">
-        <van-field label="产品名称" clearable :readonly="true" placeholder="不填写" v-model="customerName.productIdName"
-          name="productIdName"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="产品名称" placeholder="不填写" v-model="customerName.productIdName" name="productIdName">
+        </van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="用途" class="slotRight" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.rentUseIdName"
+      <section class="incomeField">
+        <van-field readonly label="用途" class="slotRight" placeholder="请选择" v-model="customerName.rentUseIdName"
           name="rentUseId"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="申请金额" placeholder="请输入" v-model="carInfo.applyAmount" name="applyAmount"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="申请金额" placeholder="请输入" v-model="carInfo.applyAmount" name="applyAmount"></van-field>
       </section>
-      <section class="incomeField pd2" v-if="productDiff.directlyProductInput">
-        <van-field label="财力证明" class="slotRight" clearable :readonly="true" placeholder="请选择"
+      <section class="incomeField" v-if="productDiff.directlyProductInput">
+        <van-field readonly label="财力证明" class="slotRight" placeholder="请选择"
           v-model="customerName.financialStatementIdName" name="financialStatementId"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="申请期限" clearable :readonly="true" placeholder="不填写"
-          v-model="customerName.applyExpiresIdName" name="applyExpiresIdName"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="申请期限" placeholder="不填写" v-model="customerName.applyExpiresIdName"
+          name="applyExpiresIdName"></van-field>
       </section>
-      <section class="incomeField pd2" v-if="!productDiff.aplhInput&&!productDiff.tsytInput">
-        <van-field label="平台使用费(%)" clearable :readonly="true" placeholder="不填写"
-          v-model="customerName.platformFeeIdName" name="platformFeeIdName"></van-field>
+      <section class="incomeField" v-if="!productDiff.aplhInput&&!productDiff.tsytInput">
+        <van-field readonly label="平台使用费(%)" placeholder="不填写" v-model="customerName.platformFeeIdName"
+          name="platformFeeIdName"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="GPS费用" clearable :readonly="true" placeholder="不需填写" v-model="carInfo.gpsFee"
-          name="gpsFee"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="GPS费用" placeholder="不需填写" v-model="carInfo.gpsFee" name="gpsFee"></van-field>
       </section>
-      <section class="incomeField pd2" v-if="productDiff.tsytInput">
-        <van-field label="保险费" clearable :readonly="true" placeholder="不需填写" v-model="carInfo.insuranceAmount"
-          name="insuranceAmount"></van-field>
+      <section class="incomeField" v-if="productDiff.tsytInput">
+        <van-field readonly label="保险费" placeholder="不需填写" v-model="carInfo.insuranceAmount" name="insuranceAmount">
+        </van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="履约保证金" clearable :readonly="true" placeholder="不需填写" v-model="carInfo.bondAmount"
-          name="bondAmount"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="履约保证金" placeholder="不需填写" v-model="carInfo.bondAmount" name="bondAmount">
+        </van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="月供" clearable :readonly="true" placeholder="不需填写" v-model="carInfo.monthPayAmount"
-          name="monthPayAmount"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="月供" placeholder="不需填写" v-model="carInfo.monthPayAmount" name="monthPayAmount">
+        </van-field>
       </section>
-      <section class="incomeField pd2" v-if="productDiff.aplhInput || productDiff.tsytInput">
-        <van-field label="盗抢险" clearable :readonly="true" placeholder="不需填写" v-model="carInfo.theftAmount"
-          name="theftAmount"></van-field>
+      <section class="incomeField" v-if="productDiff.aplhInput || productDiff.tsytInput">
+        <van-field readonly label="盗抢险" placeholder="不需填写" v-model="carInfo.theftAmount" name="theftAmount">
+        </van-field>
       </section>
-      <section class="incomeField pd2" v-if="productDiff.directlyProductInput">
-        <van-field label="应收盗抢险金额" clearable :readonly="true" placeholder="不需填写"
-          v-model="carInfo.applyReceivableTheft" name="applyReceivableTheft"></van-field>
+      <section class="incomeField" v-if="productDiff.directlyProductInput">
+        <van-field readonly label="应收盗抢险金额" placeholder="不需填写" v-model="carInfo.applyReceivableTheft"
+          name="applyReceivableTheft"></van-field>
       </section>
-      <section class="incomeField pd2" v-if="productDiff.directlyProductInput">
-        <van-field class="slotRight" label="实收盗抢险金额" clearable :readonly="true" placeholder="不需填写"
-          v-model="carInfo.receiptsTheft" name="receiptsTheft"></van-field>
+      <section class="incomeField" v-if="productDiff.directlyProductInput">
+        <van-field readonly class="slotRight" label="实收盗抢险金额" placeholder="不需填写" v-model="carInfo.receiptsTheft"
+          name="receiptsTheft"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="担保费" clearable :readonly="true" placeholder="不需填写" v-model="carInfo.guaranteeFee"
-          name="guaranteeFee"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="担保费" placeholder="不需填写" v-model="carInfo.guaranteeFee" name="guaranteeFee">
+        </van-field>
       </section>
-      <section class="incomeField pd2" v-if="productDiff.bqapInput || productDiff.lhInput">
-        <van-field label="还款卡号" clearable :readonly="false" placeholder="请填写还款卡号" v-model="carInfo.bankCard"
+      <section class="incomeField" v-if="productDiff.bqapInput || productDiff.lhInput">
+        <van-field readonly label="还款卡号" :readonly="false" placeholder="请填写还款卡号" v-model="carInfo.bankCard"
           name="bankCard"></van-field>
       </section>
-      <section class="incomeField pd2" v-if="productDiff.bqapInput || productDiff.lhInput">
-        <van-field label="还款卡开户银行" class="slotRight" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.bankNameIdName"
+      <section class="incomeField" v-if="productDiff.bqapInput || productDiff.lhInput">
+        <van-field readonly label="还款卡开户银行" class="slotRight" placeholder="请选择" v-model="customerName.bankNameIdName"
           name="bankNameIdName"></van-field>
       </section>
-      <section class="incomeField pd2" v-if="productDiff.bqapInput || productDiff.lhInput">
-        <van-field label="还款卡开户支行" clearable :readonly="false" placeholder="请填写还款卡开户支行"
-          v-model="carInfo.bankDetailAddr" name="bankDetailAddr"></van-field>
+      <section class="incomeField" v-if="productDiff.bqapInput || productDiff.lhInput">
+        <van-field readonly label="还款卡开户支行" :readonly="false" placeholder="请填写还款卡开户支行" v-model="carInfo.bankDetailAddr"
+          name="bankDetailAddr"></van-field>
       </section>
-      <section class="incomeField pd2 btNone borderRadiusBtlr">
-        <van-field label="租赁项目总价" clearable :readonly="true" placeholder="不需填写" v-model="carInfo.totalAmount"
-          name="totalAmount"></van-field>
+      <section class="incomeField btNone borderRadiusBtlr">
+        <van-field readonly label="租赁项目总价" placeholder="不需填写" v-model="carInfo.totalAmount" name="totalAmount">
+        </van-field>
       </section>
     </section>
 
@@ -201,15 +191,10 @@
   Vue.use(ActionSheet).use(Field).use(DatetimePicker).use(Popup)
   import {
     leaseAdd,
-    getPreAuditStatus,
-    getCarAccess,
     selectGpsFee,
     getServiceAmount,
     getMonthAmount,
     getProductListByTokenid,
-    selectDictionary,
-    getChe300CarAccessByVin,
-    getCYRTotalAmount,
     getOcrInfosByEid,
     getCreatedEvalPrice,
     getOcrInputInfo,
@@ -243,14 +228,6 @@
           this.diyaFlag = false
         }
       },
-      // 'carInfo.recentSolutionMortgageDate'() {
-      //   if (
-      //     this.carInfo.recentSolutionMortgageDate == '' ||
-      //     this.carInfo.recentSolutionMortgageDate == undefined
-      //   ) {
-      //     return
-      //   }
-      // },
     },
     methods: {
       isIncoming() {
@@ -299,18 +276,6 @@
               this.$toast.fail('申请金额不符合规范!')
               return
             }
-            // if (this.productDiff.tssnInput) {
-            //   if (this.carInfo.haveCreditReportId != 1) {
-            //     this.$toast.fail('该产品必须有征信报告')
-            //     return
-            //   }
-            // }
-            // if (applyAmount >= 50000) {
-            //   if (this.carInfo.haveCreditReportId != 1) {
-            //     this.$toast.fail('征信报告不能为否')
-            //     return
-            //   }
-            // }
             this.$toast.loading({
               message: '保存中...',
               forbidClick: true,
@@ -532,15 +497,6 @@
           case 'predecessorCarownerType':
             objMsg = this.dics.carownerType
             break
-            // case 'servicePack':
-            //   objMsg = this.dics.servicePackFee
-            //   break
-            // case 'insuranceFinance':
-            //   objMsg = this.dics.insuranceFinanceFee
-            //   break
-            // case 'loanWayId':
-            //   objMsg = this.dics.loanWay
-            //   break
           case 'fuelType':
             objMsg = this.dics.fuelType
             break
@@ -637,7 +593,6 @@
           this.$toast.fail('申请金额不符合规范!')
           return
         }
-
         const params = {
           productCode: this.product.productCode,
           applyAmount: applyAmount,
@@ -767,15 +722,17 @@
 </script>
 
 <style lang="scss" scoped="scoped">
-  .car-info{
+  .car-info {
     margin-top: 16px;
-    .incomeField_body{
+
+    .incomeField_body {
       width: 702px;
       margin: 24px auto;
       background: #FFFFFF;
-      box-shadow: 0px 0px 40px 0px rgba(231,231,231,1);
+      box-shadow: 0px 0px 40px 0px rgba(231, 231, 231, 1);
       border-radius: 24px;
-      .title{
+
+      .title {
         height: 82px;
         line-height: 82px;
         padding: 0 0 0 32px;
@@ -784,22 +741,26 @@
         color: #333333;
         border-bottom: 1px solid #F3F3F3;
       }
-      .incomeField{
+
+      .incomeField {
         height: 100px;
         border-bottom: 1px solid #F3F3F3;
-        /deep/{
-          .van-cell{
+
+        /deep/ {
+          .van-cell {
             line-height: 100px;
             width: 100%;
             font-size: 28px;
             color: #666666;
             padding: 0 32px;
-            .van-cell__title{
+
+            .van-cell__title {
               width: 250px;
             }
-            .van-cell__value{
-              .van-field__body{
-                input{
+
+            .van-cell__value {
+              .van-field__body {
+                input {
                   text-align: right;
                 }
               }

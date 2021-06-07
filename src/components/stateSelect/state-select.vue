@@ -1,6 +1,7 @@
 <template>
-  <section id="leftToDom" class="state-select appView">
-    <van-tabs v-model="active" class="threeItems" @click="scrollTabs">
+  <section>
+    <van-tabs v-model="active" @click="scrollTabs">
+
       <van-tab title="申请" name="1">
         <van-apply-state />
       </van-tab>
@@ -99,6 +100,7 @@
             .van-tab__text {
               height: 70px;
               line-height: 70px;
+              font-family: PingFangSC-Medium;
             }
           }
           .van-tabs__line {

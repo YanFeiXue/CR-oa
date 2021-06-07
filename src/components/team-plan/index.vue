@@ -1,167 +1,179 @@
 <template>
-  <section class="team-plan appView" id="leftToDom">
-    <van-header :title="title" :routeName="'back'" :path="'-1'"></van-header>
-
-    <section class="team-plan-search">
-      <div class="item-name">
-        <van-field
-          v-model="value"
-          class="search-field"
-          placeholder="请输入用户名"
-        >
-          <template #button>
-            <div class="search-button"></div>
-          </template>
-        </van-field>
-      </div>
-
-      <van-dropdown-menu>
-        <van-dropdown-item :title="confirmPicker(currentDate)" ref="item">
-          <van-datetime-picker
-            v-model="currentDate"
-            type="year-month"
-            title="选择年月"
-            :show-toolbar="false"
-            :formatter="formatter"
-            :max-date="maxDate"
-          />
-        </van-dropdown-item>
-      </van-dropdown-menu>
-    </section>
-    <section class="wrapper-public team-plan-wrapper">
-      <div class="plan-heaer">
-        <span class="name">叶永飞</span>
-        <div>
-          <span>当前进度:</span>
-          <span>80%</span>
+  <section>
+    <van-header title="团队计划" routeName="back" path="-1" :showSearch="true"></van-header>
+    <div class="date_list_body">
+      <div class="data_list">
+        <div class="data_item" v-for="(item, index) in dateList" :key="index">
+          <p>{{item}}</p>
         </div>
       </div>
-      <div class="plan">
-        <div class="plan-item">
-          <div class="plan-name">拜访经销商1</div>
-          <div class="plan-status">签到</div>
+      <van-icon name="arrow-left" color="#BBBBBB" size="14px" @click="dateClick('left')" />
+      <van-icon name="arrow" color="#BBBBBB" size="14px" @click="dateClick('right')" />
+    </div>
+    <div class="log_body">
+      <div class="log_item" v-for="(item, index) in 3" :key="index">
+        <div class="item_name_line">
+          <div class="item_name">
+            <p>尹晓茏</p>
+          </div>
+          <div>
+            <span class="item_schedule">当前进度：</span><span class="item_schedule_umber">80%</span>
+          </div>
         </div>
-        <div class="plan-item">
-          <div class="plan-name">拜访经销商1</div>
-          <div class="plan-status">签到</div>
-        </div>
-        <div class="plan-item">
-          <div class="plan-name">拜访经销商1</div>
-          <div class="plan-status">签到</div>
-        </div>
-        <div class="plan-item">
-          <div class="plan-name">拜访经销商1</div>
-          <div class="plan-status">签到</div>
-        </div>
-        <div class="plan-item">
-          <div class="plan-name">拜访经销商1</div>
-          <div class="plan-status">签到</div>
+        <div class="item_dealer_body">
+          <div class="item_dealer" v-for="(item1, index1) in 6" :key="index1">
+            <div class="point" v-if="index1 != 1 && index1 != 2 && index1 != 3 "></div>
+            <div class="dealer_name">
+              <p>拜访经销商1</p>
+            </div>
+            <div>
+              <span class="dealer_signin" v-if="index1 == 1">已签到</span><span class="dealer_abnormal" v-if="index1 == 1">（异常）</span>
+              <span class="dealer_signin" v-if="index1 != 1 && index1 != 2 && index1 != 3 ">已签到</span>
+              <span class="dealer_signin" v-if="index1 == 2">未签到</span>
+              <span class="dealer_signin" v-if="index1 == 3">未到签到时间</span>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   </section>
 </template>
 
 <script>
-import Vue from 'vue'
-import { DropdownMenu, DropdownItem, DatetimePicker } from 'vant'
-Vue.use(DropdownMenu).use(DropdownItem).use(DatetimePicker)
-export default {
-  name: 'SalesTask',
-  data() {
-    return {
-      title: '团队计划',
-      dateFlag: false,
-      value: '',
-      dateVal: '2020-2',
-      minDate: new Date(2020, 0, 1),
-      maxDate: new Date(),
-      currentDate: new Date()
-    }
-  },
-  created() {},
-  mounted() {},
-  methods: {
-    formatter(type, val) {
-      if (type === 'year') {
-        return `${val}年`
-      } else if (type === 'month') {
-        return `${val}月`
+  import Vue from 'vue'
+  export default {
+    data() {
+      return {
+        dateList:[
+          '6-12','6-13','6-14'
+        ],
       }
-      return val
     },
-    dateChange() {
-      this.dateVal = this.confirmPicker(this.currentDate)
-      this.dateFlag = false
-    },
-    confirmPicker(value) {
-      // 确定按钮，时间格式化并显示在页面上
-      var date = value
-      var m = date.getMonth() + 1
-      var d = date.getDate()
-      if (m >= 1 && m <= 9) {
-        m = '0' + m
+    created() {},
+    mounted() {},
+    methods: {
+      dateClick(active){
+        let date = ''
+        if (active == 'left') {
+
+        }else{
+
+        }
       }
-      if (d >= 0 && d <= 9) {
-        d = '0' + d
-      }
-      var timer = date.getFullYear() + '-' + m + '-' + d
-      return timer
     }
   }
-}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="less" scoped>
-.team-plan {
-  .team-plan-search {
-    padding: 10px 24px;
-    background: #fff;
-    position: relative;
+<style lang="scss" scoped>
+.date_list_body{
+  margin: 20px auto 24px;
+  width: 702px;
+  height: 116px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 40px 0px rgba(227, 227, 227, 0.8);
+  border-radius: 24px;
+  padding: 40px 94px;
+  box-sizing: border-box;
+  position: relative;
+  .data_list{
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: space-between;
-  }
-  .team-plan-wrapper {
-    padding: 30px;
-    .plan-heaer {
-      display: flex;
-      justify-content: space-between;
-      font-family: PingFangSC-Medium, PingFang SC;
-      .name {
-        font-size: 30px;
-        font-weight: 600;
-        color: #333333;
+    overflow-x: auto;
+    .data_item{
+      width: 234px;
+      font-size: 28px;
+      color: #333333;
+      scrollbar-width: none;
+      .data_item::-webkit-scrollbar {
+        background-color: none;
+        color: none;
       }
-      div {
-        display: flex;
-        font-size: 26px;
-        font-weight: 400;
-        span:first-child {
-          color: #999999;
-        }
-        span:last-child {
-          color: #FF223D;
-          margin-left: 10px;
-        }
+      P{
+        width: 220px;
       }
     }
-    .plan {
-      padding:20px;
-      box-sizing: border-box;
-      .plan-item {
+  }
+  .van-icon-arrow-left{
+    position: absolute;
+    top: 42px;
+    left: 32px;
+  }
+  .van-icon-arrow{
+    position: absolute;
+    top: 42px;
+    right: 32px;
+  }
+}
+.log_body{
+  width: 702px;
+  margin: 0 auto;
+  .log_item{
+    width: 100%;
+    height: 358px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 40px 0px rgba(227, 227, 227, 0.8);
+    border-radius: 24px;
+    box-sizing: border-box;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    .item_name_line{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      .item_name{
+        font-size: 30px;
+        color: #333333;
+        font-weight: bold;
+      }
+      .item_schedule{
         font-size: 26px;
-        display: inline-block;
-        margin:0 20px;
-        .plan-name {
-          font-weight: 600;
-          color: #333333;
-          padding:10px 0;
+        color: #999999;
+      }
+      .item_schedule_umber{
+        font-size: 26px;
+        font-weight: bold;
+        color: #FF223D;
+      }
+    }
+    .item_dealer_body{
+      margin: 0 18px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .item_dealer{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+        width: 200px;
+        box-sizing: border-box;
+        padding: 5px 0 0 20px;
+        position: relative;
+        .point{
+          width: 8px;
+          height: 8px;
+          background: #FF223D;
+          border-radius: 4px;
+          position: absolute;
+          top: 18px;
+          left: 4px;
         }
-        .plan-status {
+        .dealer_name{
+          font-size: 26px;
+          color: #333333;
+          margin-bottom: 10px;
+        }
+        .dealer_signin{
           font-size: 22px;
           color: #BBBBBB;
+        }
+        .dealer_abnormal{
+          font-size: 22px;
+          color: #FF223D;
         }
       }
     }

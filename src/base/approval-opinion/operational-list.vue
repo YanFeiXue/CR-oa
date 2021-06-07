@@ -62,7 +62,9 @@ export default {
     routerPath(router){
       this.$router.push({path: router, query:{
         leaseId: this.leaseId,
-        incoming: true
+        incoming: true,
+        capitalId: this.$route.query.capitalId,
+        productCode: this.$route.query.productCode
       }})
     },
   }

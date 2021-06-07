@@ -1,13 +1,13 @@
 <template>
   <section class="remark-info">
     <section class="incomeField borderRadius18 btNone textareaStyle pd2">
-      <van-field clearable placeholder="请输入备注" autosize type="textarea" v-model="remarkInfo.remark" name="remark">
+      <van-field clearable placeholder="请输入备注" autosize readonly type="textarea" v-model="remarkInfo.remark" name="remark">
       </van-field>
     </section>
     <div v-if="!incoming">
       <header class="title">提交意见:</header>
       <section class="incomeField borderRadius18 btNone textareaStyle pd2">
-        <van-field clearable placeholder="请输入提交意见" autosize type="textarea" v-model="dealerMsg" name="dealerMsg">
+        <van-field clearable placeholder="请输入提交意见" autosize readonly type="textarea" v-model="dealerMsg" name="dealerMsg">
         </van-field>
       </section>
     </div>

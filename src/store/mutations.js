@@ -57,6 +57,12 @@ const mutations = {
   },
   SET_AREA(state, area) {
     state['area'] = area
+  },
+  SET_LOGFORM(state, logForm){
+    state['logForm'] = logForm
+  },
+  SET_WEEKLYFORM(state, weeklyForm){
+    state['weeklyForm'] = weeklyForm
   }
 }
 
