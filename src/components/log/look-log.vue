@@ -7,30 +7,30 @@
       <van-tab title="团队日志" name="3"></van-tab>
     </van-tabs>
     <div class="wrapper" ref="wrapper">
-      <!-- <ul v-if="logList.length"> -->
+      <ul v-if="logList.length">
         <mt-loadmore :auto-fill="false" :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
-          <div class="log_item" v-for="(item, index) in 5" :key="index" @click="logListClick(item)">
+          <div class="log_item" v-for="(item, index) in logList" :key="index" @click="logListClick(item)">
             <div class="log_item_date">
-              <p class="date">2021年04月16日</p>
-              <p>星期五</p>
+              <p class="date">{{item.createTime}}</p>
+              <p>{{item.day}}</p>
             </div>
             <div class="log_item_content">
               <div class="log_item_img_test">
-                <img src="../../assets/img/BXSP.png" />
+                <img src="../../../static/img/head.png" />
                 <div class="log_item_test">
-                  <p class="center_log">莫贤广的销售中心日志</p>
-                  <p class="center_date">2021-05-18  14:25</p>
+                  <p class="center_log">{{item.createUser}}的销售中心{{item.type == 'DAILY_REPORT' ? '日报' : '周报'}}</p>
+                  <p class="center_date">{{item.updateTime}}</p>
                 </div>
               </div>
-              <p class="business_trip">是否出差：否</p>
-              <p class="trip_city">出差城市：长沙</p>
-              <p class="visit_dealer">拜访代理商名称：搬运工车服</p>
+              <p class="business_trip">是否出差：{{item.onBusinessFlag ? '是' : '否'}}</p>
+              <p class="trip_city">出差城市：{{item.onBusinessCity || '未出差'}}</p>
+              <p class="visit_dealer">拜访代理商名称：{{item.visitDealerName || '未拜访代理商'}}</p>
               <p class="read">已读</p>
             </div>
           </div>
         </mt-loadmore>
-      <!-- </ul> -->
-      <!-- <van-details v-else></van-details> -->
+      </ul>
+      <van-details v-else></van-details>
     </div>
     <van-footer :activeNum="0" />
   </section>
@@ -46,6 +46,7 @@
   import header from '../../base/Header'
   import footer from '../../base/Footer/logFooter'
   import { loadMore } from '../../common/js/mixin.js'
+  import { getRecordList } from '../../api/api'
   export default{
     mixins:[loadMore],
     components: {
@@ -56,26 +57,53 @@
       return {
         logtitle: '看日志',
         active: 1,
-        logList:[]
+        logList:[],
+        logForm:{
+          page: 1,
+          size: 10,
+          userId: ''
+        }
       }
     },
     mounted() {
-
     },
     methods: {
       _getDataInfo(){
-
+        getRecordList({...this.logForm}).then(res => {
+          if (res.code != 0) {
+            return this.$toast.fail(res.msg)
+          }
+          res.data.forEach(item => {
+            let getDay = new Date(item.updateTime).getDay()
+            let weeks = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']
+            item.day = weeks[getDay - 1]
+          })
+          this.logList = res.data
+        })
       },
       scrollTabs(name) {
-
-      },
-      logListClick(){
-
+        if (name == 1) {
+          this.logForm.userId = ''
+        }else if (name == 2) {
+          this.logForm.userId = sessionStorage.getItem('customId')
+        }
+        this._getDataInfo(false, true)
       },
       logListClick(item){
-        this.$router.push({path:'/pageMain/log-details', query:{
-          type: 'look'
-        }})
+        console.log(item);
+        if (item.type == 'DAILY_REPORT') {
+          this.$router.push({path:'/pageMain/log-details', query:{
+            useType: 'look',
+            type: item.type,
+            id: item.id
+          }})
+        }else if (item.type == 'WEEKLY_REPORT') {
+          this.$router.push({path:'/pageMain/weekly', query:{
+            useType: 'look',
+            type: item.type,
+            id: item.id
+          }})
+        }
       }
     },
   }
@@ -84,7 +112,7 @@
 <style lang="scss" scoped="scoped">
   /deep/ {
     .van-tabs__wrap {
-      height: 70px;
+      height: 100px;
       width: 750px;
       margin: auto;
     }
@@ -133,8 +161,10 @@
         align-items: center;
         font-size: 26px;
         color: #333333;
-        padding: 0 0 24px 40px;
+        padding: 0 0 22px 40px;
         border-bottom: 1px solid #E7E7E7;
+        height: 36px;
+        line-height: 36px;
         .date{
           margin-right: 32px;
         }

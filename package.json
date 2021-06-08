@@ -25,6 +25,7 @@
     "less-loader": "^5.0.0",
     "lib-flexible": "^0.3.2",
     "mint-ui": "^2.2.13",
+    "moment": "^2.29.1",
     "node-sass": "^4.13.0",
     "pdfjs-dist": "^2.2.228",
     "postcss-pxtorem": "^4.0.1",

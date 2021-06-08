@@ -50,3 +50,12 @@ function setHtmlFontSize() {
 };
 setHtmlFontSize()
 Vue.config.productionTip = false
+Array.prototype.contains = function (obj) {
+  var i = this.length;
+  while (i--) {
+    if (this[i].authority === obj) {
+      return true;
+    }
+  }
+  return false;
+};

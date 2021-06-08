@@ -1,42 +1,81 @@
 import service from './catchErr'
-// const port = 'http://192.168.10.47:8134/'
 const kaer = 'http://www.carcredit.com.cn/carcreditNews/selectNewsTheFirstFour'
-const port = 'https://ccbs.carcredit.com.cn/'
+// const port = 'https://ccbs.carcredit.com.cn'
+// const port = 'http://192.168.10.47:8123'
+// const port = 'http://192.168.10.32:8124'
+// const port = 'http://192.168.10.28:8123'
+// const port = 'http://192.168.10.110'
+// const port = 'https://prerelease.carcredit.com.cn'
+const port = ''
 const salesappBase = '/salesapp'
+const leaseBase = '/lease'
+const ossBase = '/oss'
 
 
 // 判断角色
-export const checkLogin = params => service.post(salesappBase + `/login/checkLogin`, params).then(res => res.data)
+export const checkLogin = params => service.post(port + salesappBase + `/login/checkLogin`, params).then(res => res.data)
 // 短信验证 登录
-export const checkAppAuthCode = params => service.post(salesappBase + `/login/checkAppAuthCode`, params).then(res => res.data)
+export const checkAppAuthCode = params => service.post(port + salesappBase + `/login/checkAppAuthCode`, params).then(res => res.data)
 // 发送验证码
-export const sendSms = params => service.post(salesappBase + `/login/sendSms`, params).then(res => res.data)
+export const sendSms = params => service.post(port + salesappBase + `/login/sendSms`, params).then(res => res.data)
 // 获取预审批结果
-export const getPreAudits = params => service.post(salesappBase + `/reject/getPreAudits`, params).then(res => res.data)
+export const getPreAudits = params => service.post(port + salesappBase + `/reject/getPreAudits`, params).then(res => res.data)
 // 获取归档状态列表
-export const getFileReturnCustomers = params => service.post(salesappBase + `/lease/getFileReturnCustomers`, params).then(res => res.data)
+export const getFileReturnCustomers = params => service.post(port + salesappBase + `/lease/getFileReturnCustomers`, params).then(res => res.data)
 // 获取还款列表
-export const getDealerLoanDataDetail = params => service.post(salesappBase + `/lease/getDealerLoanDataDetail`, params).then(res => res.data)
+export const getDealerLoanDataDetail = params => service.post(port + salesappBase + `/lease/getDealerLoanDataDetail`, params).then(res => res.data)
 // 获取申请状态
-export const getOrderList = params => service.post(salesappBase + `/lease/getOrderList`, params).then(res => res.data)
+export const getOrderList = params => service.post(port + salesappBase + `/lease/getOrderList`, params).then(res => res.data)
 // 流程备注
-export const getAllTaskMsgList = params => service.post(salesappBase + `/lease/getAllTaskMsgList`, params).then(res => res.data)
+export const getAllTaskMsgList = params => service.post(port + salesappBase + `/lease/getAllTaskMsgList`, params).then(res => res.data)
 // 影像件
-export const selectAllFileNodeDir = params => service.post(salesappBase + `/attachment/selectAllFileNodeDir`, params).then(res => res.data)
+export const selectAllFileNodeDir = params => service.post(port + salesappBase + `/attachment/selectAllFileNodeDir`, params).then(res => res.data)
 // 查看进件申请
-export const showLeaseForm = params => service.post(salesappBase + `/lease/showLeaseForm`, params).then(res => res.data)
+export const showLeaseForm = params => service.post(port + salesappBase + `/lease/showLeaseForm`, params).then(res => res.data)
 // 查看进件byId
-export const getFileListById = params => service.post(salesappBase + `/attachment/getFileListById`, params).then(res => res.data)
+export const getFileListById = params => service.post(port + salesappBase + `/attachment/getFileListById`, params).then(res => res.data)
 // 获取平台使用费(%)
-export const getAllDictionarie = params => service.post(salesappBase + `/appdealer/getAllDictionarie`, params).then(res => res.data)
+export const getAllDictionarie = params => service.post(port + salesappBase + `/appdealer/getAllDictionarie`, params).then(res => res.data)
 // 获取地址
-export const getAllAreas = params => service.post(salesappBase + `/appdealer/getAllAreas`, params).then(res => res.data)
+export const getAllAreas = params => service.post(port + salesappBase + `/appdealer/getAllAreas`, params).then(res => res.data)
 // 查询不同产品_字段
-export const getProductInput = params => service.post(salesappBase + `/lease/getProductInput`, params).then(res => res.data)
+export const getProductInput = params => service.post(port + salesappBase + `/lease/getProductInput`, params).then(res => res.data)
 // 首页工作台
-export const Workbench = params => service.post(salesappBase + `/Workbench/Workbench`, params).then(res => res.data)
+export const Workbench = params => service.post(port + salesappBase + `/Workbench/Workbench`, params).then(res => res.data)
 // 复制
-export const getSignUrl = params => service.post(salesappBase + `/reject/getSignUrl`, params).then(res => res.data)
+export const getSignUrl = params => service.post(port + salesappBase + `/reject/getSignUrl`, params).then(res => res.data)
+// 获取日志
+export const getRecordList = params => service.post(port + salesappBase + `/DailyRecord/getRecordList`, params).then(res => res.data)
+// 写日报
+export const dailyReportSave = params => service.post(port + salesappBase + `/DailyReport/save`, params).then(res => res.data)
+// 查询日报，周报内容
+export const getReportByIdAndType = params => service.post(port + salesappBase + `/DailyRecord/getReportByIdAndType`, params).then(res => res.data)
+// 写日报评论
+export const dailyReportCommentSave = params => service.post(port + salesappBase + `/DailyReportComment/save`, params).then(res => res.data)
+// 写周报
+export const weeklyReportSave = params => service.post(port + salesappBase + `/WeeklyReport/save`, params).then(res => res.data)
+// 上传附件
+export const uploadAttachment = params => service.post(port + salesappBase + `/salesapp/uploadAttachment`, params).then(res => res.data)
+// 查看oss文件
+export const getStsToken = params => service.post(port + ossBase + `/getStsToken`, params).then(res => res.data)
+// 计算器专业
+export const financialCalculatePro = params => service.post(port + salesappBase + `/financialCalculatePro`, params).then(res => res.data)
+// 计算器我司
+export const financialCalculateCarCredit = params => service.post(port + salesappBase + `/financialCalculateCarCredit`, params).then(res => res.data)
+// 推动进件
+export const getDealerStatus = params => service.post(port + salesappBase + `/statistics/getDealerStatus`, params).then(res => res.data)
+// 推动放款
+export const getFinanceStatus = params => service.post(port + salesappBase + `/statistics/getFinanceStatus`, params).then(res => res.data)
+// 获取产品列表
+export const getProductList = params => service.post(port + salesappBase + `/getProductList`, params).then(res => res.data)
+// 修改推动进件放款状态
+export const saveDataStatus = params => service.post(port + salesappBase + `/statistics/saveDataStatus`, params).then(res => res.data)
+// 获取权限按钮
+export const getLimitsOfAuthority = params => service.post(port + leaseBase + `/role/getLimitsOfAuthority`, params).then(res => res.data)
+
+
+
+
 
 
 
@@ -183,8 +222,6 @@ export const deleteFile = params => service.post(`${port + attachment}/file/dele
 export const selectAllFileNodeDirs = params => service.post(`${port + attachment}/selectAllFileNodeDirs`, params).then(res => res.data)
 // downLoadOcrFileFromOss  回显影像件列表
 export const downLoadOcrFileFromOss = params => service.post(`${port + attachment}/downLoadOcrFileFromOss`, params).then(res => res.data)
-// https://zuul.carcredit.com.cn/attachment/getStsToken
-export const getStsToken = params => service.post(`${port}oss/getStsToken`, params).then(res => res.data)
 // 上传oss===>nasdownloadFile
 export const downloadFile = params => service.post(`${port}oss/downloadFile`, params).then(res => res.data)
 export const queryStatus = params => service.post(`${port + autoreject}/autoreject/queryStatus`, params).then(res => res.data)
@@ -238,9 +275,3 @@ export const getLeaseProvince = params => service.post(`${port + lease}/Dictiona
 export const getPreAuditStatus = params => service.post(`${port + dealer}/autoreject/getPreAuditStatus`, params).then(res => res.data).catch(error => {
 
 })
-
-
-
-
-
-
