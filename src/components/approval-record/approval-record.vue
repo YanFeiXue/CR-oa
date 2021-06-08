@@ -183,27 +183,27 @@
         switch (auditResult){
           case 0:
           case '0':
-            return '../../../static/img/signWait.png'
+            return './static/img/signWait.png'
             break;
           case 1:
           case '1':
-            return '../../../static/img/signPass.png'
+            return './static/img/signPass.png'
             break;
           case 2:
           case '2':
-            return '../../../static/img/underScoring.png'
+            return './static/img/underScoring.png'
             break;
           case 3:
           case '3':
-            return '../../../static/img/signThird.png'
+            return './static/img/signThird.png'
             break;
           case 4:
           case '4':
-            return '../../../static/img/signCredit.png'
+            return './static/img/signCredit.png'
             break;
           case 5:
           case '5':
-            return '../../../static/img/noneResult.png'
+            return './static/img/noneResult.png'
             break;
           default:
             break;
@@ -213,15 +213,15 @@
         switch (signStatus){
           case 0:
           case '0':
-            return '../../../static/img/signFail.png'
+            return './static/img/signFail.png'
             break;
           case 1:
           case '1':
-            return '../../../static/img/signning.png'
+            return './static/img/signning.png'
             break;
           case 2:
           case '2':
-            return '../../../static/img/signSuccess.png'
+            return './static/img/signSuccess.png'
             break;
           default:
             break;

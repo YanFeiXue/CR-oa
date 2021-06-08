@@ -189,6 +189,9 @@
         if (this.SelectProductS == '') {
           return this.$toast.fail('期数不能为空')
         }
+        if (item.number == '') {
+          return
+        }
         if (index == 3 || index == 5 || index == 6) {
           item.number = item.number / 100
         }
