@@ -20,12 +20,12 @@ module.exports = {
         }
       },
       '/salesapp': {
-        target: 'https://ccbs.carcredit.com.cn',
+        // target: 'https://ccbs.carcredit.com.cn',
         // target: 'http://192.168.10.47:8123',
         // target: 'http://192.168.10.32:8124',
         // target: 'http://192.168.10.110',
         // target: 'http://192.168.10.28:8123',
-        // target: 'https://prerelease.carcredit.com.cn',
+        target: 'https://prerelease.carcredit.com.cn',
         changeOrigin: true,
         pathRewrite: {
           '^/salesapp': '/salesapp'
