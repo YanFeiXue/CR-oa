@@ -4,7 +4,7 @@
       <van-tab title="我司产品" name="1">
         <section class="products_body">
           <div class="chose_products_body">
-            <van-field v-model="FinancingAmountF" label="融资金额(元)" placeholder="请输入融资金额" required />
+            <van-field v-model="FinancingAmountF" label="融资金额(元)" placeholder="请输入融资金额" required @blur="FinancingAmountFBlur" />
             <van-field class="select_product" v-model="SelectProductF" label="选择产品" placeholder="请选择产品" required readonly
               @click="showProductPop">
               <template #button>
@@ -16,8 +16,11 @@
             <p>计算结果如下</p>
           </div>
           <div class="result">
-            <van-field v-for="(item, index) in resultsList" :key="index" v-model="item.number" :label="item.name"
-              readonly />
+            <van-field v-for="(item, index) in resultsList" :key="index" v-model="item.number" :label="item.name" readonly>
+              <template #button v-if="index == 3 || index == 5 || index == 6">
+                <p>%</p>
+              </template>
+            </van-field>
           </div>
           <div class="under_tip">
             <img src="../../../static/img/waring.png" />
@@ -30,7 +33,7 @@
         <section class="products_body">
           <div class="chose_products_body">
             <van-field v-model="FinancingAmountS" label="融资金额(元)" placeholder="请输入融资金额" required />
-            <van-field class="select_product" v-model="SelectProductS" label="选择期数" placeholder="请选择产品" required readonly
+            <van-field class="select_product" v-model="SelectProductS" label="选择期数" placeholder="选择期数" required readonly
               @click="showProductPop">
               <template #button>
                 <img class="select_product_img" src="../../../static/img/xiala.png" />
@@ -41,8 +44,11 @@
             <p>请输入以下任意一项数据用来计算</p>
           </div>
           <div class="result">
-            <van-field v-for="(item, index) in resultsList" :key="index" v-model="item.number" :label="item.name"
-              v-if="index != 0" @blur="ZYBBlur(item, index)" />
+            <van-field v-for="(item, index) in resultsList" :key="index" v-model="item.number" :label="item.name" v-if="index != 0" @blur="ZYBBlur(item, index)" @focus="ZYBFocus">
+              <template #button v-if="index == 3 || index == 5 || index == 6">
+                <p>%</p>
+              </template>
+            </van-field>
           </div>
           <div class="under_tip">
             <img src="../../../static/img/waring.png" />
@@ -142,10 +148,6 @@
       }
     },
     watch: {
-      FinancingAmountF(newValue){
-        if (this.SelectProductF == '') return
-        this.getFinancialCalculateCarCredit()
-      },
       SelectProductF(newValue){
         if (this.FinancingAmountF == '') return
         this.getFinancialCalculateCarCredit()
@@ -181,6 +183,18 @@
         this.productPop = false
       },
       ZYBBlur(item, index) {
+        if (this.FinancingAmountS == '') {
+          return this.$toast.fail('融资金额不能为空')
+        }
+        if (this.SelectProductS == '') {
+          return this.$toast.fail('期数不能为空')
+        }
+        if (item.number == '') {
+          return
+        }
+        if (index == 3 || index == 5 || index == 6) {
+          item.number = item.number / 100
+        }
         let data = {
           amount: this.FinancingAmountS,
           periods: this.SelectProductS,
@@ -188,9 +202,15 @@
           value: item.number
         }
         financialCalculatePro(data).then(res => {
+          if (res.code != 0) {
+            this.resultsList.forEach(item => {
+              item.number = ''
+            })
+            return this.$toast.fail(res.msg)
+          }
           ['monthlyMortgagePayment', 'monthlyInterest', 'rate', 'tenThousandcoefficient', 'monthlyInterestRate', 'annualInterestRate', 'totalPayment', 'totalInterestRate'].forEach((item, index) => {
             if (item == 'rate' || item == 'monthlyInterestRate' || item == 'annualInterestRate' ) {
-              this.resultsList[index + 1].number = (res.data[item] * 100).toFixed(2) + '%'
+              this.resultsList[index + 1].number = (res.data[item] * 100).toFixed(2)
             }else{
               this.resultsList[index + 1].number = res.data[item]
             }
@@ -203,14 +223,29 @@
           productId: this.productId,
           productVersion: this.productVersion
         }).then(res => {
+          if (res.code != 0) {
+            this.resultsList.forEach(item => {
+              item.number = ''
+            })
+            return this.$toast.fail(res.msg)
+          }
           ['periods', 'monthlyMortgagePayment', 'monthlyInterest', 'rate', 'tenThousandcoefficient', 'monthlyInterestRate', 'annualInterestRate', 'totalPayment', 'totalInterestRate'].forEach((item, index) => {
             if (item == 'rate' || item == 'monthlyInterestRate' || item == 'annualInterestRate' ) {
-              this.resultsList[index].number = (res.data[item] * 100).toFixed(2) + '%'
+              this.resultsList[index].number = (res.data[item] * 100).toFixed(2)
             }else{
               this.resultsList[index].number = res.data[item]
             }
           })
         })
+      },
+      ZYBFocus(){
+        this.resultsList.forEach(item => {
+          item.number = ''
+        })
+      },
+      FinancingAmountFBlur(){
+        if (this.SelectProductF == '') return
+        this.getFinancialCalculateCarCredit()
       },
       vanTabsClick(name) {
         this.activeName = name
@@ -223,44 +258,6 @@
 </script>
 
 <style lang="scss" scoped="scoped">
-  /deep/ {
-    .van-tabs--line {
-      .van-tabs__wrap {
-        height: 88px;
-        width: 450px;
-        margin: auto;
-
-        .van-tabs__nav {
-          margin: 15px 0;
-          height: 70px;
-
-          .van-tab--active {
-            color: #333333;
-            font-weight: bold;
-          }
-
-          .van-tab {
-            font-size: 34px;
-            height: 70px;
-
-            .van-tab__text {
-              height: 70px;
-              line-height: 70px;
-              font-family: PingFangSC-Medium;
-            }
-          }
-
-          .van-tabs__line {
-            width: 40px;
-            height: 6px;
-            background: #22A78E;
-            border-radius: 3px;
-          }
-        }
-      }
-    }
-  }
-
   .barBack {
     position: absolute;
     left: 28px;
@@ -412,7 +409,18 @@
 
             .van-field__body {
               justify-content: flex-end;
-
+              position: relative;
+              .van-field__button{
+                position: absolute;
+                right: 0;
+                height: 72px;
+                top: 0;
+                line-height: 72px;
+                width: 60px;
+                text-align: center;
+                border-left: 1px solid #DBDBDB;
+                padding: 0;
+              }
               .van-field__control {
                 width: 430px;
                 height: 72px;
@@ -447,8 +455,6 @@
     }
   }
 
-
-
   /deep/ {
     .van-popup {
       .van-picker {
@@ -478,6 +484,41 @@
         .van-picker__columns {
           li {
             font-size: 30px;
+          }
+        }
+      }
+    }
+    .van-tabs--line {
+      .van-tabs__wrap {
+        height: 88px;
+        width: 450px;
+        margin: auto;
+
+        .van-tabs__nav {
+          margin: 15px 0;
+          height: 70px;
+
+          .van-tab--active {
+            color: #333333;
+            font-weight: bold;
+          }
+
+          .van-tab {
+            font-size: 34px;
+            height: 70px;
+
+            .van-tab__text {
+              height: 70px;
+              line-height: 70px;
+              font-family: PingFangSC-Medium;
+            }
+          }
+
+          .van-tabs__line {
+            width: 40px;
+            height: 6px;
+            background: #22A78E;
+            border-radius: 3px;
           }
         }
       }
