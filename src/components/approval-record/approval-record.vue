@@ -166,7 +166,7 @@
         }, 800)
       },
       showAuditResultDialog(item){
-        if (['2', '5'].includes(item.auditResult) && this.autorejectReasonVisible){
+        if (['2', '5'].includes(item.auditResult) && this.autorejectReasonVisibleFlag){
           this.$dialog.alert({
             message: item.rejectReason
           })
@@ -176,7 +176,7 @@
         getLimitsOfAuthority({
           tokenId: sessionStorage.getItem('tokenid')
         }).then(res => {
-          this.autorejectReasonVisibleFlag = data.contains('autorejectReasonVisible')
+          this.autorejectReasonVisibleFlag = res.data.contains('autorejectReasonVisible')
         })
       },
       getAuditResult(auditResult){
