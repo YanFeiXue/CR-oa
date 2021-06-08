@@ -26,7 +26,6 @@
   Vue.use(Tab)
     .use(Tabs)
     .use(ActionSheet)
-  import Header from '../../base/Header'
   import {
     getFileListById,
     selectAllFileNodeDir
@@ -37,12 +36,9 @@
   } from 'vuex'
   export default {
     name: 'uploadFile',
-    components: {
-      'van-header': Header
-    },
     data() {
       return {
-        title: '工作计划',
+        title: '查看影像件',
         active: 0,
         dataInfo: [],
         isShow: false,
@@ -51,6 +47,7 @@
         productCode: this.$route.query.productCode,
         productId: this.$route.query.productId,
         productVersion: this.$route.query.productVersion,
+        capitalId: this.$route.query.capitalId,
         sheet_flag: false,
         secondDirlList: []
       }
@@ -63,6 +60,14 @@
         this.setIndex(0)
       }
       next()
+    },
+    created() {
+      this.$toast.loading({
+        message: '加载中',
+        forbidClick: true,
+        duration: 0,
+        loadingType: 'spinner'
+      })
     },
     mounted() {
       this.active = this.attachmentIndex
@@ -79,12 +84,14 @@
         this.setIndex(name)
       },
       _selectAllFileNodeDir() {
-        this.$toast.loading({
-          mask: false,
-          message: '目录加载中...'
-        })
+        // this.$toast.loading({
+        //   mask: false,
+        //   message: '目录加载中...'
+        // })
         selectAllFileNodeDir({
-          leaseId: this.leaseId
+          leaseId: this.leaseId,
+          productCode: this.productCode,
+          capitalId: this.capitalId,
         }).then(data => {
           if (data.code != 0) {
             this.$toast.fail(data.msg)
@@ -97,7 +104,6 @@
         })
       },
       itemClick(secondDirlList, item) {
-        console.log(secondDirlList, item);
         if (secondDirlList.length) {
           this.sheet_flag = true
           this.obj = {}
@@ -129,7 +135,6 @@
         }
       },
       jump(title, id, fileNodeDirId) {
-        console.log(title, id, fileNodeDirId);
         this.queryData = {
           title: title,
           id: id,
@@ -156,7 +161,6 @@
       },
       initData() {
         const _this = this
-
         function PreadFile(filePath) {
           return new Promise(function(resolve, reject) {
             _this.$dictionary.initDic().then(res => {
@@ -206,15 +210,16 @@
     .uploadFile {
 
       /deep/.van-tabs{
+
         .van-tabs__wrap {
           height: 100px;
-          margin: auto;
+          margin: -30px auto;
 
           .van-tabs__nav{
             margin: 15px 0;
             height: 70px;
             .van-tab--active {
-              color: #24A494;
+              color: #333333;
               font-weight: bold;
               .van-tab__text {
                 height: 70px;
@@ -222,7 +227,7 @@
               }
             }
             .van-tab {
-              font-size: 34px;
+              font-size: 30px;
               height: 70px;
               .van-tab__text {
                 height: 70px;
@@ -230,10 +235,10 @@
               }
             }
             .van-tabs__line {
-              width: 48px;
+              width: 40px;
               height: 6px;
               background: #24A494;
-              border-radius: 3px;
+              border-radius: 4px;
             }
           }
         }
@@ -283,7 +288,7 @@
 
       .item {
         width: 220px;
-        height: 160px;
+        height: 180px;
         margin: 32px 0 0 20px;
         position: relative;
         display: flex;
@@ -312,7 +317,7 @@
         }
 
         img {
-          margin-top: 15px;
+          margin-top: 20px;
         }
 
         .w80 {

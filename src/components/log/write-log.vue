@@ -33,6 +33,7 @@
         logList:[
           {
             name:'日报',
+            type:'DAILY_REPORT',
             contentList:[
               {
                 title:'今日完成工作'
@@ -47,6 +48,7 @@
           },
           {
             name:'周报',
+            type:'WEEKLY_REPORT',
             contentList:[
               {
                 title:'任务指标进度'
@@ -67,9 +69,15 @@
     },
     methods: {
       logListClick(item) {
-        this.$router.push({path:'/pageMain/log-details', query:{
-          type: 'write'
-        }})
+        if (item.type == 'DAILY_REPORT') {
+          this.$router.push({path:'/pageMain/log-details', query:{
+            useType: 'write',
+          }})
+        }else if (item.type == 'WEEKLY_REPORT') {
+          this.$router.push({path:'/pageMain/weekly', query:{
+            useType: 'write',
+          }})
+        }
       }
     },
   }

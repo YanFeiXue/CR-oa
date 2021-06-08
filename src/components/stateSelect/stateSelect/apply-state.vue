@@ -5,11 +5,14 @@
         <van-field v-model="filterVal" ref="filterVal" @click="focusThis('filterVal')" placeholder="请输入客户姓名" />
         <van-button type="default" @click="filterData()">查询</van-button>
       </div>
-      <div class="screen">
+      <div class="screen" @click="applySheet_flag = true">
         <span>筛选</span>
         <img src="../../../../static/img/shanxuan.png" />
       </div>
     </div>
+    <van-action-sheet v-model="applySheet_flag" :actions="option" cancel-text="取消" @cancel="onCancel_sheet"
+      @select="onSelect_sheet" />
+
     <div class="wrapper" ref="wrapper">
       <ul v-if="dataInfo.length">
         <mt-loadmore :auto-fill="false" :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded"
@@ -17,7 +20,7 @@
           <div class="list_item" v-for="(item, index) in dataInfo" :key="index" @click="routerPath(item)">
             <div class="item_line">
               <p class="name">{{item.customerName}}</p>
-              <p class="cancal">取消</p>
+              <p class="cancal">{{item.processStatus}}</p>
             </div>
             <div class="item_line_two">
               <p class="approved_amount">核批金额：</p>
@@ -26,6 +29,10 @@
             <div class="item_line_three">
               <p class="product_name">产品名称：</p>
               <p class="product">{{item.productName}}</p>
+            </div>
+            <div class="item_line_three">
+              <p class="product_name">经销商名称：</p>
+              <p class="product">{{item.dealerName}}</p>
             </div>
           </div>
         </mt-loadmore>
@@ -69,7 +76,12 @@
         customerName: '',
         applySheet_flag: false,
         detailsFlag: false,
+        applySheet_flag: false,
         option: [{
+            value: 0,
+            name: '全部'
+          },
+          {
             value: 1,
             name: '新申请'
           },
@@ -147,15 +159,15 @@
           customerName: '', //申请人
           operator: '', //操作人
           capitalId: [],
-          processStatus: '', //流程状态
+          statusId: '', //流程状态
           processId: '2', // 3
           productId: '', // []
-          pageNum: 1,
-          pageSize: 10,
+          page: 1,
+          size: 10,
           productVersion: '',
           dealerName: '', //经销商new Date()
-          startTime: '2019-07-12',
-          endTime: '2019-09-12',
+          startTime: new Date((new Date().getFullYear()) + '-' + (new Date().getMonth() - 1) + '-' + 1),
+          endTime: new Date((new Date().getFullYear()) + '-' + (new Date().getMonth() + 2) + '-' + 0),
           tokenId: sessionStorage.getItem('tokenid')
         },
         data: {
@@ -190,7 +202,9 @@
           path: '/pageMain/operational-list',
           query: {
             isHeader: '申请状态',
-            leaseId: item.leaseId
+            leaseId: item.leaseId,
+            capitalId: item.capitalId,
+            productCode: item.productCode
           }
         })
       },
@@ -227,13 +241,13 @@
           this.$toast.fail(data.msg || '请求失败')
           return
         }
-        this.data = data.data
+        this.data = data.data.records
         let arr = []
         if (flag) {
-          arr = [...this.dataInfo, ...data.data]
+          arr = [...this.dataInfo, ...data.data.records]
         } else {
           if (search) {
-            arr = data.data
+            arr = data.data.records
           } else {
             arr = this.dataInfo
           }
@@ -278,7 +292,7 @@
       onSelect_sheet(item) {
         this.applySheet_flag = false
         this.params.page = 1
-        this.params.processStatus = item.value
+        this.params.statusId = item.value
         this._getDataInfo(false, true)
       },
       ...mapMutations({
@@ -314,53 +328,44 @@
       border-radius: 40px;
       height: 80px;
       margin: 0;
-
-      .van-cell.van-field {
-        width: 100%;
-        height: 80px;
-        z-index: 9;
-        border-radius: 44px;
-        background: url(../../../../static/img/pre_search.png) 480px center / 38px 36px no-repeat;
-        background-color: rgba(255, 255, 255, 1);
-        padding: 0 0 0 20px;
-        line-height: 80px;
-
-        .van-field__body {
+      /deep/{
+        .van-cell.van-field {
           width: 100%;
-          padding: 0 20px;
+          height: 80px;
+          z-index: 9;
+          border-radius: 44px;
+          background: url(../../../../static/img/pre_search.png) 480px center / 38px 36px no-repeat;
+          background-color: rgba(255, 255, 255, 1);
+          padding: 0 0 0 20px;
+          line-height: 80px;
 
-          .van-field__control::-webkit-input-placeholder {
-            color: rgba(156, 156, 156, 1);
-            font-size: 28px;
+          .van-field__body {
+            width: 100%;
+            padding: 0 20px;
+
+            .van-field__control::-webkit-input-placeholder {
+              color: rgba(156, 156, 156, 1);
+              font-size: 30px;
+              font-family: PingFangSC-Regular;
+            }
           }
 
-          .van-icon-clear {
+          .van-field__control {
+            height: 80px;
+            line-height: 80px;
+            padding-left: 20px;
             font-size: 30px;
           }
         }
-
-        .van-field__control {
+        .van-button {
+          position: absolute;
+          top: 2px;
+          right: 0px;
+          width: 100px;
           height: 80px;
-          line-height: 80px;
-          padding-left: 20px;
-          font-size: 24px;
+          z-index: 9;
+          opacity: 0;
         }
-
-        .van-icon-clear {
-          font-size: 38px;
-          color: #ccc;
-          right: 120px;
-        }
-      }
-
-      .van-button {
-        position: absolute;
-        top: 2px;
-        right: 0px;
-        width: 100px;
-        height: 80px;
-        z-index: 9;
-        opacity: 0;
       }
     }
   }
@@ -372,9 +377,9 @@
       height: calc(100vh - 318px);
     }
 
-    .list_item{
+    .list_item {
       width: 702px;
-      height: 234px;
+      height: 300px;
       box-sizing: border-box;
       padding: 32px;
       background: #FFFFFF;
@@ -382,55 +387,73 @@
       border-radius: 24px;
       margin: 20px auto 0;
 
-      .item_line{
+      .item_line {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         height: 50px;
-        .name{
+
+        .name {
           font-size: 36px;
           color: #333333;
           font-weight: bold;
+          font-family: PingFangSC-Medium;
         }
-        .cancal{
+
+        .cancal {
           font-size: 26px;
           color: #0D88FF;
+          font-family: PingFangSC-Regular;
         }
       }
 
-      .item_line_two{
+      .item_line_two {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         margin: 20px 0;
         height: 40px;
-        .approved_amount{
+
+        .approved_amount {
           font-size: 28px;
           color: #666666;
+          font-family: PingFangSC-Regular;
         }
-        .amount{
+
+        .amount {
           font-size: 30px;
           font-weight: bold;
           color: #333333;
+          font-family: DIN-Bold;
         }
       }
-      .item_line_three{
+
+      .item_line_three {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         margin: 20px 0;
         height: 40px;
-        .product_name{
+
+        .product_name {
           font-size: 28px;
           color: #666666;
+          font-family: PingFangSC-Regular;
         }
-        .product{
+
+        .product {
+          width: 430px;
           font-size: 30px;
           color: #333333;
-          font-weight: bold;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+          text-align: right;
+          font-family: PingFangSC-Medium;
         }
       }
     }
@@ -446,6 +469,31 @@
 
     span {
       margin-right: 14px;
+      font-size: PingFangSC-Regular;
+    }
+  }
+
+  /deep/ {
+    .van-popup--bottom.van-action-sheet {
+      max-height: 600px;
+      overflow-y: scroll;
+      border-radius: 40px 40px 0 0;
+
+      .van-action-sheet__item {
+        height: 80px;
+        font-size: 28px;
+        background: none;
+        border-bottom: 1px solid #ededed;
+      }
+
+      .van-action-sheet__item:first-child {
+        border-radius: 40px 40px 0 0;
+      }
+
+      .van-action-sheet__cancel {
+        font-size: 30px;
+        line-height: 70px;
+      }
     }
   }
 </style>

@@ -9,7 +9,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-import { showAnnounce, markedRead, xrtxShowAnnounce } from '../../api/api'
+// import { showAnnounce, markedRead, xrtxShowAnnounce } from '../../api/api'
 export default {
   prop: {
     overlayShow: {

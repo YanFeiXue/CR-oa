@@ -1,15 +1,18 @@
 <template>
   <section class="apply-state">
-    <div class="filter-input filter-input80">
-      <van-field v-model="filterVal" ref="filterVal" @click="focusThis('filterVal')" placeholder="请输入申请人姓名" />
-      <van-button type="default" @click="filterData()">查询</van-button>
-      <div class="filter-input-right" @click="applySheet_flag=true">
+    <div class="filter-input_body">
+      <div class="filter-input">
+        <van-field v-model="filterVal" ref="filterVal" @click="focusThis('filterVal')" placeholder="请输入客户姓名" />
+        <van-button type="default" @click="filterData()">查询</van-button>
+      </div>
+      <div class="screen" @click="applySheet_flag = true">
         <span>筛选</span>
-        <img src="./static/img/signing_screen@2x.png" />
+        <img src="../../../../static/img/shanxuan.png" />
       </div>
     </div>
     <van-action-sheet v-model="applySheet_flag" cancel-text="取消" :actions="option" @cancel="onCancel_sheet"
       @select="onSelect_sheet" />
+
     <div class="wrapper" ref="wrapper">
       <ul v-if="dataInfo.length">
         <mt-loadmore :auto-fill="false" :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded"
@@ -269,7 +272,71 @@
   }
 </script>
 
-<style lang="less">
+<style lang="scss" scoped="scoped">
+  .filter-input_body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 700px;
+    height: 80px;
+    margin: 0 auto 8px;
+    padding: 32px 0 0;
+    justify-content: row;
+
+    img {
+      width: 48px;
+      height: 48px;
+    }
+
+    .filter-input {
+      box-shadow: 0px 0px 40px 0px #E7E7E7;
+      position: relative;
+      width: 550px;
+      margin: 0 auto;
+      border-radius: 40px;
+      height: 80px;
+      margin: 0;
+      /deep/{
+        .van-cell.van-field {
+          width: 100%;
+          height: 80px;
+          z-index: 9;
+          border-radius: 44px;
+          background: url(../../../../static/img/pre_search.png) 480px center / 38px 36px no-repeat;
+          background-color: rgba(255, 255, 255, 1);
+          padding: 0 0 0 20px;
+          line-height: 80px;
+
+          .van-field__body {
+            width: 100%;
+            padding: 0 20px;
+
+            .van-field__control::-webkit-input-placeholder {
+              color: rgba(156, 156, 156, 1);
+              font-size: 30px;
+              font-family: PingFangSC-Regular;
+            }
+          }
+
+          .van-field__control {
+            height: 80px;
+            line-height: 80px;
+            padding-left: 20px;
+            font-size: 30px;
+          }
+        }
+        .van-button {
+          position: absolute;
+          top: 2px;
+          right: 0px;
+          width: 100px;
+          height: 80px;
+          z-index: 9;
+          opacity: 0;
+        }
+      }
+    }
+  }
   .apply-state {
     background: #f4f4f4;
 

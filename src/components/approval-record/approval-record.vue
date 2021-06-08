@@ -1,6 +1,6 @@
 <template>
-  <section class="approval-record appView" id="leftToDom">
-    <van-header :title="title" :routeName="'/viewMain'"></van-header>
+  <section class="approval-record">
+    <van-header title="预审批记录" routeName="back" path="-1"></van-header>
     <div class="filter-input_body">
       <div class="filter-input">
         <van-field v-model="filterVal" ref="filterVal" @click="focusThis('filterVal')" placeholder="请输入客户姓名" />
@@ -20,16 +20,17 @@
               <div class="dealerName">{{item.dealerName}}</div>
               <div class="time">{{item.auditTime}}</div>
             </div>
-            <div class="signStatus" v-if="item.signStatus == 1">
-              <img src="../../../static/img/signning.png" />
+            <div>
+              <div class="signStatus">
+                <img :src="getSignStatus(item.signStatus)" />
+              </div>
             </div>
-            <div class="signStatus" v-if="item.signStatus == 2">
-              <img src="../../../static/img/signSuccess.png" />
+            <div v-if="item.auditResult != 0 && item.signStatus != 1">
+              <div class="auditResult" @click="showAuditResultDialog(item)">
+                <img :src="getAuditResult(item.auditResult)" />
+              </div>
             </div>
-            <div class="auditResult" v-if="item.auditResult == 1">
-              <img src="../../../static/img/signPass.png" />
-            </div>
-            <div class="copyLink" v-if="item.auditResult == 0 || item.signStatus == 1" @click="copyUrl(item)">复制链接</div>
+            <div class="copyLink" v-if="item.auditResult == 0 && item.signStatus == 1" @click="copyUrl(item)">复制链接</div>
           </div>
         </mt-loadmore>
       </ul>
@@ -48,9 +49,9 @@
   Vue.use(Cell).use(Button).use(Field)
   import {
     getPreAudits,
-    getSignUrl
+    getSignUrl,
+    getLimitsOfAuthority
   } from '../../api/api'
-  import Header from '../../base/Header'
   import {
     mapGetters,
     mapMutations
@@ -61,12 +62,8 @@
   export default {
     name: 'approvalRecord',
     mixins: [loadMore],
-    components: {
-      'van-header': Header
-    },
     data() {
       return {
-        title: '预审批结果',
         filterVal: '',
         isLoading: false,
         isDISABLED: true,
@@ -86,7 +83,8 @@
           size: 10
         },
         allLoaded: false,
-        contentH: 0
+        contentH: 0,
+        autorejectReasonVisibleFlag: false
       }
     },
     computed: {
@@ -100,6 +98,7 @@
       }
     },
     mounted() {
+      this.getLimitsOfAuthority()
       this.$nextTick(function() {
         this.contentH = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top
       })
@@ -128,18 +127,21 @@
       },
       copyUrl(item){
         getSignUrl({tranNo: item.tranNo}).then(res => {
-          console.log(res);
+          if (res.code != 200) {
+            return this.$toast.fail(res.msg)
+          }
+          var save = function(e) {
+            e.clipboardData.setData('text/plain', res.data)
+            e.preventDefault()
+          }
+          document.addEventListener('copy', save)
+          document.execCommand('copy')
+          document.removeEventListener('copy', save)
+          this.$toast.success('复制成功')
         })
       },
       focusThis(id) {
         this.$refs[id].focus()
-      },
-      isNull() {
-        if (this.filterVal == '') {
-          this.params.realName = this.filterVal
-          this.params.page = 1
-          this._getDataInfo(true, true)
-        }
       },
       filterData() {
         this.params.realName = this.filterVal
@@ -163,17 +165,67 @@
           this.isLoading = false
         }, 800)
       },
-      formatInt(num, prec = 2, ceil = true) {
-        const len = String(num).length
-        if (len <= prec) {
-          return num
+      showAuditResultDialog(item){
+        if (['2', '5'].includes(item.auditResult) && this.autorejectReasonVisibleFlag){
+          this.$dialog.alert({
+            message: item.rejectReason
+          })
         }
-
-        const mult = Math.pow(10, prec)
-        return ceil ? Math.ceil(num / mult) * mult : Math.floor(num / mult) * mult
       },
-      scrollToEnd(data) {
-        this.isDISABLED = !data
+      getLimitsOfAuthority(){
+        getLimitsOfAuthority({
+          tokenId: sessionStorage.getItem('tokenid')
+        }).then(res => {
+          this.autorejectReasonVisibleFlag = res.data.contains('autorejectReasonVisible')
+        })
+      },
+      getAuditResult(auditResult){
+        switch (auditResult){
+          case 0:
+          case '0':
+            return '../../../static/img/signWait.png'
+            break;
+          case 1:
+          case '1':
+            return '../../../static/img/signPass.png'
+            break;
+          case 2:
+          case '2':
+            return '../../../static/img/underScoring.png'
+            break;
+          case 3:
+          case '3':
+            return '../../../static/img/signThird.png'
+            break;
+          case 4:
+          case '4':
+            return '../../../static/img/signCredit.png'
+            break;
+          case 5:
+          case '5':
+            return '../../../static/img/noneResult.png'
+            break;
+          default:
+            break;
+        }
+      },
+      getSignStatus(signStatus){
+        switch (signStatus){
+          case 0:
+          case '0':
+            return '../../../static/img/signFail.png'
+            break;
+          case 1:
+          case '1':
+            return '../../../static/img/signning.png'
+            break;
+          case 2:
+          case '2':
+            return '../../../static/img/signSuccess.png'
+            break;
+          default:
+            break;
+        }
       },
       ...mapMutations({
         setInterface: 'SET_INTERFACE'
@@ -182,7 +234,7 @@
   }
 </script>
 
-<style lang="less" scoped="scoped">
+<style lang="scss" scoped="scoped">
   .approval-record {
     .van-cell::after {
       border: none;
@@ -211,53 +263,41 @@
       border-radius: 40px;
       height: 80px;
       margin: 0;
-
-      .van-cell.van-field {
-        width: 100%;
-        height: 80px;
-        z-index: 9;
-        border-radius: 44px;
-        background: url(../../../static/img/pre_search.png) 530px center / 38px 36px no-repeat;
-        background-color: rgba(255, 255, 255, 1);
-        padding: 0 0 0 20px;
-        line-height: 80px;
-
-        .van-field__body {
+      /deep/{
+        .van-cell.van-field {
           width: 100%;
-          padding: 0 20px;
-
-          .van-field__control::-webkit-input-placeholder {
-            color: rgba(156, 156, 156, 1);
+          height: 80px;
+          z-index: 9;
+          border-radius: 44px;
+          background: url(../../../static/img/pre_search.png) 530px center / 38px 36px no-repeat;
+          background-color: rgba(255, 255, 255, 1);
+          padding: 0 0 0 20px;
+          line-height: 80px;
+          .van-field__body {
+            width: 100%;
+            padding: 0 20px;
+            .van-field__control::-webkit-input-placeholder {
+              color: rgba(156, 156, 156, 1);
+              font-size: 28px;
+              font-family: PingFangSC-Regular;
+            }
+          }
+          .van-field__control {
+            height: 80px;
+            line-height: 80px;
+            padding-left: 20px;
             font-size: 28px;
           }
-
-          .van-icon-clear {
-            font-size: 30px;
-          }
         }
-
-        .van-field__control {
+        .van-button {
+          position: absolute;
+          top: 2px;
+          right: 0px;
+          width: 100px;
           height: 80px;
-          line-height: 80px;
-          padding-left: 20px;
-          font-size: 24px;
+          z-index: 9;
+          opacity: 0;
         }
-
-        .van-icon-clear {
-          font-size: 38px;
-          color: #ccc;
-          right: 120px;
-        }
-      }
-
-      .van-button {
-        position: absolute;
-        top: 2px;
-        right: 0px;
-        width: 100px;
-        height: 80px;
-        z-index: 9;
-        opacity: 0;
       }
     }
   }
@@ -291,20 +331,28 @@
         font-weight: bold;
         width: 150px;
         margin: 0 15px 0 0;
+        font-family: PingFangSC-Medium;
       }
       .phone{
         color: #333333;
         font-size: 30px;
         font-weight: bold;
+        font-family: DIN-Bold;
       }
       .dealerName{
         color: #7B7B7B;
         font-size: 28px;
         margin: 16px 0;
+        display: -webkit-box; /*值必须为-webkit-box或者-webkit-inline-box*/
+        -webkit-box-orient: vertical; /*值必须为vertical*/
+        -webkit-line-clamp: 1; /*值为数字，表示一共显示几行*/
+        overflow: hidden;
+        font-family: PingFangSC-Regular;
       }
       .time{
         color: #B2B2B2;
         font-size: 28px;
+        font-family: PingFangSC-Regular;
       }
     }
     .signStatus, .auditResult{
@@ -322,6 +370,7 @@
       font-size: 20px;
       color: #FFFFFF;
       text-align: center;
+      font-family: PingFangSC-Medium;
     }
   }
 

@@ -2,213 +2,213 @@
   <section class="contacts-info">
     <div class="incomeField_body" v-if="cotenant_form_flag">
       <header class="title">共同承租人信息</header>
-      <section class="incomeField borderRadiusToplr pd2">
-        <van-field label="共同承租人姓名" clearable placeholder="请输入" v-model="contactsInfo.cotenantName"
+      <section class="incomeField borderRadiusToplr">
+        <van-field readonly label="共同承租人姓名" clearable placeholder="请输入" v-model="contactsInfo.cotenantName"
           name="cotenantName"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="身份证号" clearable placeholder="请输入" v-model="contactsInfo.cotenantCertno"
-         name="cotenantCertno"></van-field>
-      </section>
-      <section class="incomeField pd2">
-        <van-field label="与申请人关系" class="slotRight" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.cotenantRelationIdName" name="cotenantRelationId"></van-field>
-      </section>
-      <section class="incomeField pd2">
-        <van-field label="手机号码" clearable placeholder="请输入" v-model="contactsInfo.cotenantMobile" name="cotenantMobile"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="身份证号" clearable placeholder="请输入" v-model="contactsInfo.cotenantCertno"
+          name="cotenantCertno"></van-field>
       </section>
       <section class="incomeField">
-        <van-field class="slotRight" label="居住地址(省)" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.cotenantLiveProvinceIdName"
-          name="cotenantLiveProvinceId">
+        <van-field readonly label="与申请人关系" class="slotRight" clearable placeholder="请选择"
+          v-model="customerName.cotenantRelationIdName" name="cotenantRelationId"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field readonly label="手机号码" clearable placeholder="请输入" v-model="contactsInfo.cotenantMobile"
+          name="cotenantMobile"></van-field>
+      </section>
+      <section class="incomeField">
+        <van-field readonly class="slotRight" label="居住地址(省)" clearable placeholder="请选择"
+          v-model="customerName.cotenantLiveProvinceIdName" name="cotenantLiveProvinceId">
         </van-field>
       </section>
       <section class="incomeField">
-        <van-field class="slotRight" label="居住地址(市)" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.cotenantLiveCityIdName"
-          name="cotenantLiveCityId"></van-field>
+        <van-field readonly class="slotRight" label="居住地址(市)" clearable placeholder="请选择"
+          v-model="customerName.cotenantLiveCityIdName" name="cotenantLiveCityId"></van-field>
       </section>
       <section class="incomeField">
-        <van-field class="slotRight" label="居住地址(区)" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.cotenantLiveCountyIdName"
-          name="cotenantLiveCountyId"></van-field>
+        <van-field readonly class="slotRight" label="居住地址(区)" clearable placeholder="请选择"
+          v-model="customerName.cotenantLiveCountyIdName" name="cotenantLiveCountyId"></van-field>
       </section>
-      <section class="incomeField btNone borderRadiusBtlr pd2">
-        <van-field label="居住详细地址" clearable placeholder="请输入" v-model="contactsInfo.cotenantLiveAddress"
+      <section class="incomeField btNone borderRadiusBtlr">
+        <van-field readonly label="居住详细地址" clearable placeholder="请输入" v-model="contactsInfo.cotenantLiveAddress"
           name="cotenantLiveAddress">
         </van-field>
       </section>
     </div>
     <div class="incomeField_body" v-if="guarantee_form_flag">
       <header class="title">担保人信息</header>
-      <section class="incomeField borderRadiusToplr pd2">
-        <van-field label="担保人姓名" clearable placeholder="请输入" v-model="contactsInfo.guaranteeName"
+      <section class="incomeField borderRadiusToplr">
+        <van-field readonly label="担保人姓名" clearable placeholder="请输入" v-model="contactsInfo.guaranteeName"
           name="guaranteeName"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="身份证号" clearable placeholder="请输入" v-model="contactsInfo.guaranteeCertno" name="guaranteeCertno"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="身份证号" clearable placeholder="请输入" v-model="contactsInfo.guaranteeCertno"
+          name="guaranteeCertno"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="与申请人关系" class="slotRight" clearable :readonly="true" placeholder="请选择"
+      <section class="incomeField">
+        <van-field readonly label="与申请人关系" class="slotRight" clearable placeholder="请选择"
           v-model="customerName.guaranteeRelationIdName" name="guaranteeRelationId"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="手机号码" clearable placeholder="请输入" v-model="contactsInfo.guaranteeMobile" name="guaranteeMobile">
+      <section class="incomeField">
+        <van-field readonly label="手机号码" clearable placeholder="请输入" v-model="contactsInfo.guaranteeMobile"
+          name="guaranteeMobile">
         </van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="税后年收入" clearable placeholder="请输入" v-model="contactsInfo.guaranteeYearIncome"
+      <section class="incomeField">
+        <van-field readonly label="税后年收入" clearable placeholder="请输入" v-model="contactsInfo.guaranteeYearIncome"
           name="guaranteeYearIncome">
         </van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="居住类型" class="slotRight" clearable :readonly="true" placeholder="请选择"
+      <section class="incomeField">
+        <van-field readonly label="居住类型" class="slotRight" clearable placeholder="请选择"
           v-model="customerName.guaranteeLiveTypeIdName" name="guaranteeLiveTypeId"></van-field>
       </section>
       <section class="incomeField">
-        <van-field class="slotRight" label="居住地址(省)" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.guaranteeLiveProvinceIdName"
-          name="guaranteeLiveProvinceId">
+        <van-field readonly class="slotRight" label="居住地址(省)" clearable placeholder="请选择"
+          v-model="customerName.guaranteeLiveProvinceIdName" name="guaranteeLiveProvinceId">
         </van-field>
       </section>
       <section class="incomeField">
-        <van-field class="slotRight" label="居住地址(市)" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.guaranteeLiveCityIdName"name="guaranteeLiveCityId">
+        <van-field readonly class="slotRight" label="居住地址(市)" clearable placeholder="请选择"
+          v-model="customerName.guaranteeLiveCityIdName" name="guaranteeLiveCityId">
         </van-field>
       </section>
       <section class="incomeField">
-        <van-field class="slotRight" label="居住地址(区)" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.guaranteeLiveCountyIdName"
-          name="guaranteeLiveCountyId"></van-field>
+        <van-field readonly class="slotRight" label="居住地址(区)" clearable placeholder="请选择"
+          v-model="customerName.guaranteeLiveCountyIdName" name="guaranteeLiveCountyId"></van-field>
       </section>
-      <section class="incomeField btNone borderRadiusBtlr pd2">
-        <van-field label="居住详细地址" clearable placeholder="请输入" v-model="contactsInfo.guaranteeLiveAddress"
+      <section class="incomeField btNone borderRadiusBtlr">
+        <van-field readonly label="居住详细地址" clearable placeholder="请输入" v-model="contactsInfo.guaranteeLiveAddress"
           name="guaranteeLiveAddress">
         </van-field>
       </section>
     </div>
     <div class="incomeField_body" v-if="spouse_form_flag">
       <header class="title">配偶基本信息</header>
-      <section class="incomeField borderRadiusToplr pd2">
-        <van-field label="姓名" clearable placeholder="请输入"
-          v-model="contactsInfo.spouseName" name="userName1"></van-field>
+      <section class="incomeField borderRadiusToplr">
+        <van-field readonly label="姓名" clearable placeholder="请输入" v-model="contactsInfo.spouseName" name="userName1">
+        </van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="身份证号" clearable placeholder="请输入" v-model="contactsInfo.spouseCertNo" name="spouseCertNo"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="身份证号" clearable placeholder="请输入" v-model="contactsInfo.spouseCertNo"
+          name="spouseCertNo"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="手机号码" clearable placeholder="请输入"
-          v-model="contactsInfo.spouseMobile" name="spouseMobile"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="手机号码" clearable placeholder="请输入" v-model="contactsInfo.spouseMobile"
+          name="spouseMobile"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="工作单位名称" clearable placeholder="请输入" v-model="contactsInfo.spouseCompany"
+      <section class="incomeField">
+        <van-field readonly label="工作单位名称" clearable placeholder="请输入" v-model="contactsInfo.spouseCompany"
           name="spouseCompany"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="工作单位电话" clearable placeholder="请输入" v-model="contactsInfo.spouseCompanyPhone" name="spouseCompanyPhone"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="工作单位电话" clearable placeholder="请输入" v-model="contactsInfo.spouseCompanyPhone"
+          name="spouseCompanyPhone"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="入职时间" :readonly="true" placeholder="请输入"
-          v-model="contactsInfo.spouseEntryTime" name="spouseEntryTime"></van-field>
+      <section class="incomeField">
+        <van-field readonly label="入职时间" placeholder="请输入" v-model="contactsInfo.spouseEntryTime"
+          name="spouseEntryTime"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="公司类型" class="slotRight" clearable :readonly="true" placeholder="请选择"
+      <section class="incomeField">
+        <van-field readonly label="公司类型" class="slotRight" clearable placeholder="请选择"
           v-model="customerName.spouseCompanyTypeIdName" name="spouseCompanyTypeId"></van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="所属行业" class="slotRight" clearable :readonly="true" placeholder="请选择"
+      <section class="incomeField">
+        <van-field readonly label="所属行业" class="slotRight" clearable placeholder="请选择"
           v-model="customerName.spouseIndustryIdName" name="spouseIndustryId">
         </van-field>
       </section>
-      <section class="incomeField pd2">
-        <van-field label="职位" clearable placeholder="请输入" v-model="contactsInfo.spousePosition"
+      <section class="incomeField">
+        <van-field readonly label="职位" clearable placeholder="请输入" v-model="contactsInfo.spousePosition"
           name="spousePosition"></van-field>
       </section>
-      <section class="incomeField pd2" v-if="productDiff.bqapInput">
-        <van-field label="户籍是否本地" class="slotRight" clearable :readonly="true" placeholder="请选择"
+      <section class="incomeField" v-if="productDiff.bqapInput">
+        <van-field readonly label="户籍是否本地" class="slotRight" clearable placeholder="请选择"
           v-model="customerName.spouseLocalDomicileIdName" name="spouseLocalDomicileId"></van-field>
       </section>
       <section class="incomeField" v-if="productDiff.bqapInput">
-        <van-field class="slotRight" label="税后月收入(元)" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.spouseMonthIncomeIdName"
-          name="spouseMonthIncomeId">
+        <van-field readonly class="slotRight" label="税后月收入(元)" clearable placeholder="请选择"
+          v-model="customerName.spouseMonthIncomeIdName" name="spouseMonthIncomeId">
         </van-field>
       </section>
       <section class="incomeField">
-        <van-field class="slotRight" label="居住地址(省)" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.spouseWorkProvinceIdName"
-          name="spouseWorkProvinceId">
+        <van-field readonly class="slotRight" label="居住地址(省)" clearable placeholder="请选择"
+          v-model="customerName.spouseWorkProvinceIdName" name="spouseWorkProvinceId">
         </van-field>
       </section>
       <section class="incomeField">
-        <van-field class="slotRight" label="居住地址(市)" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.spouseWorkCityIdName"
-          name="spouseWorkCityId"></van-field>
+        <van-field readonly class="slotRight" label="居住地址(市)" clearable placeholder="请选择"
+          v-model="customerName.spouseWorkCityIdName" name="spouseWorkCityId"></van-field>
       </section>
       <section class="incomeField">
-        <van-field class="slotRight" label="居住地址(区)" clearable :readonly="true" placeholder="请选择"
-          v-model="customerName.spouseWorkCountyIdName"
-          name="spouseWorkCountyId">
+        <van-field readonly class="slotRight" label="居住地址(区)" clearable placeholder="请选择"
+          v-model="customerName.spouseWorkCountyIdName" name="spouseWorkCountyId">
         </van-field>
       </section>
-      <section class="incomeField btNone borderRadiusBtlr pd2">
-        <van-field label="工作详细地址" clearable placeholder="请输入" v-model="contactsInfo.spouseWorkAddress"
+      <section class="incomeField btNone borderRadiusBtlr">
+        <van-field readonly label="工作详细地址" clearable placeholder="请输入" v-model="contactsInfo.spouseWorkAddress"
           name="spouseWorkAddress"></van-field>
       </section>
     </div>
     <div class="incomeField_body">
       <header class="title">联系人信息</header>
       <div title="联系人1">
-        <section class="incomeField borderRadiusToplr pd2">
-          <van-field label="联系人1姓名" clearable placeholder="请输入" v-model="contactsInfo.linkman1Name"
+        <section class="incomeField borderRadiusToplr">
+          <van-field readonly label="联系人1姓名" clearable placeholder="请输入" v-model="contactsInfo.linkman1Name"
             name="linkman1Name"></van-field>
         </section>
-        <section class="incomeField pd2">
-          <van-field label="联系人1关系" class="slotRight" clearable :readonly="true" placeholder="请选择"
+        <section class="incomeField">
+          <van-field readonly label="联系人1关系" class="slotRight" clearable placeholder="请选择"
             v-model="customerName.linkman1RelationIdName" name="linkman1RelationId"></van-field>
         </section>
-        <section class="incomeField pd2">
-          <van-field label="联系人1电话" clearable placeholder="请输入" v-model="contactsInfo.linkman1Mobile" name="linkman1Mobile">
+        <section class="incomeField">
+          <van-field readonly label="联系人1电话" clearable placeholder="请输入" v-model="contactsInfo.linkman1Mobile"
+            name="linkman1Mobile">
           </van-field>
         </section>
-        <section class="incomeField pd2">
-          <van-field label="联系人1住址" clearable placeholder="请输入" v-model="contactsInfo.linkman1Address"
+        <section class="incomeField">
+          <van-field readonly label="联系人1住址" clearable placeholder="请输入" v-model="contactsInfo.linkman1Address"
             name="linkman1Address"></van-field>
         </section>
       </div>
       <div title="联系人2">
-        <section class="incomeField pd2">
-          <van-field label="联系人2姓名" clearable placeholder="请输入" v-model="contactsInfo.linkman2Name"
+        <section class="incomeField">
+          <van-field readonly label="联系人2姓名" clearable placeholder="请输入" v-model="contactsInfo.linkman2Name"
             name="linkman2Name"></van-field>
         </section>
-        <section class="incomeField pd2">
-          <van-field label="联系人2关系" class="slotRight" clearable :readonly="true" placeholder="请选择"
+        <section class="incomeField">
+          <van-field readonly label="联系人2关系" class="slotRight" clearable placeholder="请选择"
             v-model="customerName.linkman2RelationIdName" name="linkman2RelationId"></van-field>
         </section>
-        <section class="incomeField pd2">
-          <van-field label="联系人2电话" clearable placeholder="请输入" v-model="contactsInfo.linkman2Mobile" name="linkman2Mobile">
+        <section class="incomeField">
+          <van-field readonly label="联系人2电话" clearable placeholder="请输入" v-model="contactsInfo.linkman2Mobile"
+            name="linkman2Mobile">
           </van-field>
         </section>
-        <section class="incomeField pd2">
-          <van-field label="联系人2住址" clearable placeholder="请输入" v-model="contactsInfo.linkman2Address"
+        <section class="incomeField">
+          <van-field readonly label="联系人2住址" clearable placeholder="请输入" v-model="contactsInfo.linkman2Address"
             name="linkman2Address"></van-field>
         </section>
       </div>
       <div title="联系人3" v-if="!spouse_form_flag">
-        <section class="incomeField pd2">
-          <van-field label="联系人3姓名" clearable placeholder="请输入" v-model="contactsInfo.linkman3Name"
+        <section class="incomeField">
+          <van-field readonly label="联系人3姓名" clearable placeholder="请输入" v-model="contactsInfo.linkman3Name"
             name="linkman3Name"></van-field>
         </section>
-        <section class="incomeField pd2">
-          <van-field label="联系人3关系" class="slotRight" clearable :readonly="true" placeholder="请选择"
+        <section class="incomeField">
+          <van-field readonly label="联系人3关系" class="slotRight" clearable placeholder="请选择"
             v-model="customerName.linkman3RelationIdName" name="linkman3RelationId"></van-field>
         </section>
-        <section class="incomeField pd2">
-          <van-field label="联系人3电话" clearable placeholder="请输入" v-model="contactsInfo.linkman3Mobile" name="linkman3Mobile">
+        <section class="incomeField">
+          <van-field readonly label="联系人3电话" clearable placeholder="请输入" v-model="contactsInfo.linkman3Mobile"
+            name="linkman3Mobile">
           </van-field>
         </section>
-        <section class="incomeField btNone borderRadiusBtlr pd2">
-          <van-field label="联系人3住址" clearable placeholder="请输入" v-model="contactsInfo.linkman3Address" name="linkman3Address"></van-field>
+        <section class="incomeField btNone borderRadiusBtlr">
+          <van-field readonly label="联系人3住址" clearable placeholder="请输入" v-model="contactsInfo.linkman3Address"
+            name="linkman3Address"></van-field>
         </section>
       </div>
     </div>
@@ -242,7 +242,6 @@
     .use(Popup)
   import {
     leaseAdd,
-    getPreAuditStatus
   } from '@/api/api'
   import {
     leaseFormMixin
@@ -548,15 +547,17 @@
 </script>
 
 <style lang="scss" scoped="scoped">
-  .contacts-info{
+  .contacts-info {
     margin-top: 16px;
-    .incomeField_body{
+
+    .incomeField_body {
       width: 702px;
       margin: 24px auto;
       background: #FFFFFF;
-      box-shadow: 0px 0px 40px 0px rgba(231,231,231,1);
+      box-shadow: 0px 0px 40px 0px rgba(231, 231, 231, 1);
       border-radius: 24px;
-      .title{
+
+      .title {
         height: 82px;
         line-height: 82px;
         padding: 0 0 0 32px;
@@ -565,28 +566,32 @@
         color: #333333;
         border-bottom: 1px solid #F3F3F3;
       }
-      .incomeField{
+
+      .incomeField {
         height: 100px;
         border-bottom: 1px solid #F3F3F3;
-        /deep/{
-          .van-cell{
+
+        /deep/ {
+          .van-cell {
             line-height: 100px;
             width: 100%;
             font-size: 28px;
             color: #666666;
             padding: 0 32px;
-            .van-cell__title{
+
+            .van-cell__title {
               width: 250px;
             }
-            .van-cell__value{
-              .van-field__body{
-                input{
+
+            .van-cell__value {
+              .van-field__body {
+                input {
                   text-align: right;
                 }
               }
             }
           }
-  
+
         }
       }
     }

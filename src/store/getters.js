@@ -17,3 +17,5 @@ export const product = state => state.product
 export const activeIndex = state => state.activeIndex
 export const dics = state => state.dics
 export const area = state => state.area
+export const logFormActive = state => state.logForm
+export const weeklyFormActive = state => state.weeklyForm

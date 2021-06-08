@@ -4,7 +4,8 @@
       截屏内容已被监测，请谨慎分享。
       <span class="fixTopBtn" @click="fixTop= !fixTop">x</span>
     </div> -->
-    <nav class="login-title">欢迎登陆</nav>
+    <img src="../../../static/img/bg@2x.png" />
+    <nav class="login-title">欢迎登录</nav>
     <div class="inputcss flex jc-sb fl-w" v-show="step">
       <div class="wrapField">
         <van-field placeholder="请输入账户" v-model="username" clearable ref="username" @click="focusThis('username')"
@@ -37,7 +38,7 @@
           </div>
         </div>
       </section>
-      <van-button class="m0a sign" ref="sign" :disabled="queryIfAgentFlag" @click="_queryIfAgent()">立即登录</van-button>
+      <van-button class="m0a" :class="password != '' && username != '' ? 'sign_active' : 'sign'" ref="sign" :disabled="queryIfAgentFlag" @click="_queryIfAgent()">立即登录</van-button>
     </div>
     <div class="sendCode-wrap inputcss" v-show="!step">
       <div class="wrapField">
@@ -54,7 +55,7 @@
           v-validate="'required|isCode'" name="isCode" :error="errors.has('isCode')" :error-message="
             errors.first('isCode') | strFilter('isCode', '验证码')
           "></van-field>
-        <span class="sendMsgBtn" ref="code" @click="sendMsgContent()">获取验证码</span>
+        <span :class="codeText == '发送验证码' ? 'sendMsgBtn' : 'sendMsgBtn_active'" ref="code" @click="sendMsgContent()">{{codeText}}</span>
         <span class="iconStyle">验证码</span>
       </div>
       <van-button type="primary" class="checkAuthCode" @click="_checkAuthCode()">立即登录</van-button>
@@ -99,6 +100,7 @@
         isActive: true,
         fixTop: true,
         isXrtx: localStorage.getItem('isXrtx'),
+        codeText:'发送验证码'
       }
     },
     props: {
@@ -109,7 +111,6 @@
     },
     created() {
       this.initParams()
-      sessionStorage.clear()
     },
     mounted() {
       this.isExpired()
@@ -151,30 +152,20 @@
         if (!_params.userPhone) {
           return this.$toast.fail('请输入手机号')
         }
-        if (this.isXrtxUser()) {
-          xrtxSendSms(_params).then((data) => {
-            if (data.code != '0') {
-              return this.$toast.fail(data.msg)
-            }
-            this.initCreatedLogin()
-            this.checkCodeCountDown(60)
-          })
-        } else {
-          sendSms(_params).then((data) => {
-            if (data.code != '0') {
-              return this.$toast.fail(data.msg)
-            }
-            this.initCreatedLogin()
-            this.checkCodeCountDown(60)
-          })
-        }
+        sendSms(_params).then((data) => {
+          if (data.code != '0') {
+            return this.$toast.fail(data.msg)
+          }
+          this.initCreatedLogin()
+          this.checkCodeCountDown(60)
+        })
       },
       // 递归--
       checkCodeCountDown(time) {
         if (this.$refs.code == undefined) {
           return
         }
-        this.$refs.code.innerText = time + '秒后重新发送'
+        this.codeText = '已发送(' + time + 's)'
         this.sendFlag = false
         if (time-- > 0) {
           setTimeout(() => {
@@ -182,7 +173,7 @@
           }, 1000)
         } else {
           this.sendFlag = true
-          this.$refs.code.innerText = '获取验证码'
+          this.codeText = '获取验证码'
         }
       },
       validAgent() {
@@ -201,23 +192,21 @@
         //   this.$toast.fail('请勾选使用服务协议')
         //   return
         // }
+        if (this.username == '') {
+          return this.$toast.fail('请输入账户')
+        }
+        if (this.password == '') {
+          return this.$toast.fail('请输入密码')
+        }
         const _params = {
           username: this.username,
           password: this.$md5(this.password),
           loginType: 1,
         }
-        if (this.isXrtxUser()) {
-          localStorage.setItem('isXrtx', true)
-          xrtxCheckLogin(_params).then((data) => {
-            this._loginEnd(data)
-          })
-        } else {
-          localStorage.setItem('isXrtx', false)
-          checkLogin(_params).then((data) => {
-            // 查询角色
-            this._loginEnd(data)
-          })
-        }
+        checkLogin(_params).then((data) => {
+          // 查询角色
+          this._loginEnd(data)
+        })
       },
       _loginEnd(data) {
         if (data.code != 0) {
@@ -226,7 +215,8 @@
         data.data = JSON.parse(data.data)
         if (data.data.role == 'admin') {
           this.queryIfAgentFlag = true
-          this.setSessionItem(data.data.data)
+          console.log(data);
+          this.setSessionItem(data.data.data, data.data.role)
           return
         }
         if (data.data.role == 'user') {
@@ -257,34 +247,19 @@
               phone: this.mobile,
             }
             this.checkAuthCodeFlag = true
-            if (this.isXrtxUser()) {
-              xrtxCheckAppAuthCode(_params).then((res) => {
-                if (res.code != 0) {
-                  if (res.code == '10010') {
-                    return this.$toast.fail('验证码过期，请重新获取')
-                  } else {
-                    return this.$toast.fail(res.msg)
-                  }
+            checkAppAuthCode(_params).then((res) => {
+              if (res.code != 0) {
+                if (res.code == '10010') {
+                  return this.$toast.fail('验证码过期，请重新获取')
+                } else {
+                  return this.$toast.fail(res.msg)
                 }
-                this.setSessionItem(res.data)
-              })
-            } else {
-              checkAppAuthCode(_params).then((res) => {
-                if (res.code != 0) {
-                  if (res.code == '10010') {
-                    return this.$toast.fail('验证码过期，请重新获取')
-                  } else {
-                    return this.$toast.fail(res.msg)
-                  }
-                }
-                this.setSessionItem(res.data)
-              })
-            }
+              }
+              res.data = JSON.parse(res.data)
+              this.setSessionItem(res.data)
+            })
           }
         })
-      },
-      isXrtxUser() {
-        return this.username.substr(0, 2) == 'xr' || this.username.substr(0, 2) == 'XR' ? true : false
       },
       initCreatedLogin() {
         const obj = {
@@ -323,8 +298,7 @@
         this.msgContent = localStorage.getItem('msgContent') || ''
         this.isActive = localStorage.getItem('isActive') == 'true' ? true : false
       },
-      setSessionItem(res) {
-        res = JSON.parse(res)
+      setSessionItem(res, role) {
         sessionStorage.setItem('password', this.password)
         sessionStorage.setItem('loginName', this.username)
         sessionStorage.setItem('customId', res.customerId)
@@ -369,10 +343,12 @@
           }
           this.queryIfAgentFlag = false
           this.checkAuthCodeFlag = false
-          // this.$toast.success('获取定位成功')
         })
       },
     },
+    beforeDestroy() {
+      this.msgContent = ''
+    }
   }
 </script>
 
@@ -384,8 +360,13 @@
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    background: url('../../../static/img/bg@2x.png') no-repeat;
-    background-size: 100% 100%;
+    img{
+      object-fit: cover;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
 
     .fixTop {
       width: 100%;
@@ -451,7 +432,6 @@
           width: 30px;
           height: 30px;
           background: url(../../../static/img/sign_in_selection@2x.png) no-repeat;
-          // background: url(./static/img/sign_in_unchecked@2x.png) no-repeat;
           background-size: cover;
         }
 
@@ -465,7 +445,6 @@
           margin-left: 80px;
           font-size: 22px;
 
-          // color: rgba(255, 255, 255, 0.45);
           span:first-child {
             line-height: 30px;
           }
@@ -487,10 +466,10 @@
         width: 78px;
         height: 40px;
         display: block;
-        line-height: 36px;
+        line-height: 40px;
         text-align: left;
         left: 38px;
-        bottom: 64px;
+        bottom: 46px;
         font-size: 30px;
         color: #333333;
         border-right: 2px solid #fff;
@@ -501,11 +480,33 @@
       .wrapField {
         .sendMsgBtn {
           position: absolute;
-          line-height: 128px;
           display: block;
           right: 50px;
-          bottom: 0;
-          color: #000;
+          bottom: 30px;
+          width: 174px;
+          height: 68px;
+          line-height: 68px;
+          background: #FFFFFF;
+          border-radius: 8px;
+          border: 2px solid #D8D8D8;
+          font-size: 28px;
+          color: #000000;
+          text-align: center;
+        }
+        .sendMsgBtn_active {
+          font-size: 28px;
+          color: #6D6D6D;
+          position: absolute;
+          display: block;
+          right: 50px;
+          bottom: 30px;
+          width: 174px;
+          height: 68px;
+          line-height: 68px;
+          background: #FFFFFF;
+          border-radius: 8px;
+          border: 2px solid #D8D8D8;
+          text-align: center;
         }
 
         .iconStyle {
@@ -526,8 +527,9 @@
           line-height: 130%;
           padding-left: 50px;
           font-size: 34px;
-          // color: #fff;
           margin-left: 38px;
+          font-size: 30px;
+          font-weight: bold;
         }
 
         .van-cell__value {
@@ -543,9 +545,26 @@
       .code.wrapField {
         .van-cell {
           .van-cell__value {
+            justify-content: start;
+            margin-left: 30px;
             .van-field__body {
+              width: 400px;
+              box-sizing: border-box;
+              padding: 0 0 0 120px;
+              position: relative;
               .van-icon-clear {
                 right: 160px;
+              }
+              .van-field__control{
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                font-size: 30px;
+                font-weight: bold;
+              }
+              .van-icon{
+                position: absolute;
+                right: 20px;
               }
             }
           }
@@ -583,7 +602,6 @@
 
           .van-icon-clear {
             font-size: 38px;
-            // color: #fff;
           }
         }
 
@@ -591,13 +609,14 @@
           height: 100%;
           line-height: 130%;
           padding-left: 50px;
-          font-size: 34px;
-          // color: #fff;
+          font-size: 30px;
+          font-weight: bold;
         }
 
         .van-field__control::-webkit-input-placeholder {
-          // color: #fff;
-          font-size: 34px;
+          color: #D9D9D9;
+          font-size: 32px;
+          font-weight: 400;
         }
 
         .van-field__error-message {
@@ -613,34 +632,39 @@
       border: none;
     }
 
-    .van-button.checkAuthCode {
-      width: 670px;
-      height: 88px;
+    .checkAuthCode {
+      margin: 80px auto 40px;
+      width: 550px;
+      height: 90px;
+      background: #24A494;
+      border-radius: 44px;
+      font-size: 30px;
+      color: #FFFFFF;
       display: block;
-      background: rgba(255, 255, 255, 1);
-      border-radius: 7px;
-      font-size: 32px;
-      color: rgba(35, 163, 148, 1);
-      margin: 70px auto 30px;
-      border: none;
+      .van-button::before {
+        border: none;
+      }
     }
 
-    .backPrev.van-button {
-      width: 670px;
-      height: 88px;
+    .backPrev {
+      width: 550px;
+      height: 92px;
+      background: #F2F2F2;
+      border-radius: 60px;
       display: block;
       margin: 0 auto;
-      background: #93cfc9;
-      border-radius: 7px;
-      color: #fff;
-      font-size: 32px;
+      font-size: 28px;
+      color: #444444;
+      .van-button::before {
+        border: none !important;
+      }
     }
 
-    .sign {
+    .sign_active {
       width: 550px;
       height: 90px;
       background: #24a494;
-      border-radius: 22px;
+      border-radius: 44px;
       display: block;
       left: 50%;
       transform: translateX(-50%);
@@ -649,7 +673,31 @@
       border: none;
       color: #fff;
       font-size: 30px;
+      .van-button::before {
+        border: none !important;
+      }
     }
+    .sign{
+      width: 550px;
+      height: 90px;
+      background: #24A494;
+      border-radius: 44px;
+      opacity: 0.5;
+      display: block;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -160px;
+      position: absolute;
+      border: none;
+      color: #fff;
+      font-size: 30px;
+      .van-button::before {
+        border: none !important;
+      }
+    }
+  }
+  .van-button--primary{
+    border: none !important;
   }
 
   .logo {
@@ -658,4 +706,5 @@
     height: 85px;
     margin: 60px auto;
   }
+
 </style>

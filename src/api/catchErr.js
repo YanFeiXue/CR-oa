@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { Toast } from 'vant'
+import router from '../router'
 // const errorMsg = {
 //   title: '提示', // 加上标题
 //   message: '登录过期,请重新登录!', // 改变弹出框的内容
@@ -12,7 +13,7 @@ import { Toast } from 'vant'
 const service = axios.create({
   baseURL: '', // url = base url + request url https://zuul.carcredit.com.cn
   // withCredentials: true, // send cookies when cross-domain requests
-  timeout: 2000 // request timeout
+  timeout: 3000 // request timeout
 })
 
 // 拦截请求
@@ -45,7 +46,6 @@ service.interceptors.response.use(
   // 然后根据返回的状态码进行一些操作，例如登录过期提示，错误提示等等
   // 下面列举几个常见的操作，其他需求可自行扩展
   error => {
-    // console.log("appConfig", error.response);
     if (!error.response) {
       return
     }
@@ -55,12 +55,10 @@ service.interceptors.response.use(
         // 未登录则跳转登录页面，并携带当前页面的路径
         // 在登录成功后返回当前页面，这一步需要在登录页操作。
         case 401:
-          // router.replace({
-          //   path: '/login',
-          //   query: {
-          //     //redirect: router.currentRoute.fullPath
-          //   }
-          // })
+          sessionStorage.clear()
+          router.replace({
+            path: '/login',
+          })
           break
 
         // 403 token过期
