@@ -174,6 +174,7 @@
         if (this.activeName == 1) {
           this.productId = item.productId,
           this.productVersion = item.productVersion
+          this.SelectProductF = item.productName
         } else {
           this.SelectProductS = item
         }
@@ -188,7 +189,11 @@
         }
         financialCalculatePro(data).then(res => {
           ['monthlyMortgagePayment', 'monthlyInterest', 'rate', 'tenThousandcoefficient', 'monthlyInterestRate', 'annualInterestRate', 'totalPayment', 'totalInterestRate'].forEach((item, index) => {
-            this.resultsList[index + 1].number = res.data[item]
+            if (item == 'rate' || item == 'monthlyInterestRate' || item == 'annualInterestRate' ) {
+              this.resultsList[index + 1].number = (res.data[item] * 100).toFixed(2) + '%'
+            }else{
+              this.resultsList[index + 1].number = res.data[item]
+            }
           })
         })
       },
@@ -198,8 +203,12 @@
           productId: this.productId,
           productVersion: this.productVersion
         }).then(res => {
-          ['monthlyMortgagePayment', 'monthlyInterest', 'rate', 'tenThousandcoefficient', 'monthlyInterestRate', 'annualInterestRate', 'totalPayment', 'totalInterestRate'].forEach((item, index) => {
-            this.resultsList[index].number = res.data[item]
+          ['periods', 'monthlyMortgagePayment', 'monthlyInterest', 'rate', 'tenThousandcoefficient', 'monthlyInterestRate', 'annualInterestRate', 'totalPayment', 'totalInterestRate'].forEach((item, index) => {
+            if (item == 'rate' || item == 'monthlyInterestRate' || item == 'annualInterestRate' ) {
+              this.resultsList[index].number = (res.data[item] * 100).toFixed(2) + '%'
+            }else{
+              this.resultsList[index].number = res.data[item]
+            }
           })
         })
       },

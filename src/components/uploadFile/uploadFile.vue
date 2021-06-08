@@ -26,7 +26,6 @@
   Vue.use(Tab)
     .use(Tabs)
     .use(ActionSheet)
-  import Header from '../../base/Header'
   import {
     getFileListById,
     selectAllFileNodeDir
@@ -37,12 +36,9 @@
   } from 'vuex'
   export default {
     name: 'uploadFile',
-    components: {
-      'van-header': Header
-    },
     data() {
       return {
-        title: '影像件',
+        title: '查看影像件',
         active: 0,
         dataInfo: [],
         isShow: false,
