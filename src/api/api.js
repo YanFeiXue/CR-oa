@@ -8,6 +8,7 @@ const kaer = 'http://www.carcredit.com.cn/carcreditNews/selectNewsTheFirstFour'
 // const port = 'https://prerelease.carcredit.com.cn'
 const port = ''
 const salesappBase = '/salesapp'
+const leaseBase = '/lease'
 const ossBase = '/oss'
 
 
@@ -70,7 +71,7 @@ export const getProductList = params => service.post(port + salesappBase + `/get
 // 修改推动进件放款状态
 export const saveDataStatus = params => service.post(port + salesappBase + `/statistics/saveDataStatus`, params).then(res => res.data)
 // 获取权限按钮
-export const getLimitsOfAuthority = params => service.post(port + `/role/getLimitsOfAuthority`, params).then(res => res.data)
+export const getLimitsOfAuthority = params => service.post(port + leaseBase + `/role/getLimitsOfAuthority`, params).then(res => res.data)
 
 
 

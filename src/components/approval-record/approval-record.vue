@@ -49,7 +49,8 @@
   Vue.use(Cell).use(Button).use(Field)
   import {
     getPreAudits,
-    getSignUrl
+    getSignUrl,
+    getLimitsOfAuthority
   } from '../../api/api'
   import {
     mapGetters,
@@ -82,7 +83,8 @@
           size: 10
         },
         allLoaded: false,
-        contentH: 0
+        contentH: 0,
+        autorejectReasonVisibleFlag: false
       }
     },
     computed: {
@@ -96,7 +98,7 @@
       }
     },
     mounted() {
-      this.getRole()
+      this.getLimitsOfAuthority()
       this.$nextTick(function() {
         this.contentH = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top
       })
@@ -170,8 +172,12 @@
           })
         }
       },
-      getRole(){
-
+      getLimitsOfAuthority(){
+        getLimitsOfAuthority({
+          tokenId: sessionStorage.getItem('tokenid')
+        }).then(res => {
+          this.autorejectReasonVisibleFlag = data.contains('autorejectReasonVisible')
+        })
       },
       getAuditResult(auditResult){
         switch (auditResult){
